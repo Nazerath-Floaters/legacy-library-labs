@@ -7,9 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
+  "homepage": "https://nazerath-floaters.github.io/legacy-library-labs/",
   "dependencies": {
+    "framer-motion": "^12.38.0",
+    "gh-pages": "^6.3.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
   },
