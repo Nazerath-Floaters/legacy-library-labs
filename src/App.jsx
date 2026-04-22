@@ -6,64 +6,82 @@ const mediaFormats = [
     name: 'DVD',
     tag: 'Film archive',
     tone: 'from home shelves to family movie nights',
-    detail: 'Menu-preserved rips, polished metadata, and couch-ready playback.',
+    detail: 'Menu-preserved rips, polished metadata, and couch-ready playback for collections that deserve better than streaming roulette.',
     accent: 'cyan',
+    physicalType: 'DISC',
+    className: 'dvd',
   },
   {
     name: 'Blu-ray',
     tag: 'Premium playback',
     tone: 'high-bitrate favorites without hunting across services',
-    detail: 'Sharper masters, richer presentation, and a catalog that stays yours.',
+    detail: 'Sharper masters, richer presentation, and a catalog that stays yours instead of vanishing with licensing changes.',
     accent: 'violet',
+    physicalType: 'DISC',
+    className: 'bluray',
   },
   {
     name: 'PlayStation 2',
     tag: 'Heavy library',
     tone: 'the era worth preserving properly',
-    detail: 'Larger libraries, stronger hardware needs, and the deepest nostalgia pull.',
+    detail: 'Larger libraries, stronger hardware needs, and the deepest nostalgia pull, translated into a cleaner modern archive.',
     accent: 'gold',
+    physicalType: 'DISC',
+    className: 'ps2',
   },
   {
     name: 'PlayStation 1',
     tag: 'Classic console',
     tone: 'memory-card era favorites made easy to revisit',
-    detail: 'Iconic collections prepared for fast launch and clean browsing.',
+    detail: 'Iconic collections prepared for fast launch, clean browsing, and replay without the friction of aging hardware.',
     accent: 'rose',
+    physicalType: 'DISC',
+    className: 'ps1',
   },
   {
     name: 'PS Vita',
     tag: 'Portable archive',
     tone: 'sleek handheld libraries with modern convenience',
-    detail: 'Keep niche gems organized, portable, and ready to jump back into.',
+    detail: 'Keep niche gems organized, portable, and ready to jump back into with a setup that respects the original library.',
     accent: 'cyan',
+    physicalType: 'CARD',
+    className: 'vita',
   },
   {
     name: 'DS',
     tag: 'Dual-screen era',
     tone: 'touchscreen classics with family appeal',
-    detail: 'Portable preservation with lightweight setup paths and broad compatibility.',
+    detail: 'Portable preservation with lightweight setup paths and broad compatibility for family-friendly favorites and deep cuts.',
     accent: 'violet',
+    physicalType: 'CARD',
+    className: 'ds',
   },
   {
     name: '3DS',
     tag: 'Modern handheld',
     tone: 'beloved handheld collections that should stay playable',
-    detail: 'Curated libraries for owners who want their favorites accessible again.',
+    detail: 'Curated libraries for owners who want their favorites accessible again without losing the sense of a real collection.',
     accent: 'cyan',
+    physicalType: 'CARD',
+    className: '3ds',
   },
   {
     name: 'Game Boy Advance',
     tag: 'Pocket nostalgia',
     tone: 'small cartridges, huge emotional weight',
-    detail: 'Quick-launch libraries built for replayability and archival pride.',
+    detail: 'Quick-launch libraries built for replayability, lightweight devices, and archival pride around the games you carried everywhere.',
     accent: 'rose',
+    physicalType: 'CART',
+    className: 'gba',
   },
   {
     name: 'Sega Genesis',
     tag: '16-bit legacy',
     tone: 'arcade energy and living-room history preserved',
-    detail: 'A compact archive path for foundational collections and fan favorites.',
+    detail: 'A compact archive path for foundational collections, living-room icons, and hardware-era personality that still matters.',
     accent: 'gold',
+    physicalType: 'CART',
+    className: 'genesis',
   },
 ]
 
@@ -90,6 +108,7 @@ const consoles = [
     badge: 'Best overall flexibility',
     supportsPs2: true,
     supportsLight: true,
+    tier: 'flagship',
   },
   {
     title: 'RG35XX Plus',
@@ -98,6 +117,7 @@ const consoles = [
     badge: 'Compact favorite',
     supportsPs2: false,
     supportsLight: true,
+    tier: 'compact',
   },
   {
     title: 'RG476H',
@@ -106,6 +126,7 @@ const consoles = [
     badge: 'PS2-focused',
     supportsPs2: true,
     supportsLight: true,
+    tier: 'performance',
   },
   {
     title: 'Bring Your Own Device',
@@ -114,6 +135,7 @@ const consoles = [
     badge: 'Budget option',
     supportsPs2: false,
     supportsLight: true,
+    tier: 'budget',
   },
   {
     title: 'Boot Loaded SSD',
@@ -122,6 +144,7 @@ const consoles = [
     badge: 'Flexible install',
     supportsPs2: false,
     supportsLight: true,
+    tier: 'storage',
   },
   {
     title: 'Thumb Drive',
@@ -130,6 +153,7 @@ const consoles = [
     badge: 'Archive-only',
     supportsPs2: false,
     supportsLight: true,
+    tier: 'archive',
   },
 ]
 
@@ -137,6 +161,24 @@ const trustPoints = [
   'Preserve what you already legally own',
   'Turn shelves into a searchable living library',
   'Choose a playback path that fits your collection',
+]
+
+const processSteps = [
+  {
+    label: '01',
+    title: 'Intake the collection',
+    body: 'We identify what you own, what matters most, and what kind of playback experience you actually want.',
+  },
+  {
+    label: '02',
+    title: 'Build the archive',
+    body: 'Physical media is organized into a cleaner digital structure with metadata, categories, and a more usable browsing flow.',
+  },
+  {
+    label: '03',
+    title: 'Match the hardware',
+    body: 'Your library gets paired with the right playback path, from compact access devices to flagship all-in-one setups.',
+  },
 ]
 
 function App() {
@@ -153,6 +195,7 @@ function App() {
     <div className="page-shell">
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
+      <div className="grid-overlay" />
 
       <header className="hero">
         <nav className="topbar">
@@ -161,9 +204,9 @@ function App() {
             <span>Legacy Library Labs</span>
           </div>
           <div className="nav-links">
-            <a href="#preserve">Services</a>
-            <a href="#more">Enhancements</a>
-            <a href="#console">Console Builder</a>
+            <a href="#process">Process</a>
+            <a href="#preserve">Archive</a>
+            <a href="#console">Hardware</a>
             <a href="#contact">Contact</a>
           </div>
         </nav>
@@ -171,15 +214,15 @@ function App() {
         <div className="hero-content">
           <div className="hero-copy">
             <p className="eyebrow">PRESERVE WHAT YOU OWN</p>
-            <h1>Turn your shelf into a living library.</h1>
+            <h1>Archive the media that made you who you are.</h1>
             <p className="hero-text">
-              Legacy Library Labs helps you preserve the movies, discs, cartridges, and games you already love,
-              then makes them feel modern, playable, and easy to reach again.
+              Legacy Library Labs turns shelves, discs, cartridges, and family favorites into a premium digital library,
+              then pairs that archive with hardware that makes it feel alive again.
             </p>
 
             <div className="hero-actions">
               <a className="button-link" href="#console">Build Your Archive</a>
-              <a className="button-link ghost" href="#preserve">See How It Works</a>
+              <a className="button-link ghost" href="#process">See the Process</a>
             </div>
 
             <div className="hero-stats">
@@ -198,25 +241,58 @@ function App() {
             </div>
           </div>
 
-          <div className="hero-stage">
-            <div className="stage-card featured">
-              <span className="stage-label">Collection DNA</span>
-              <h3>Own your access</h3>
-              <p>Preservation, playback, and pride, designed for the media that shaped your life.</p>
-              <div className="mini-shelf">
-                <span>DISC</span>
-                <span>CART</span>
-                <span>CASE</span>
-                <span>VAULT</span>
+          <div className="hero-visual-system">
+            <article className="hero-device-panel main-panel">
+              <div className="panel-topline">
+                <span className="stage-label">Archive signal</span>
+                <span className="panel-status">Active</span>
               </div>
-            </div>
-            <div className="stage-card glass tilt-right">
-              <span className="stage-label">Trusted Focus</span>
-              <p>Legally grounded preservation, thoughtful presentation, and hardware paths that actually fit the archive.</p>
-            </div>
-            <div className="stage-card glass tilt-left accent">
-              <span className="stage-label">Signature Promise</span>
-              <p>Keep what matters playable, searchable, and close.</p>
+
+              <div className="shelf-composition">
+                <div className="physical-stack">
+                  <div className="media-piece disc one" />
+                  <div className="media-piece case two" />
+                  <div className="media-piece cart three" />
+                </div>
+
+                <div className="conversion-beam">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+
+                <div className="digital-vault">
+                  <div className="vault-header">
+                    <strong>Legacy Vault</strong>
+                    <span>Indexed collection</span>
+                  </div>
+                  <div className="vault-grid">
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div className="bright" />
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <div className="hero-side-panels">
+              <article className="hero-device-panel info-panel emphasis">
+                <span className="stage-label">Why it hits harder</span>
+                <h3>Less vague glow, more product signal.</h3>
+                <p>Sharper surfaces, stronger contrast, and a hero that looks like an actual premium offer instead of a placeholder future-tech layout.</p>
+              </article>
+              <article className="hero-device-panel info-panel compact-panel">
+                <span className="stage-label">Collection DNA</span>
+                <div className="mini-tags">
+                  <span>DISC</span>
+                  <span>CART</span>
+                  <span>CASE</span>
+                  <span>VAULT</span>
+                </div>
+              </article>
             </div>
           </div>
         </div>
@@ -229,14 +305,36 @@ function App() {
           ))}
         </section>
 
+        <section className="section process-section" id="process">
+          <div className="section-head split">
+            <div>
+              <p className="eyebrow">HOW IT WORKS</p>
+              <h2>A cleaner, more premium flow from ownership to access.</h2>
+            </div>
+            <p>
+              This is where the site starts feeling closer to premium hardware brands: stronger sequencing, clearer steps, and surfaces that look intentional instead of decorative.
+            </p>
+          </div>
+
+          <div className="process-grid">
+            {processSteps.map((step) => (
+              <article key={step.label} className="process-card">
+                <span className="process-number">{step.label}</span>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="section preserve" id="preserve">
           <div className="section-head split preserve-head">
             <div>
               <p className="eyebrow">FROM SHELF TO SEARCHABLE ARCHIVE</p>
-              <h2>Choose a format, preview the archive path.</h2>
+              <h2>Select a format and preview the transformation.</h2>
             </div>
             <p>
-              The site now has a stronger visual direction and a live selection state. This can become the horizontal cinematic showcase next, but already behaves like a guided archive preview.
+              This section now leans into a product-demo feel. Instead of just explaining the idea, it visually frames a physical collection becoming a usable digital system.
             </p>
           </div>
 
@@ -253,28 +351,42 @@ function App() {
             ))}
           </div>
 
-          <div className="archive-preview">
+          <div className="archive-preview premium-preview">
             <article className={`preview-visual ${selectedMedia.accent}`}>
-              <div className="preview-orb" />
-              <div className="preview-frame physical">
-                <span>PHYSICAL</span>
+              <div className="preview-backdrop-lines" />
+              <div className={`format-object ${selectedMedia.className}`}>
+                <span>{selectedMedia.physicalType}</span>
                 <strong>{selectedMedia.name}</strong>
               </div>
-              <div className="preview-flow" />
-              <div className="preview-frame digital">
-                <span>DIGITAL LIBRARY</span>
-                <strong>Indexed, preserved, playable</strong>
+              <div className="preview-flow premium-flow">
+                <span />
+                <span />
+                <span />
+              </div>
+              <div className="library-surface">
+                <div className="library-topline">
+                  <span>DIGITAL LIBRARY</span>
+                  <strong>Ready to browse</strong>
+                </div>
+                <div className="library-tiles">
+                  <div />
+                  <div />
+                  <div className="focus" />
+                  <div />
+                  <div />
+                  <div />
+                </div>
               </div>
             </article>
 
-            <article className="preview-copy">
+            <article className="preview-copy premium-copy">
               <p className="eyebrow">{selectedMedia.tag}</p>
               <h3>{selectedMedia.name}</h3>
               <p className="preview-tone">{selectedMedia.tone}</p>
               <p>{selectedMedia.detail}</p>
               <ul>
-                <li>Clean organization and metadata-ready presentation</li>
-                <li>Playback options matched to the strength of the source library</li>
+                <li>Cleaner visual organization and metadata-ready presentation</li>
+                <li>Playback options matched to the strength and complexity of the source library</li>
                 <li>Preservation-first flow built around collections you already own</li>
               </ul>
             </article>
@@ -285,16 +397,16 @@ function App() {
           <div className="section-head split">
             <div>
               <p className="eyebrow">GET MORE FROM YOUR MEDIA</p>
-              <h2>Preservation is the start, not the ceiling.</h2>
+              <h2>Preservation is the floor, not the ceiling.</h2>
             </div>
             <p>
-              Build on top of the archive with curated enhancements, fan creativity, and presentation upgrades that make old favorites feel alive again.
+              Once the archive exists, the experience can grow, better playback, fan-made enhancements, cleaner presentation, and more reasons to revisit what you already love.
             </p>
           </div>
 
           <div className="enhancement-grid">
             {enhancements.map((item) => (
-              <article key={item.title} className="enhancement-card">
+              <article key={item.title} className="enhancement-card premium-surface">
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
               </article>
@@ -305,15 +417,15 @@ function App() {
         <section className="section console" id="console">
           <div className="section-head split">
             <div>
-              <p className="eyebrow">PICK YOUR CONSOLE</p>
-              <h2>Choose the playback path that fits your archive.</h2>
+              <p className="eyebrow">PICK YOUR HARDWARE PATH</p>
+              <h2>Match the archive to the device that makes sense.</h2>
             </div>
             <p>
-              The compatibility layer is now visually prototyped. Selecting PS2 narrows the recommendations to the more capable paths, while lighter libraries keep most options open.
+              This section is now closer to a product configurator. The selected media type changes which hardware feels like a serious recommendation and which options fade into the background.
             </p>
           </div>
 
-          <div className="compatibility-banner">
+          <div className="compatibility-banner premium-surface">
             <div>
               <span className="compatibility-title">Current logic preview</span>
               <p>
@@ -323,13 +435,16 @@ function App() {
             <a className="button-link ghost small" href="#preserve">Change media type</a>
           </div>
 
-          <div className="console-grid">
+          <div className="console-grid premium-console-grid">
             {consoles.map((item) => {
               const available = ps2Selected ? item.supportsPs2 : item.supportsLight
 
               return (
-                <article key={item.title} className={`console-card ${available ? '' : 'disabled'}`}>
-                  <span className="console-badge">{item.badge}</span>
+                <article key={item.title} className={`console-card console-tier-${item.tier} ${available ? 'highlighted' : 'disabled'}`}>
+                  <div className="console-card-topline">
+                    <span className="console-badge">{item.badge}</span>
+                    <span className={`console-dot ${available ? 'on' : 'off'}`} />
+                  </div>
                   <h3>{item.title}</h3>
                   <p className="price">{item.price}</p>
                   <p>{item.desc}</p>
