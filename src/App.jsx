@@ -191,6 +191,57 @@ const archiveExamples = [
   },
 ]
 
+const heroSlides = [
+  {
+    eyebrow: 'COLLECTION ARCHIVING',
+    title: 'Turn shelves into a library worth showing off.',
+    text: 'Preserve discs, cartridges, and family favorites in a cleaner catalog that feels modern without losing the personality of the original collection.',
+    primaryCta: { label: 'Build Your Archive', href: '#console' },
+    secondaryCta: { label: 'See the Process', href: '#process' },
+    stats: [
+      { value: '9', label: 'archive formats planned' },
+      { value: '6', label: 'playback paths' },
+      { value: '1', label: 'ownership-first philosophy' },
+    ],
+    featureLabel: 'Archive signal',
+    featureTitle: 'From physical shelf to living vault.',
+    featureText: 'A more product-like presentation that makes the service feel real at first glance.',
+    tags: ['DISC', 'CART', 'CASE', 'VAULT'],
+  },
+  {
+    eyebrow: 'FAMILY MEDIA PRESERVATION',
+    title: 'Make old favorites easy to find, play, and revisit.',
+    text: 'Movies, game libraries, and nostalgic collections become browseable again, with metadata, artwork, and playback paths that are easier for real households to use.',
+    primaryCta: { label: 'Preview the Archive', href: '#preserve' },
+    secondaryCta: { label: 'Pick Hardware', href: '#console' },
+    stats: [
+      { value: '3', label: 'clear service steps' },
+      { value: '∞', label: 'less shelf friction' },
+      { value: '24/7', label: 'ready-to-browse vibe' },
+    ],
+    featureLabel: 'Why it matters',
+    featureTitle: 'Less clutter, more connection to what you kept.',
+    featureText: 'The site should instantly communicate preservation, organization, and easy access, not just abstract tech polish.',
+    tags: ['MOVIES', 'GAMES', 'FAMILY', 'ACCESS'],
+  },
+  {
+    eyebrow: 'HARDWARE + ARCHIVE',
+    title: 'Match every archive to a playback setup that fits.',
+    text: 'Some collections want a compact box, some want a handheld, and some need a full flagship station. The site should sell that choice clearly.',
+    primaryCta: { label: 'Explore Hardware', href: '#console' },
+    secondaryCta: { label: 'Contact Us', href: '#contact' },
+    stats: [
+      { value: 'PS2', label: 'heavy library ready' },
+      { value: 'SSD', label: 'bootable options' },
+      { value: '$0+', label: 'bring-your-own paths' },
+    ],
+    featureLabel: 'Hardware fit',
+    featureTitle: 'Guidance that feels practical, not generic.',
+    featureText: 'This gives the homepage a merchandised feel, like featured offers instead of a single static hero block.',
+    tags: ['HANDHELD', 'TV', 'SSD', 'TERMINAL'],
+  },
+]
+
 const processSteps = [
   {
     label: '01',
@@ -211,6 +262,7 @@ const processSteps = [
 
 function App() {
   const [selectedFormat, setSelectedFormat] = useState('PlayStation 2')
+  const [activeSlide, setActiveSlide] = useState(0)
 
   const selectedMedia = useMemo(
     () => mediaFormats.find((item) => item.name === selectedFormat) ?? mediaFormats[0],
@@ -218,6 +270,15 @@ function App() {
   )
 
   const ps2Selected = selectedFormat === 'PlayStation 2'
+  const currentSlide = heroSlides[activeSlide]
+
+  const goToPrevSlide = () => {
+    setActiveSlide((current) => (current === 0 ? heroSlides.length - 1 : current - 1))
+  }
+
+  const goToNextSlide = () => {
+    setActiveSlide((current) => (current === heroSlides.length - 1 ? 0 : current + 1))
+  }
 
   return (
     <div className="page-shell">
@@ -240,36 +301,33 @@ function App() {
         </nav>
 
         <div className="hero-content">
-          <div className="hero-copy">
-            <p className="eyebrow">PRESERVE WHAT YOU OWN</p>
-            <h1>Archive the media that made you who you are.</h1>
-            <p className="hero-text">
-              Legacy Library Labs turns shelves, discs, cartridges, and family favorites into a clear, browseable archive,
-              then pairs that library with hardware that makes revisiting it feel easy again.
-            </p>
+          <div className="hero-slider-shell">
+            <button type="button" className="hero-nav hero-nav-left" onClick={goToPrevSlide} aria-label="Previous slide">
+              ‹
+            </button>
 
-            <div className="hero-actions">
-              <a className="button-link" href="#console">Build Your Archive</a>
-              <a className="button-link ghost" href="#process">See the Process</a>
-            </div>
+            <div className="hero-content">
+              <div className="hero-copy">
+                <p className="eyebrow">{currentSlide.eyebrow}</p>
+                <h1>{currentSlide.title}</h1>
+                <p className="hero-text">{currentSlide.text}</p>
 
-            <div className="hero-stats">
-              <div>
-                <strong>9</strong>
-                <span>archive formats planned</span>
-              </div>
-              <div>
-                <strong>6</strong>
-                <span>playback paths</span>
-              </div>
-              <div>
-                <strong>1</strong>
-                <span>ownership-first philosophy</span>
-              </div>
-            </div>
-          </div>
+                <div className="hero-actions">
+                  <a className="button-link" href={currentSlide.primaryCta.href}>{currentSlide.primaryCta.label}</a>
+                  <a className="button-link ghost" href={currentSlide.secondaryCta.href}>{currentSlide.secondaryCta.label}</a>
+                </div>
 
-          <div className="hero-visual-system">
+                <div className="hero-stats">
+                  {currentSlide.stats.map((stat) => (
+                    <div key={stat.label}>
+                      <strong>{stat.value}</strong>
+                      <span>{stat.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="hero-visual-system">
             <article className="hero-device-panel main-panel">
               <div className="panel-topline">
                 <span className="stage-label">Archive signal</span>
@@ -306,22 +364,39 @@ function App() {
               </div>
             </article>
 
-            <div className="hero-side-panels">
-              <article className="hero-device-panel info-panel emphasis">
-                <span className="stage-label">What this really is</span>
-                <h3>Your collection, cleaned up and made usable.</h3>
-                <p>Less vague future-tech energy, more confidence that your media can become a library people actually want to browse.</p>
-              </article>
-              <article className="hero-device-panel info-panel compact-panel">
-                <span className="stage-label">Collection DNA</span>
-                <div className="mini-tags">
-                  <span>DISC</span>
-                  <span>CART</span>
-                  <span>CASE</span>
-                  <span>VAULT</span>
+                <div className="hero-side-panels">
+                  <article className="hero-device-panel info-panel emphasis">
+                    <span className="stage-label">{currentSlide.featureLabel}</span>
+                    <h3>{currentSlide.featureTitle}</h3>
+                    <p>{currentSlide.featureText}</p>
+                  </article>
+                  <article className="hero-device-panel info-panel compact-panel">
+                    <span className="stage-label">Collection DNA</span>
+                    <div className="mini-tags">
+                      {currentSlide.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
+                  </article>
                 </div>
-              </article>
+              </div>
             </div>
+
+            <button type="button" className="hero-nav hero-nav-right" onClick={goToNextSlide} aria-label="Next slide">
+              ›
+            </button>
+          </div>
+
+          <div className="hero-slider-controls" aria-label="Hero slide navigation">
+            {heroSlides.map((slide, index) => (
+              <button
+                key={slide.title}
+                type="button"
+                className={`hero-dot ${index === activeSlide ? 'active' : ''}`}
+                onClick={() => setActiveSlide(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </header>
