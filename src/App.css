@@ -616,6 +616,102 @@ button:hover,
   opacity: 0.25;
 }
 
+.preview-stage-labels {
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: rgba(230, 238, 252, 0.72);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.preview-stage-labels span {
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(7, 10, 18, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.preview-stage-labels span:nth-child(2) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.preview-stage-labels span:last-child {
+  margin-left: auto;
+}
+
+.archive-compare-grid,
+.archive-benefits-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.archive-compare-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.archive-compare-card,
+.archive-benefit-card {
+  padding: 1rem;
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.compare-label {
+  display: inline-flex;
+  margin-bottom: 0.65rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(159, 241, 255, 0.1);
+  color: #aef2ff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.archive-compare-card h4,
+.archive-benefit-card h3 {
+  margin: 0 0 0.7rem;
+  color: #f8fbff;
+}
+
+.archive-compare-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.archive-compare-card li,
+.archive-benefit-card p {
+  color: rgba(224, 231, 247, 0.74);
+  line-height: 1.6;
+}
+
+.archive-benefits-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.archive-benefit-card {
+  min-height: 100%;
+}
+
+.archive-benefit-card h3 {
+  font-size: 1.05rem;
+}
+
+.archive-benefit-card p {
+  margin: 0;
+}
+
 .format-object {
   position: absolute;
   left: 1.5rem;
@@ -820,7 +916,8 @@ button:hover,
   .process-grid,
   .enhancement-grid,
   .console-grid,
-  .trust-strip {
+  .trust-strip,
+  .archive-benefits-grid {
     grid-template-columns: 1fr;
   }
 
@@ -839,7 +936,8 @@ button:hover,
   .panel-topline,
   .console-card-topline,
   .vault-header,
-  .library-topline {
+  .library-topline,
+  .preview-stage-labels {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -875,6 +973,21 @@ button:hover,
 
   .preview-visual {
     min-height: auto;
+  }
+
+  .preview-stage-labels {
+    position: relative;
+    inset: auto;
+    margin-bottom: 1rem;
+  }
+
+  .preview-stage-labels span:nth-child(2),
+  .preview-stage-labels span:last-child {
+    margin: 0;
+  }
+
+  .archive-compare-grid {
+    grid-template-columns: 1fr;
   }
 
   .hero-side-panels {

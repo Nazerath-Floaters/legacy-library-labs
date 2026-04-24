@@ -163,6 +163,34 @@ const trustPoints = [
   'Choose a playback path that fits your collection',
 ]
 
+const archiveBenefits = [
+  {
+    title: 'Readable at a glance',
+    body: 'Big shelves become browsable collections with clearer titles, platform grouping, and cleaner metadata.',
+  },
+  {
+    title: 'Built around ownership',
+    body: 'The pitch is simple: keep what is yours accessible instead of buried in boxes, worn media, or licensing churn.',
+  },
+  {
+    title: 'Made for real households',
+    body: 'The archive is easier for friends, family, and future-you to use without needing a crash course in emulators.',
+  },
+]
+
+const archiveExamples = [
+  {
+    label: 'Before',
+    title: 'Shelf friction',
+    items: ['Mixed cases and loose media', 'No fast way to browse by platform or genre', 'Playback depends on aging hardware'],
+  },
+  {
+    label: 'After',
+    title: 'Legacy vault',
+    items: ['Organized by format, series, and favorites', 'Searchable and artwork-forward browsing', 'Matched to hardware that fits the library'],
+  },
+]
+
 const processSteps = [
   {
     label: '01',
@@ -216,8 +244,8 @@ function App() {
             <p className="eyebrow">PRESERVE WHAT YOU OWN</p>
             <h1>Archive the media that made you who you are.</h1>
             <p className="hero-text">
-              Legacy Library Labs turns shelves, discs, cartridges, and family favorites into a premium digital library,
-              then pairs that archive with hardware that makes it feel alive again.
+              Legacy Library Labs turns shelves, discs, cartridges, and family favorites into a clear, browseable archive,
+              then pairs that library with hardware that makes revisiting it feel easy again.
             </p>
 
             <div className="hero-actions">
@@ -280,9 +308,9 @@ function App() {
 
             <div className="hero-side-panels">
               <article className="hero-device-panel info-panel emphasis">
-                <span className="stage-label">Why it hits harder</span>
-                <h3>Less vague glow, more product signal.</h3>
-                <p>Sharper surfaces, stronger contrast, and a hero that looks like an actual premium offer instead of a placeholder future-tech layout.</p>
+                <span className="stage-label">What this really is</span>
+                <h3>Your collection, cleaned up and made usable.</h3>
+                <p>Less vague future-tech energy, more confidence that your media can become a library people actually want to browse.</p>
               </article>
               <article className="hero-device-panel info-panel compact-panel">
                 <span className="stage-label">Collection DNA</span>
@@ -312,7 +340,7 @@ function App() {
               <h2>A cleaner, more premium flow from ownership to access.</h2>
             </div>
             <p>
-              This is where the site starts feeling closer to premium hardware brands: stronger sequencing, clearer steps, and surfaces that look intentional instead of decorative.
+              The process should read like a real service, not a mood board. Clear steps make the offer feel grounded and believable.
             </p>
           </div>
 
@@ -334,7 +362,7 @@ function App() {
               <h2>Select a format and preview the transformation.</h2>
             </div>
             <p>
-              This section now leans into a product-demo feel. Instead of just explaining the idea, it visually frames a physical collection becoming a usable digital system.
+              The archive section works better when it feels concrete, like a before-and-after transformation from cluttered ownership to clean access.
             </p>
           </div>
 
@@ -354,6 +382,11 @@ function App() {
           <div className="archive-preview premium-preview">
             <article className={`preview-visual ${selectedMedia.accent}`}>
               <div className="preview-backdrop-lines" />
+              <div className="preview-stage-labels">
+                <span>Physical media</span>
+                <span>Archive build</span>
+                <span>Living library</span>
+              </div>
               <div className={`format-object ${selectedMedia.className}`}>
                 <span>{selectedMedia.physicalType}</span>
                 <strong>{selectedMedia.name}</strong>
@@ -389,7 +422,30 @@ function App() {
                 <li>Playback options matched to the strength and complexity of the source library</li>
                 <li>Preservation-first flow built around collections you already own</li>
               </ul>
+
+              <div className="archive-compare-grid">
+                {archiveExamples.map((example) => (
+                  <div key={example.label} className="archive-compare-card">
+                    <span className="compare-label">{example.label}</span>
+                    <h4>{example.title}</h4>
+                    <ul>
+                      {example.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </article>
+          </div>
+
+          <div className="archive-benefits-grid">
+            {archiveBenefits.map((item) => (
+              <article key={item.title} className="archive-benefit-card premium-surface">
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -400,7 +456,7 @@ function App() {
               <h2>Preservation is the floor, not the ceiling.</h2>
             </div>
             <p>
-              Once the archive exists, the experience can grow, better playback, fan-made enhancements, cleaner presentation, and more reasons to revisit what you already love.
+              Once the archive exists, you can layer in upgrades, better playback, fan work, cleaner presentation, and more reasons to revisit what already matters.
             </p>
           </div>
 
@@ -421,7 +477,7 @@ function App() {
               <h2>Match the archive to the device that makes sense.</h2>
             </div>
             <p>
-              This section is now closer to a product configurator. The selected media type changes which hardware feels like a serious recommendation and which options fade into the background.
+              Hardware should feel like practical guidance, not filler. The selected media type shifts which options make sense for the collection in front of you.
             </p>
           </div>
 
@@ -462,7 +518,7 @@ function App() {
             <p className="eyebrow">LEGACY, NOT CLUTTER</p>
             <h2>Create an archive your friends and family can actually use.</h2>
             <p>
-              Movies, games, discs, cartridges, and favorites that shaped your life should not disappear into boxes, dead hardware, or subscription churn.
+              Movies, games, discs, cartridges, and favorites that shaped your life should not disappear into boxes, dead hardware, or modern subscription churn.
             </p>
             <div className="hero-actions centered">
               <a className="button-link" href="mailto:hello@legacylibrarylabs.com">Start Planning</a>
