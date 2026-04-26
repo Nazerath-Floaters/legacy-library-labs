@@ -246,16 +246,18 @@ button:hover,
 
 .service-carousel {
   position: relative;
-  height: 35.5rem;
+  height: 38rem;
   overflow: hidden;
+  padding-inline: 2.5rem;
 }
 
 .service-card {
   position: absolute;
   top: 1rem;
   left: 50%;
-  width: min(35rem, 82vw);
-  height: 32.5rem;
+  width: min(34rem, calc(100vw - 10rem));
+  min-height: 32.5rem;
+  height: auto;
   transform-origin: center center;
   transition: transform 420ms ease, opacity 420ms ease, filter 420ms ease;
   cursor: pointer;
@@ -307,6 +309,8 @@ button:hover,
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28);
   overflow: hidden;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
 }
 
 .service-eyebrow,
@@ -323,7 +327,7 @@ button:hover,
 
 .service-card h2 {
   font-size: clamp(1.1rem, 1.55vw, 1.55rem);
-  line-height: 0.98;
+  line-height: 1.02;
   letter-spacing: -0.04em;
   max-width: 18ch;
   text-wrap: balance;
@@ -331,7 +335,7 @@ button:hover,
 
 .service-visual-flow {
   display: grid;
-  grid-template-columns: 1.3fr auto 0.95fr;
+  grid-template-columns: minmax(0, 1.15fr) auto minmax(10.5rem, 0.9fr);
   gap: 0.9rem;
   align-items: center;
   margin-top: 0.85rem;
@@ -384,13 +388,19 @@ button:hover,
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: grid;
-  align-content: space-between;
+  align-content: center;
   justify-items: center;
   text-align: center;
+  gap: 0.55rem;
 }
 
 .service-device-grid.devices-grouped .service-device-block {
   min-height: 9.7rem;
+}
+
+.service-device-block.compact,
+.service-source-block.compact {
+  grid-template-rows: minmax(0, 1fr) auto;
 }
 
 .source-collage-box,
@@ -538,7 +548,7 @@ button:hover,
 .service-source-image,
 .service-device-image {
   width: 100%;
-  max-height: 4.8rem;
+  max-height: 5.2rem;
   object-fit: contain;
 }
 
@@ -564,7 +574,9 @@ button:hover,
 }
 
 .service-expanded-copy {
-  margin-top: 0.8rem;
+  margin-top: 0.9rem;
+  display: grid;
+  align-content: start;
 }
 
 .service-expanded-copy p {
@@ -776,20 +788,29 @@ button:hover,
   }
 
   .service-carousel {
-    height: 36rem;
+    height: 39rem;
+    padding-inline: 1.25rem;
   }
 
   .service-card {
-    width: min(32rem, 82vw);
-    height: 33rem;
+    width: min(31rem, calc(100vw - 7rem));
+    min-height: 33.5rem;
   }
 
   .service-card[data-offset='-1'] {
-    transform: translateX(calc(-50% - 15rem)) scale(0.8) rotate(-8deg);
+    transform: translateX(calc(-50% - 14rem)) scale(0.8) rotate(-8deg);
   }
 
   .service-card[data-offset='1'] {
-    transform: translateX(calc(-50% + 15rem)) scale(0.8) rotate(8deg);
+    transform: translateX(calc(-50% + 14rem)) scale(0.8) rotate(8deg);
+  }
+
+  .service-card[data-offset='-2'] {
+    transform: translateX(calc(-50% - 22rem)) scale(0.68) rotate(-12deg);
+  }
+
+  .service-card[data-offset='2'] {
+    transform: translateX(calc(-50% + 22rem)) scale(0.68) rotate(12deg);
   }
 }
 
@@ -832,10 +853,11 @@ button:hover,
     overflow-y: visible;
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 88%;
+    grid-auto-columns: minmax(17rem, 88%);
     gap: 1rem;
-    padding-bottom: 0.5rem;
+    padding: 0 0.15rem 0.75rem;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0.15rem;
   }
 
   .service-card,
@@ -853,6 +875,7 @@ button:hover,
     transform: none;
     opacity: 1;
     scroll-snap-align: center;
+    scroll-snap-stop: always;
   }
 
   .service-card.far {
@@ -867,6 +890,7 @@ button:hover,
 
   .service-visual-flow {
     grid-template-columns: 1fr;
+    gap: 0.7rem;
   }
 
   .service-source-grid,
@@ -879,6 +903,7 @@ button:hover,
   .service-device-grid.device-count-2,
   .service-device-grid.devices-grouped {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
   }
 
   .source-collage-box,
@@ -924,6 +949,21 @@ button:hover,
 
   .service-carousel {
     grid-auto-columns: 94%;
+  }
+
+  .service-card {
+    min-height: 0;
+  }
+
+  .service-card h2 {
+    font-size: clamp(1.3rem, 6.5vw, 1.8rem);
+  }
+
+  .service-expanded-copy p,
+  .service-expanded-copy li,
+  .service-source-block span,
+  .service-device-block span {
+    font-size: 0.88rem;
   }
 
   .service-source-grid,

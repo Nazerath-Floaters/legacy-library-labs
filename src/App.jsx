@@ -169,6 +169,7 @@ function App() {
   const [activeFanCard, setActiveFanCard] = useState(0)
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const carouselRef = useRef(null)
+  const isPointerSyncRef = useRef(false)
 
   useEffect(() => {
     if (!autoScrollEnabled) return undefined
@@ -212,27 +213,81 @@ function App() {
 
     const stopAutoScroll = () => setAutoScrollEnabled(false)
 
+    const handleScroll = () => {
+      stopAutoScroll()
+
+      if (window.innerWidth > 820 || isPointerSyncRef.current) return
+
+      isPointerSyncRef.current = true
+      window.requestAnimationFrame(() => {
+        const cards = Array.from(carousel.querySelectorAll('.service-card'))
+        if (!cards.length) {
+          isPointerSyncRef.current = false
+          return
+        }
+
+        const carouselRect = carousel.getBoundingClientRect()
+        const center = carouselRect.left + carouselRect.width / 2
+
+        let closestIndex = 0
+        let closestDistance = Number.POSITIVE_INFINITY
+
+        cards.forEach((card, index) => {
+          const rect = card.getBoundingClientRect()
+          const cardCenter = rect.left + rect.width / 2
+          const distance = Math.abs(cardCenter - center)
+
+          if (distance < closestDistance) {
+            closestDistance = distance
+            closestIndex = index
+          }
+        })
+
+        setActiveService((current) => (current === closestIndex ? current : closestIndex))
+        isPointerSyncRef.current = false
+      })
+    }
+
     carousel.addEventListener('wheel', stopAutoScroll, { passive: true })
     carousel.addEventListener('touchstart', stopAutoScroll, { passive: true })
     carousel.addEventListener('pointerdown', stopAutoScroll)
-    carousel.addEventListener('scroll', stopAutoScroll, { passive: true })
+    carousel.addEventListener('scroll', handleScroll, { passive: true })
 
     return () => {
       carousel.removeEventListener('wheel', stopAutoScroll)
       carousel.removeEventListener('touchstart', stopAutoScroll)
       carousel.removeEventListener('pointerdown', stopAutoScroll)
-      carousel.removeEventListener('scroll', stopAutoScroll)
+      carousel.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
+  const syncMobileCarousel = (index) => {
+    const carousel = carouselRef.current
+    if (!carousel || window.innerWidth > 820) return
+
+    const cards = carousel.querySelectorAll('.service-card')
+    const targetCard = cards[index]
+    if (!targetCard) return
+
+    targetCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+  }
+
   const prevService = () => {
     setAutoScrollEnabled(false)
-    setActiveService((current) => (current === 0 ? heroServices.length - 1 : current - 1))
+    setActiveService((current) => {
+      const nextIndex = current === 0 ? heroServices.length - 1 : current - 1
+      syncMobileCarousel(nextIndex)
+      return nextIndex
+    })
   }
 
   const nextService = () => {
     setAutoScrollEnabled(false)
-    setActiveService((current) => (current + 1) % heroServices.length)
+    setActiveService((current) => {
+      const nextIndex = (current + 1) % heroServices.length
+      syncMobileCarousel(nextIndex)
+      return nextIndex
+    })
   }
 
   return (
@@ -280,6 +335,7 @@ function App() {
                     onClick={() => {
                       setAutoScrollEnabled(false)
                       setActiveService(index)
+                      syncMobileCarousel(index)
                     }}
                     role="button"
                     tabIndex={0}
@@ -288,6 +344,7 @@ function App() {
                         event.preventDefault()
                         setAutoScrollEnabled(false)
                         setActiveService(index)
+                        syncMobileCarousel(index)
                       }
                     }}
                   >
@@ -370,6 +427,7 @@ function App() {
                 onClick={() => {
                   setAutoScrollEnabled(false)
                   setActiveService(index)
+                  syncMobileCarousel(index)
                 }}
                 aria-label={`Go to ${service.title}`}
               />
