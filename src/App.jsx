@@ -353,18 +353,18 @@ function App() {
                       <h2>{service.title}</h2>
 
                       <div className="service-visual-flow multi-source-flow">
-                        <div className={`service-source-grid ${layoutClass}`}>
+                        <div className={`service-visual-panel source-panel ${layoutClass}`}>
+                          <span className="visual-panel-tag">Source</span>
                           {service.sourceLayout === 'collage' || service.sourceLayout === 'allinone-cluster' ? (
-                            <div className={`source-collage-box ${service.sourceLayout}`}>
+                            <div className={`source-collage-stage ${service.sourceLayout}`}>
                               {service.sources.map((source, sourceIndex) => (
                                 <div key={`${service.title}-${source.label}`} className={`source-collage-item collage-item-${sourceIndex + 1}`}>
                                   <img src={source.image} alt={source.alt} className="service-source-image" />
                                 </div>
                               ))}
-                              <span className="source-collage-label">{service.collageLabel}</span>
                             </div>
                           ) : service.sourceLayout === 'fanstack' ? (
-                            <div className="fanstack-box">
+                            <div className="fanstack-stage">
                               {service.sources.map((source, sourceIndex) => {
                                 const offsetFromActive = (sourceIndex - activeFanCard + service.sources.length) % service.sources.length
                                 return (
@@ -376,27 +376,34 @@ function App() {
                                   </div>
                                 )
                               })}
-                              <span className="source-collage-label">{service.collageLabel}</span>
                             </div>
                           ) : (
-                            service.sources.map((source) => (
-                              <div key={`${service.title}-${source.label}`} className="service-source-block compact">
-                                <img src={source.image} alt={source.alt} className="service-source-image" />
-                                <span>{source.label}</span>
-                              </div>
-                            ))
+                            <div className={`single-source-stage source-count-${Math.min(service.sources.length, 3)}`}>
+                              {service.sources.map((source) => (
+                                <div key={`${service.title}-${source.label}`} className="floating-media source-media">
+                                  <img src={source.image} alt={source.alt} className="service-source-image" />
+                                </div>
+                              ))}
+                            </div>
                           )}
+                          <span className="visual-panel-label">{service.collageLabel ?? service.sources.map((source) => source.label).join(' + ')}</span>
                         </div>
 
-                        <div className="service-flow-arrow flow-center">→</div>
+                        <div className="service-flow-arrow flow-center" aria-hidden="true">
+                          <span className="flow-line" />
+                          <span className="flow-arrow-head">→</span>
+                        </div>
 
-                        <div className={`service-device-grid device-count-${Math.min(service.devices.length, 2)} ${deviceLayoutClass}`}>
-                          {service.devices.map((device) => (
-                            <div key={`${service.title}-${device.label}`} className="service-device-block compact">
-                              <img src={device.image} alt={device.alt} className="service-device-image" />
-                              <span>{device.label}</span>
-                            </div>
-                          ))}
+                        <div className={`service-visual-panel device-panel ${deviceLayoutClass}`}>
+                          <span className="visual-panel-tag">Output</span>
+                          <div className={`device-stage device-count-${Math.min(service.devices.length, 2)}`}>
+                            {service.devices.map((device) => (
+                              <div key={`${service.title}-${device.label}`} className="floating-media device-media">
+                                <img src={device.image} alt={device.alt} className="service-device-image" />
+                              </div>
+                            ))}
+                          </div>
+                          <span className="visual-panel-label">{service.devices.map((device) => device.label).join(' + ')}</span>
                         </div>
                       </div>
 
