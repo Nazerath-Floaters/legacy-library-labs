@@ -633,12 +633,17 @@ button:hover,
 
 .process-grid,
 .format-grid,
-.hardware-grid {
+.hardware-grid,
+.faq-list {
   display: grid;
   gap: 1rem;
 }
 
 .process-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.examples-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -648,6 +653,10 @@ button:hover,
 
 .hardware-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.faq-list {
+  padding: 1.1rem;
 }
 
 .process-card,
@@ -676,6 +685,23 @@ button:hover,
   gap: 1rem;
   align-items: center;
   padding: 1rem 0.75rem;
+}
+
+.faq-item {
+  padding: 1rem 0.75rem;
+}
+
+.faq-item + .faq-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.faq-item h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.2rem;
+}
+
+.faq-item p {
+  margin: 0;
 }
 
 .comparison-row + .comparison-row {
@@ -770,6 +796,7 @@ button:hover,
 @media (max-width: 1120px) {
   .section-head.split,
   .process-grid,
+  .examples-grid,
   .format-grid,
   .hardware-grid,
   .trust-strip {

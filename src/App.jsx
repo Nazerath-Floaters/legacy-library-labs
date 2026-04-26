@@ -21,7 +21,7 @@ import fanGame3 from './assets/legacy/fan-game-3.webp'
 import fanGame4 from './assets/legacy/fan-game-4.webp'
 import fanGame5 from './assets/legacy/fan-game-5.webp'
 
-const orderFormUrl = 'https://docs.google.com/forms/d/1ql-h1KP930doQBDfoVcKcPK55_hu906w_2Y56OnyVQw/edit'
+const orderFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScoQfgOt2XlIcp3LDK-njbH1TpxoZin3h4Z6-2fkQoRd0g9DA/viewform?usp=header'
 
 const heroServices = [
   {
@@ -142,6 +142,40 @@ const comparisonRows = [
   {
     source: 'Streaming dependence and subscription churn',
     result: 'A permanent collection you control offline',
+  },
+]
+
+const deliveryExamples = [
+  {
+    title: 'Movie Library Delivery',
+    body: 'Converted discs organized into a browseable library for home playback or portable access.',
+  },
+  {
+    title: 'Preservation Archive',
+    body: 'Older footage and personal media prepared in a safer digital format for storage and backup.',
+  },
+  {
+    title: 'Custom Retro Build',
+    body: 'A curated handheld or desktop setup with the library organized around the way you actually want to play.',
+  },
+]
+
+const faqs = [
+  {
+    question: 'What kinds of media can I submit?',
+    answer: 'DVD, Blu-ray, VHS, retro game libraries, and related archive or custom setup requests are all fair starting points.',
+  },
+  {
+    question: 'Are these prices final quotes?',
+    answer: 'No. The pricing shown on the site is a starting guide so customers can picture the right tier before submitting the order form.',
+  },
+  {
+    question: 'Do I need to already own the media or hardware?',
+    answer: 'Usually yes. The site is strongest when framed around preserving or organizing collections the customer already has.',
+  },
+  {
+    question: 'How do I get started?',
+    answer: 'Use the order form, describe what you have and what you want back, and that gives enough information to scope the right path.',
   },
 ]
 
@@ -541,6 +575,45 @@ function App() {
                   </ul>
                 </div>
               </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section examples-section" data-reveal>
+          <div className="section-head split">
+            <div>
+              <p className="eyebrow">EXAMPLES OF WHAT CUSTOMERS GET</p>
+              <h2>Show the end result clearly, not just the source media.</h2>
+            </div>
+            <p>This section helps customers imagine the finished delivery, whether that means a cleaner archive, a portable media library, or a custom device-ready setup.</p>
+          </div>
+
+          <div className="process-grid examples-grid">
+            {deliveryExamples.map((example) => (
+              <article key={example.title} className="process-card premium-surface" data-reveal>
+                <span className="process-number">Result</span>
+                <h3>{example.title}</h3>
+                <p>{example.body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section faq-section" data-reveal>
+          <div className="section-head split">
+            <div>
+              <p className="eyebrow">FAQ</p>
+              <h2>Answer the practical questions before people have to ask them.</h2>
+            </div>
+            <p>A small FAQ improves trust and lowers friction, especially when the service covers different media types and delivery formats.</p>
+          </div>
+
+          <div className="faq-list premium-surface">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="faq-item">
+                <h3>{faq.question}</h3>
+                <p>{faq.answer}</p>
+              </div>
             ))}
           </div>
         </section>
