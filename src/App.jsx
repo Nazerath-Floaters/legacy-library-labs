@@ -67,8 +67,8 @@ const heroServices = [
       { image: fanGame4, alt: 'Fan game art four', label: 'Fan Game 4' },
       { image: fanGame5, alt: 'Fan game art five', label: 'Fan Game 5' },
     ],
-    sourceLayout: 'fanboard',
-    collageLabel: 'Fan game board',
+    sourceLayout: 'fanstack',
+    collageLabel: 'Fan game stack',
     devices: [{ image: usbImage, alt: 'USB icon', label: 'USB Delivery' }],
     body: 'Expand the library with fan games, hacks, and extra content so the archive feels deeper, more personal, and more exciting than a standard stock setup.',
     bullets: ['Fan games and hacks', 'Huge variety in one delivery', 'Great for custom collections'],
@@ -95,7 +95,7 @@ const heroServices = [
       { image: gbaImage, alt: 'Game Boy Advance icon', label: 'GBA' },
       { image: genesisImage, alt: 'Sega Genesis icon', label: 'Genesis' },
     ],
-    sourceLayout: 'collage-wide',
+    sourceLayout: 'allinone-cluster',
     collageLabel: 'All-in-one library',
     devices: [
       { image: computerImage, alt: 'Desktop computer icon', label: 'Desktop Hub' },
@@ -165,6 +165,7 @@ const proofPoints = [
 
 function App() {
   const [activeService, setActiveService] = useState(1)
+  const [activeFanCard, setActiveFanCard] = useState(0)
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -172,6 +173,14 @@ function App() {
     }, 7000)
 
     return () => window.clearInterval(timer)
+  }, [])
+
+  useEffect(() => {
+    const fanTimer = window.setInterval(() => {
+      setActiveFanCard((current) => (current + 1) % 5)
+    }, 2400)
+
+    return () => window.clearInterval(fanTimer)
   }, [])
 
   useEffect(() => {
@@ -257,13 +266,28 @@ function App() {
 
                       <div className="service-visual-flow multi-source-flow">
                         <div className={`service-source-grid ${layoutClass}`}>
-                          {service.sourceLayout === 'collage' || service.sourceLayout === 'collage-wide' || service.sourceLayout === 'fanboard' ? (
+                          {service.sourceLayout === 'collage' || service.sourceLayout === 'allinone-cluster' ? (
                             <div className={`source-collage-box ${service.sourceLayout}`}>
                               {service.sources.map((source, sourceIndex) => (
                                 <div key={`${service.title}-${source.label}`} className={`source-collage-item collage-item-${sourceIndex + 1}`}>
                                   <img src={source.image} alt={source.alt} className="service-source-image" />
                                 </div>
                               ))}
+                              <span className="source-collage-label">{service.collageLabel}</span>
+                            </div>
+                          ) : service.sourceLayout === 'fanstack' ? (
+                            <div className="fanstack-box">
+                              {service.sources.map((source, sourceIndex) => {
+                                const offsetFromActive = (sourceIndex - activeFanCard + service.sources.length) % service.sources.length
+                                return (
+                                  <div
+                                    key={`${service.title}-${source.label}`}
+                                    className={`fanstack-card fanstack-pos-${offsetFromActive}`}
+                                  >
+                                    <img src={source.image} alt={source.alt} className="service-source-image fanstack-image" />
+                                  </div>
+                                )
+                              })}
                               <span className="source-collage-label">{service.collageLabel}</span>
                             </div>
                           ) : (
