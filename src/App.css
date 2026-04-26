@@ -322,15 +322,15 @@ button:hover,
 }
 
 .service-card h2 {
-  font-size: clamp(1.2rem, 1.95vw, 1.95rem);
-  line-height: 0.98;
-  letter-spacing: -0.05em;
-  max-width: 13ch;
+  font-size: clamp(1.1rem, 1.7vw, 1.72rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  max-width: 15ch;
   text-wrap: balance;
 }
 
 .service-card.active h2 {
-  max-width: 12ch;
+  max-width: 14ch;
 }
 
 .service-visual-flow {
@@ -398,6 +398,7 @@ button:hover,
 
 .source-collage-box.allinone-cluster {
   min-height: 12.8rem;
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .source-collage-item {
@@ -412,6 +413,13 @@ button:hover,
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+.allinone-cluster .source-collage-item {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
 }
 
 .collage .collage-item-1,
@@ -440,12 +448,18 @@ button:hover,
   max-width: 6.9rem;
 }
 
-.allinone-cluster .collage-item-1 { top: 0.8rem; left: 0.7rem; transform: rotate(-8deg); }
-.allinone-cluster .collage-item-2 { top: 0.45rem; left: 33%; transform: rotate(6deg); }
-.allinone-cluster .collage-item-3 { top: 0.75rem; right: 0.8rem; left: auto; bottom: auto; transform: rotate(-5deg); }
-.allinone-cluster .collage-item-4 { bottom: 2rem; left: 0.9rem; transform: rotate(5deg); }
-.allinone-cluster .collage-item-5 { bottom: 1.4rem; left: 37%; transform: rotate(-4deg); }
-.allinone-cluster .collage-item-6 { bottom: 1rem; right: 0.9rem; transform: rotate(4deg); }
+.allinone-cluster .service-source-image {
+  max-height: none;
+  height: 100%;
+  object-fit: contain;
+}
+
+.allinone-cluster .collage-item-1 { top: 0.9rem; left: 0.8rem; transform: rotate(-6deg); }
+.allinone-cluster .collage-item-2 { top: 0.4rem; left: 34%; transform: rotate(4deg); }
+.allinone-cluster .collage-item-3 { top: 0.8rem; right: 0.8rem; left: auto; bottom: auto; transform: rotate(-4deg); }
+.allinone-cluster .collage-item-4 { bottom: 2rem; left: 1rem; transform: rotate(4deg); }
+.allinone-cluster .collage-item-5 { bottom: 1.45rem; left: 38%; transform: rotate(-3deg); }
+.allinone-cluster .collage-item-6 { bottom: 1.05rem; right: 0.95rem; transform: rotate(3deg); }
 
 .fanstack-box {
   min-height: 13.8rem;
@@ -508,6 +522,10 @@ button:hover,
   bottom: 0.7rem;
   font-size: 0.86rem;
   color: rgba(233, 240, 252, 0.84);
+}
+
+.allinone-cluster .source-collage-label {
+  bottom: 0.5rem;
 }
 
 .fanstack-box .source-collage-label {
