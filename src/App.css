@@ -335,7 +335,7 @@ button:hover,
 
 .service-visual-flow {
   display: grid;
-  grid-template-columns: 1.3fr auto 1fr;
+  grid-template-columns: 1.25fr auto 1fr;
   gap: 1rem;
   align-items: center;
   margin-top: 1rem;
@@ -394,6 +394,15 @@ button:hover,
   overflow: hidden;
 }
 
+.source-collage-box.collage-wide {
+  min-height: 12.8rem;
+}
+
+.source-collage-box.fanboard {
+  min-height: 12.8rem;
+  padding: 0.8rem;
+}
+
 .source-collage-item {
   position: absolute;
   width: 40%;
@@ -408,22 +417,78 @@ button:hover,
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
 }
 
-.collage-item-1 {
+.collage .collage-item-1,
+.collage-wide .collage-item-1 {
   top: 0.8rem;
   left: 0.9rem;
   transform: rotate(-8deg);
 }
 
-.collage-item-2 {
+.collage .collage-item-2,
+.collage-wide .collage-item-2 {
   top: 2.2rem;
   left: 50%;
   transform: translateX(-50%) rotate(7deg);
 }
 
-.collage-item-3 {
+.collage .collage-item-3,
+.collage-wide .collage-item-3 {
   right: 0.9rem;
   bottom: 1.3rem;
   transform: rotate(-4deg);
+}
+
+.collage-wide .source-collage-item {
+  width: 28%;
+  max-width: 6.7rem;
+}
+
+.collage-wide .collage-item-1 { top: 0.7rem; left: 0.7rem; }
+.collage-wide .collage-item-2 { top: 0.4rem; left: 33%; transform: rotate(5deg); }
+.collage-wide .collage-item-3 { top: 0.9rem; right: 0.8rem; left: auto; bottom: auto; transform: rotate(-6deg); }
+.collage-wide .collage-item-4 { bottom: 1.9rem; left: 0.9rem; transform: rotate(6deg); }
+.collage-wide .collage-item-5 { bottom: 1.5rem; left: 38%; transform: rotate(-3deg); }
+.collage-wide .collage-item-6 { bottom: 1.1rem; right: 0.9rem; transform: rotate(4deg); }
+
+.fanboard {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr 1fr;
+  grid-template-rows: 1fr 0.9fr;
+  gap: 0.55rem;
+  align-items: stretch;
+}
+
+.fanboard .source-collage-item {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  aspect-ratio: auto;
+  height: 100%;
+  min-height: 3.5rem;
+  padding: 0.2rem;
+  overflow: hidden;
+}
+
+.fanboard .service-source-image {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  border-radius: 0.8rem;
+}
+
+.fanboard .collage-item-1 { grid-column: 1 / 2; grid-row: 1 / 3; transform: none; }
+.fanboard .collage-item-2 { grid-column: 2 / 4; grid-row: 1 / 2; transform: none; }
+.fanboard .collage-item-3 { grid-column: 2 / 3; grid-row: 2 / 3; transform: none; }
+.fanboard .collage-item-4 { grid-column: 3 / 4; grid-row: 2 / 3; transform: none; }
+.fanboard .collage-item-5 {
+  position: absolute;
+  width: 26%;
+  height: 36%;
+  right: 0.75rem;
+  top: 0.75rem;
+  z-index: 2;
+  transform: rotate(6deg);
 }
 
 .source-collage-label {
@@ -433,6 +498,16 @@ button:hover,
   bottom: 0.7rem;
   font-size: 0.86rem;
   color: rgba(233, 240, 252, 0.84);
+}
+
+.fanboard .source-collage-label {
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.55rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(8, 11, 19, 0.76);
+  width: fit-content;
 }
 
 .service-source-image,
@@ -675,12 +750,12 @@ button:hover,
   }
 
   .service-carousel {
-    height: 37rem;
+    height: 39rem;
   }
 
   .service-card {
     width: min(32rem, 82vw);
-    height: 34rem;
+    height: 35.5rem;
   }
 
   .service-card[data-offset='-1'] {
@@ -779,7 +854,9 @@ button:hover,
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .source-collage-box {
+  .source-collage-box,
+  .source-collage-box.collage-wide,
+  .source-collage-box.fanboard {
     min-height: 11rem;
   }
 
@@ -833,7 +910,29 @@ button:hover,
     grid-template-columns: 1fr;
   }
 
-  .source-collage-box {
+  .source-collage-box,
+  .source-collage-box.collage-wide,
+  .source-collage-box.fanboard {
     min-height: 10rem;
+  }
+
+  .fanboard {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .fanboard .collage-item-1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+  .fanboard .collage-item-2 { grid-column: 1 / 2; grid-row: 2 / 3; }
+  .fanboard .collage-item-3 { grid-column: 2 / 3; grid-row: 2 / 3; }
+  .fanboard .collage-item-4 { grid-column: 1 / 2; grid-row: 3 / 4; }
+  .fanboard .collage-item-5 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    right: auto;
+    top: auto;
+    transform: none;
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
   }
 }

@@ -15,6 +15,11 @@ import ps1Image from './assets/legacy/ps1.png'
 import computerImage from './assets/legacy/computer.png'
 import androidPhoneImage from './assets/legacy/android-phone.png'
 import usbImage from './assets/legacy/usb.png'
+import fanGame1 from './assets/legacy/fan-game-1.webp'
+import fanGame2 from './assets/legacy/fan-game-2.webp'
+import fanGame3 from './assets/legacy/fan-game-3.webp'
+import fanGame4 from './assets/legacy/fan-game-4.webp'
+import fanGame5 from './assets/legacy/fan-game-5.webp'
 
 const heroServices = [
   {
@@ -46,6 +51,7 @@ const heroServices = [
       { image: threeDsImage, alt: '3DS icon', label: '3DS' },
     ],
     sourceLayout: 'collage',
+    collageLabel: 'Multi-system library',
     devices: [{ image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'RG35XX Plus' }],
     body: 'Blend multiple classic libraries into one polished handheld console so your best old favorites are ready to launch from a single device.',
     bullets: ['Multi-system setup', 'Travel-friendly hardware', 'Curated for instant play'],
@@ -55,12 +61,14 @@ const heroServices = [
     title: 'Add Hundreds of Fan Games to your Collection!',
     eyebrow: 'Go far beyond stock libraries',
     sources: [
-      { image: threeDsImage, alt: '3DS icon', label: '3DS' },
-      { image: dsImage, alt: 'DS icon', label: 'DS' },
-      { image: gbaImage, alt: 'Game Boy Advance icon', label: 'Game Boy Advance' },
-      { image: genesisImage, alt: 'Sega Genesis icon', label: 'Sega Genesis' },
+      { image: fanGame1, alt: 'Fan game art one', label: 'Fan Game 1' },
+      { image: fanGame2, alt: 'Fan game art two', label: 'Fan Game 2' },
+      { image: fanGame3, alt: 'Fan game art three', label: 'Fan Game 3' },
+      { image: fanGame4, alt: 'Fan game art four', label: 'Fan Game 4' },
+      { image: fanGame5, alt: 'Fan game art five', label: 'Fan Game 5' },
     ],
-    sourceLayout: 'grid',
+    sourceLayout: 'fanboard',
+    collageLabel: 'Fan game board',
     devices: [{ image: usbImage, alt: 'USB icon', label: 'USB Delivery' }],
     body: 'Expand the library with fan games, hacks, and extra content so the archive feels deeper, more personal, and more exciting than a standard stock setup.',
     bullets: ['Fan games and hacks', 'Huge variety in one delivery', 'Great for custom collections'],
@@ -87,7 +95,8 @@ const heroServices = [
       { image: gbaImage, alt: 'Game Boy Advance icon', label: 'GBA' },
       { image: genesisImage, alt: 'Sega Genesis icon', label: 'Genesis' },
     ],
-    sourceLayout: 'grid',
+    sourceLayout: 'collage-wide',
+    collageLabel: 'All-in-one library',
     devices: [
       { image: computerImage, alt: 'Desktop computer icon', label: 'Desktop Hub' },
       { image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'RG35XX Plus' },
@@ -225,6 +234,7 @@ function App() {
               {heroServices.map((service, index) => {
                 const offset = index - activeService
                 const isNear = Math.abs(offset) <= 2
+                const layoutClass = service.sourceLayout ?? `source-count-${Math.min(service.sources.length, 6)}`
 
                 return (
                   <article
@@ -246,15 +256,15 @@ function App() {
                       <h2>{service.title}</h2>
 
                       <div className="service-visual-flow multi-source-flow">
-                        <div className={`service-source-grid ${service.sourceLayout === 'collage' ? 'source-collage' : `source-count-${Math.min(service.sources.length, 6)}`}`}>
-                          {service.sourceLayout === 'collage' ? (
-                            <div className="source-collage-box">
+                        <div className={`service-source-grid ${layoutClass}`}>
+                          {service.sourceLayout === 'collage' || service.sourceLayout === 'collage-wide' || service.sourceLayout === 'fanboard' ? (
+                            <div className={`source-collage-box ${service.sourceLayout}`}>
                               {service.sources.map((source, sourceIndex) => (
                                 <div key={`${service.title}-${source.label}`} className={`source-collage-item collage-item-${sourceIndex + 1}`}>
                                   <img src={source.image} alt={source.alt} className="service-source-image" />
                                 </div>
                               ))}
-                              <span className="source-collage-label">Multi-system library</span>
+                              <span className="source-collage-label">{service.collageLabel}</span>
                             </div>
                           ) : (
                             service.sources.map((source) => (
