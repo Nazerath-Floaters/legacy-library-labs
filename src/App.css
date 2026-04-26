@@ -160,7 +160,8 @@ button:hover,
 .premium-surface,
 .trust-pill,
 .callout-card,
-.story-section {
+.story-section,
+.comparison-list {
   border-radius: 1.6rem;
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -176,7 +177,7 @@ button:hover,
 }
 
 .hero-stage-intro {
-  max-width: 52rem;
+  max-width: 56rem;
   margin: 0 auto 2rem;
   text-align: center;
 }
@@ -195,15 +196,16 @@ button:hover,
 .callout-card h2,
 .format-card h3,
 .hardware-card h3,
-.service-card h2 {
+.service-card h2,
+.process-card h3 {
   margin: 0;
   line-height: 1.02;
   letter-spacing: -0.04em;
 }
 
 .hero-stage-intro h1 {
-  font-size: clamp(2.35rem, 5vw, 4.35rem);
-  max-width: 12ch;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  max-width: 14ch;
   margin-inline: auto;
 }
 
@@ -214,15 +216,22 @@ button:hover,
 .hardware-card p,
 .trust-pill,
 .service-expanded-copy p,
-.service-expanded-copy li {
+.service-expanded-copy li,
+.process-card p,
+.comparison-row p,
+.pricing-bullets li {
   color: rgba(224, 231, 247, 0.74);
   line-height: 1.68;
 }
 
 .hero-text {
-  max-width: 58ch;
+  max-width: 64ch;
   margin: 1.2rem auto 0;
   font-size: 1.03rem;
+}
+
+.hero-primary-actions {
+  margin-top: 1.4rem;
 }
 
 .service-carousel-shell {
@@ -246,17 +255,16 @@ button:hover,
 
 .service-carousel {
   position: relative;
-  height: 38rem;
+  height: 35rem;
   overflow: hidden;
-  padding-inline: 2.5rem;
 }
 
 .service-card {
   position: absolute;
   top: 1rem;
   left: 50%;
-  width: min(34rem, calc(100vw - 10rem));
-  min-height: 32.5rem;
+  width: min(42rem, calc(100vw - 12rem));
+  min-height: 30rem;
   height: auto;
   transform-origin: center center;
   transition: transform 420ms ease, opacity 420ms ease, filter 420ms ease;
@@ -270,27 +278,15 @@ button:hover,
 }
 
 .service-card[data-offset='-1'] {
-  transform: translateX(calc(-50% - 20rem)) scale(0.84) rotate(-9deg);
+  transform: translateX(calc(-50% - 18rem)) scale(0.86) rotate(-7deg);
   z-index: 4;
-  opacity: 0.72;
+  opacity: 0.42;
 }
 
 .service-card[data-offset='1'] {
-  transform: translateX(calc(-50% + 20rem)) scale(0.84) rotate(9deg);
+  transform: translateX(calc(-50% + 18rem)) scale(0.86) rotate(7deg);
   z-index: 4;
-  opacity: 0.72;
-}
-
-.service-card[data-offset='-2'] {
-  transform: translateX(calc(-50% - 30rem)) scale(0.72) rotate(-13deg);
-  z-index: 3;
-  opacity: 0.3;
-}
-
-.service-card[data-offset='2'] {
-  transform: translateX(calc(-50% + 30rem)) scale(0.72) rotate(13deg);
-  z-index: 3;
-  opacity: 0.3;
+  opacity: 0.42;
 }
 
 .service-card.far {
@@ -301,7 +297,7 @@ button:hover,
 .service-card-inner {
   height: 100%;
   border-radius: 1.6rem;
-  padding: 1.2rem;
+  padding: 1.4rem;
   background:
     radial-gradient(circle at top right, rgba(159, 241, 255, 0.15), transparent 28%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
@@ -315,7 +311,9 @@ button:hover,
 
 .service-eyebrow,
 .format-tag,
-.hardware-badge {
+.hardware-badge,
+.process-number,
+.comparison-label {
   display: inline-block;
   margin-bottom: 0.55rem;
   font-size: 0.74rem;
@@ -326,7 +324,7 @@ button:hover,
 }
 
 .service-card h2 {
-  font-size: clamp(1.1rem, 1.55vw, 1.55rem);
+  font-size: clamp(1.5rem, 2.2vw, 2.2rem);
   line-height: 1.02;
   letter-spacing: -0.04em;
   max-width: 18ch;
@@ -335,10 +333,10 @@ button:hover,
 
 .service-visual-flow {
   display: grid;
-  grid-template-columns: minmax(0, 1.22fr) auto minmax(11rem, 0.95fr);
+  grid-template-columns: minmax(0, 1.2fr) auto minmax(11rem, 0.95fr);
   gap: 1rem;
   align-items: center;
-  margin-top: 0.95rem;
+  margin-top: 1rem;
 }
 
 .multi-source-flow {
@@ -347,7 +345,7 @@ button:hover,
 
 .service-visual-panel {
   position: relative;
-  min-height: 10.8rem;
+  min-height: 12rem;
   padding: 0.95rem 1rem 0.85rem;
   border-radius: 1.35rem;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.025));
@@ -376,7 +374,7 @@ button:hover,
 .source-collage-stage,
 .fanstack-stage {
   position: relative;
-  min-height: 7.8rem;
+  min-height: 8.5rem;
 }
 
 .single-source-stage,
@@ -408,65 +406,36 @@ button:hover,
   overflow: hidden;
 }
 
-.source-collage-stage.allinone-cluster {
-  min-height: 8.6rem;
-}
-
 .source-collage-item {
   position: absolute;
   width: 40%;
-  max-width: 8rem;
+  max-width: 8.2rem;
   aspect-ratio: 1;
   display: grid;
   place-items: center;
   padding: 0.15rem;
 }
 
-.collage .collage-item-1,
-.allinone-cluster .collage-item-1 {
-  top: 0.8rem;
-  left: 0.9rem;
+.collage .collage-item-1 {
+  top: 0.4rem;
+  left: 0.4rem;
   transform: rotate(-8deg);
 }
 
-.collage .collage-item-2,
-.allinone-cluster .collage-item-2 {
-  top: 2rem;
+.collage .collage-item-2 {
+  top: 1.4rem;
   left: 50%;
-  transform: translateX(-50%) rotate(7deg);
+  transform: translateX(-50%) rotate(6deg);
 }
 
-.collage .collage-item-3,
-.allinone-cluster .collage-item-3 {
-  right: 0.9rem;
-  bottom: 1rem;
+.collage .collage-item-3 {
+  right: 0.4rem;
+  bottom: 0.6rem;
   transform: rotate(-4deg);
 }
 
-.allinone-cluster .source-collage-item {
-  width: 29%;
-  max-width: 6.25rem;
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-  padding: 0;
-}
-
-.allinone-cluster .service-source-image {
-  max-height: none;
-  height: 100%;
-  object-fit: contain;
-}
-
-.allinone-cluster .collage-item-1 { top: 0.55rem; left: 0.6rem; transform: rotate(-6deg); }
-.allinone-cluster .collage-item-2 { top: 0.15rem; left: 34%; transform: rotate(3deg); }
-.allinone-cluster .collage-item-3 { top: 0.55rem; right: 0.65rem; left: auto; bottom: auto; transform: rotate(-4deg); }
-.allinone-cluster .collage-item-4 { bottom: 1.4rem; left: 0.8rem; transform: rotate(5deg); }
-.allinone-cluster .collage-item-5 { bottom: 1rem; left: 37%; transform: rotate(-3deg); }
-.allinone-cluster .collage-item-6 { bottom: 0.75rem; right: 0.8rem; transform: rotate(3deg); }
-
 .fanstack-stage {
-  min-height: 8rem;
+  min-height: 8.5rem;
   -webkit-mask-image: linear-gradient(180deg, #000 88%, transparent 100%);
   mask-image: linear-gradient(180deg, #000 88%, transparent 100%);
 }
@@ -519,20 +488,10 @@ button:hover,
   transform: translate(-3.5%, -3.5%);
 }
 
-.source-collage-label {
-  position: absolute;
-  left: 1rem;
-  right: 1rem;
-  bottom: 0.5rem;
-  font-size: 0.82rem;
-  color: rgba(233, 240, 252, 0.84);
-}
-
-
 .service-source-image,
 .service-device-image {
   width: 100%;
-  max-height: 6.1rem;
+  max-height: 7rem;
   object-fit: contain;
 }
 
@@ -545,15 +504,8 @@ button:hover,
   max-height: 100%;
 }
 
-.service-source-block span,
-.service-device-block span {
-  font-size: 0.8rem;
-  line-height: 1.2;
-  color: rgba(233, 240, 252, 0.82);
-  text-wrap: balance;
-}
-
-.service-flow-arrow {
+.service-flow-arrow,
+.comparison-arrow {
   display: grid;
   justify-items: center;
   align-content: center;
@@ -578,33 +530,31 @@ button:hover,
 }
 
 .service-expanded-copy {
-  margin-top: 0.9rem;
+  margin-top: 1rem;
   display: grid;
   align-content: start;
 }
 
 .service-expanded-copy p {
   margin: 0;
-  font-size: 0.94rem;
-  line-height: 1.45;
+  font-size: 0.98rem;
+  line-height: 1.5;
 }
 
-.service-expanded-copy ul {
-  margin: 0.65rem 0 0;
+.service-expanded-copy ul,
+.pricing-bullets {
+  margin: 0.7rem 0 0;
   padding-left: 1rem;
 }
 
-.service-expanded-copy li {
-  font-size: 0.9rem;
-  line-height: 1.36;
-}
-
-.service-expanded-copy li + li {
-  margin-top: 0.22rem;
+.service-expanded-copy li,
+.pricing-bullets li {
+  font-size: 0.92rem;
+  line-height: 1.4;
 }
 
 .service-cta {
-  margin-top: 0.85rem;
+  margin-top: 1rem;
 }
 
 .hero-actions {
@@ -681,10 +631,15 @@ button:hover,
   padding: clamp(1.4rem, 3vw, 2.2rem);
 }
 
+.process-grid,
 .format-grid,
 .hardware-grid {
   display: grid;
   gap: 1rem;
+}
+
+.process-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .format-grid {
@@ -692,12 +647,43 @@ button:hover,
 }
 
 .hardware-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.process-card,
 .format-card,
 .hardware-card {
   overflow: hidden;
+  padding: 1.35rem;
+}
+
+.process-number {
+  color: rgba(255, 255, 255, 0.46);
+}
+
+.process-card h3 {
+  font-size: 1.45rem;
+  margin-bottom: 0.7rem;
+}
+
+.comparison-list {
+  padding: 1.1rem;
+}
+
+.comparison-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0.75rem;
+}
+
+.comparison-row + .comparison-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.comparison-row p {
+  margin: 0;
 }
 
 .format-image-wrap,
@@ -707,6 +693,8 @@ button:hover,
     radial-gradient(circle at top right, rgba(159, 241, 255, 0.16), transparent 28%),
     linear-gradient(180deg, rgba(15, 19, 31, 0.98), rgba(8, 12, 20, 0.98));
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.1rem;
+  overflow: hidden;
 }
 
 .format-image,
@@ -719,7 +707,7 @@ button:hover,
 
 .format-body,
 .hardware-body {
-  padding: 1.2rem;
+  padding-top: 1.2rem;
 }
 
 .format-card h3,
@@ -733,10 +721,6 @@ button:hover,
   font-size: 1.25rem;
   font-weight: 800;
   color: #f8fbff;
-}
-
-.process-band {
-  padding-top: 0.5rem;
 }
 
 .legacy-callout {
@@ -785,6 +769,7 @@ button:hover,
 
 @media (max-width: 1120px) {
   .section-head.split,
+  .process-grid,
   .format-grid,
   .hardware-grid,
   .trust-strip {
@@ -792,29 +777,19 @@ button:hover,
   }
 
   .service-carousel {
-    height: 39rem;
-    padding-inline: 1.25rem;
+    height: 36rem;
   }
 
   .service-card {
-    width: min(31rem, calc(100vw - 7rem));
-    min-height: 33.5rem;
+    width: min(38rem, calc(100vw - 8rem));
   }
 
   .service-card[data-offset='-1'] {
-    transform: translateX(calc(-50% - 14rem)) scale(0.8) rotate(-8deg);
+    transform: translateX(calc(-50% - 12rem)) scale(0.82) rotate(-6deg);
   }
 
   .service-card[data-offset='1'] {
-    transform: translateX(calc(-50% + 14rem)) scale(0.8) rotate(8deg);
-  }
-
-  .service-card[data-offset='-2'] {
-    transform: translateX(calc(-50% - 22rem)) scale(0.68) rotate(-12deg);
-  }
-
-  .service-card[data-offset='2'] {
-    transform: translateX(calc(-50% + 22rem)) scale(0.68) rotate(12deg);
+    transform: translateX(calc(-50% + 12rem)) scale(0.82) rotate(6deg);
   }
 }
 
@@ -839,7 +814,7 @@ button:hover,
   }
 
   .hero-stage-intro h1 {
-    font-size: clamp(2rem, 10vw, 3rem);
+    font-size: clamp(2rem, 10vw, 3.25rem);
     max-width: 100%;
   }
 
@@ -857,7 +832,7 @@ button:hover,
     overflow-y: visible;
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: minmax(17rem, 88%);
+    grid-auto-columns: minmax(18rem, 92%);
     gap: 1rem;
     padding: 0 0.15rem 0.75rem;
     scroll-snap-type: x mandatory;
@@ -867,9 +842,7 @@ button:hover,
   .service-card,
   .service-card[data-offset],
   .service-card[data-offset='-1'],
-  .service-card[data-offset='1'],
-  .service-card[data-offset='-2'],
-  .service-card[data-offset='2'] {
+  .service-card[data-offset='1'] {
     position: relative;
     top: auto;
     left: auto;
@@ -892,7 +865,8 @@ button:hover,
     font-size: clamp(1.45rem, 5vw, 2rem);
   }
 
-  .service-visual-flow {
+  .service-visual-flow,
+  .comparison-row {
     grid-template-columns: 1fr;
     gap: 0.7rem;
   }
@@ -909,13 +883,8 @@ button:hover,
     align-items: stretch;
   }
 
-  .source-collage-stage,
-  .source-collage-stage.allinone-cluster,
-  .fanstack-stage {
-    min-height: 8.5rem;
-  }
-
-  .service-flow-arrow {
+  .service-flow-arrow,
+  .comparison-arrow {
     transform: rotate(90deg);
     text-align: center;
     margin: 0.15rem 0;
@@ -935,9 +904,10 @@ button:hover,
   .service-stage,
   .story-section,
   .callout-card,
-  .format-body,
-  .hardware-body,
-  .service-card-inner {
+  .service-card-inner,
+  .process-card,
+  .format-card,
+  .hardware-card {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -965,8 +935,7 @@ button:hover,
 
   .service-expanded-copy p,
   .service-expanded-copy li,
-  .service-source-block span,
-  .service-device-block span {
+  .pricing-bullets li {
     font-size: 0.88rem;
   }
 
@@ -975,11 +944,5 @@ button:hover,
   .device-stage.device-count-2,
   .devices-grouped .device-stage {
     grid-template-columns: 1fr;
-  }
-
-  .source-collage-stage,
-  .source-collage-stage.allinone-cluster,
-  .fanstack-stage {
-    min-height: 8rem;
   }
 }
