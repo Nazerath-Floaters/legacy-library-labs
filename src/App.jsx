@@ -28,8 +28,8 @@ const heroServices = [
     sources: [{ image: dvdImage, alt: 'DVD icon', label: 'DVD Collection' }],
     sourceLayout: 'single',
     devices: [{ image: androidPhoneImage, alt: 'Android phone icon', label: 'Cellphone Access' }],
-    body: 'Turn your DVD collection into a portable library you can carry anywhere instead of leaving it trapped on shelves and aging discs.',
-    bullets: ['Watch offline', 'Keep the collection forever', 'Simple everyday access'],
+    body: 'Turn your DVD collection into a portable library you can carry anywhere.',
+    bullets: ['Watch offline', 'Keep the collection forever'],
     cta: { label: 'Start Your DVD Library', href: '#contact' },
   },
   {
@@ -38,8 +38,8 @@ const heroServices = [
     sources: [{ image: vhsImage, alt: 'VHS icon', label: 'VHS Media' }],
     sourceLayout: 'single',
     devices: [{ image: computerImage, alt: 'Computer icon', label: 'Computer Archive' }],
-    body: 'Preserve old tapes and fragile media by converting them into a safer digital library that is easier to store, copy, and revisit.',
-    bullets: ['Protect aging media', 'Keep family memories usable', 'Make old content easy to access'],
+    body: 'Convert fragile tapes into a safer digital library that is easier to keep and revisit.',
+    bullets: ['Protect aging media', 'Keep memories usable'],
     cta: { label: 'Preserve Your Media', href: '#contact' },
   },
   {
@@ -53,8 +53,8 @@ const heroServices = [
     sourceLayout: 'collage',
     collageLabel: 'Multi-system library',
     devices: [{ image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'RG35XX Plus' }],
-    body: 'Blend multiple classic libraries into one polished handheld console so your best old favorites are ready to launch from a single device.',
-    bullets: ['Multi-system setup', 'Travel-friendly hardware', 'Curated for instant play'],
+    body: 'Blend multiple classic libraries into one polished handheld console.',
+    bullets: ['Multi-system setup', 'Curated for instant play'],
     cta: { label: 'Build a Piano Console', href: '#contact' },
   },
   {
@@ -70,8 +70,8 @@ const heroServices = [
     sourceLayout: 'fanstack',
     collageLabel: 'Fan game stack',
     devices: [{ image: usbImage, alt: 'USB icon', label: 'USB Delivery' }],
-    body: 'Expand the library with fan games, hacks, and extra content so the archive feels deeper, more personal, and more exciting than a standard stock setup.',
-    bullets: ['Fan games and hacks', 'Huge variety in one delivery', 'Great for custom collections'],
+    body: 'Expand the library with fan games, hacks, and extra content.',
+    bullets: ['Fan games and hacks', 'Huge variety in one delivery'],
     cta: { label: 'Expand My Collection', href: '#contact' },
   },
   {
@@ -80,12 +80,12 @@ const heroServices = [
     sources: [{ image: blurayImage, alt: 'Blu-ray icon', label: 'Blu-ray Library' }],
     sourceLayout: 'single',
     devices: [{ image: computerImage, alt: 'Computer icon', label: 'Computer Playback' }],
-    body: 'Stop chasing streaming catalogs and monthly fees by converting owned media into a permanent offline library you control.',
-    bullets: ['Cut recurring costs', 'Keep access offline', 'Build a permanent home catalog'],
+    body: 'Build a permanent offline library you control instead of chasing streaming catalogs.',
+    bullets: ['Cut recurring costs', 'Keep access offline'],
     cta: { label: 'Replace My Subscriptions', href: '#contact' },
   },
   {
-    title: 'All In One Piano Console',
+    title: 'All In One | Piano Console',
     eyebrow: 'The big everything build',
     sources: [
       { image: ps2Console, alt: 'PlayStation 2 icon', label: 'PS2' },
@@ -101,8 +101,9 @@ const heroServices = [
       { image: computerImage, alt: 'Desktop computer icon', label: 'Desktop Hub' },
       { image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'RG35XX Plus' },
     ],
-    body: 'Bring together your biggest cross-platform library into one flagship setup with both a home base and a portable companion.',
-    bullets: ['Massive mixed library support', 'Desktop and handheld pairing', 'Best showcase offer on the page'],
+    deviceLayout: 'grouped',
+    body: 'Bring together your biggest cross-platform library into one flagship setup.',
+    bullets: ['Desktop and handheld pairing', 'Best showcase offer'],
     cta: { label: 'Build the All In One Setup', href: '#contact' },
   },
   {
@@ -111,8 +112,8 @@ const heroServices = [
     sources: [{ image: computerImage, alt: 'Desktop computer icon', label: 'Desktop Saves' }],
     sourceLayout: 'single',
     devices: [{ image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'Handheld Sync' }],
-    body: 'Move between your desktop setup and handheld device without losing your place, your saves, or your momentum.',
-    bullets: ['Save syncing', 'Cross-device continuity', 'Built for real daily use'],
+    body: 'Move between your desktop setup and handheld device without losing your place.',
+    bullets: ['Save syncing', 'Cross-device continuity'],
     cta: { label: 'Get Sync Built In', href: '#contact' },
   },
 ]
@@ -269,6 +270,7 @@ function App() {
                 const offset = index - activeService
                 const isNear = Math.abs(offset) <= 2
                 const layoutClass = service.sourceLayout ?? `source-count-${Math.min(service.sources.length, 6)}`
+                const deviceLayoutClass = service.deviceLayout === 'grouped' ? 'devices-grouped' : ''
 
                 return (
                   <article
@@ -331,7 +333,7 @@ function App() {
 
                         <div className="service-flow-arrow flow-center">→</div>
 
-                        <div className={`service-device-grid device-count-${Math.min(service.devices.length, 2)}`}>
+                        <div className={`service-device-grid device-count-${Math.min(service.devices.length, 2)} ${deviceLayoutClass}`}>
                           {service.devices.map((device) => (
                             <div key={`${service.title}-${device.label}`} className="service-device-block compact">
                               <img src={device.image} alt={device.alt} className="service-device-image" />
