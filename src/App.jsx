@@ -306,7 +306,7 @@ function App() {
               ‹
             </button>
 
-            <div className="hero-content">
+            <div className="hero-slide-content">
               <div className="hero-copy">
                 <p className="eyebrow">{currentSlide.eyebrow}</p>
                 <h1>{currentSlide.title}</h1>

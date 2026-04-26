@@ -165,10 +165,14 @@ button:hover,
 
 .hero-content {
   display: grid;
+  min-height: calc(100vh - 110px);
+}
+
+.hero-slide-content {
+  display: grid;
   grid-template-columns: 0.95fr 1.05fr;
   gap: 2rem;
   align-items: center;
-  min-height: calc(100vh - 110px);
 }
 
 .hero-nav {
@@ -958,6 +962,7 @@ button:hover,
 
 @media (max-width: 1180px) {
   .hero-content,
+  .hero-slide-content,
   .archive-preview,
   .section-head.split,
   .process-grid,
