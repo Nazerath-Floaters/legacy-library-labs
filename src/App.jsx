@@ -1,20 +1,18 @@
 import './App.css'
 
-import ps2Base from './assets/legacy/ps2-base.webp'
-import ps2Console from './assets/legacy/ps2-console.png'
-import dvdImage from './assets/legacy/dvd.png'
-import blurayImage from './assets/legacy/bluray.png'
+import rg35xxPlus from './assets/legacy/rg35xxplus.png'
 import vhsImage from './assets/legacy/vhs.png'
-import usbImage from './assets/legacy/usb.png'
-import fanGame1 from './assets/legacy/fan-game-1.webp'
+import genesisImage from './assets/legacy/genesis.png'
+import computerImage from './assets/legacy/computer.png'
+import fanGame2 from './assets/legacy/fan-game-2.webp'
 
 const orderFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScoQfgOt2XlIcp3LDK-njbH1TpxoZin3h4Z6-2fkQoRd0g9DA/viewform?usp=header'
 
 const serviceCards = [
   {
     title: 'Piano Console',
-    image: ps2Base,
-    secondaryImage: ps2Console,
+    image: computerImage,
+    secondaryImage: rg35xxPlus,
     description: [
       'Flagship all in one entertainment bundle.',
       'Retro libraries from Genesis through PS3.',
@@ -28,7 +26,7 @@ const serviceCards = [
   {
     title: 'Archive Service',
     image: vhsImage,
-    secondaryImage: blurayImage,
+    secondaryImage: genesisImage,
     description: [
       'Convert tapes, discs, and home media into digital libraries.',
       'Preserve personal archives before age and damage set in.',
@@ -40,8 +38,8 @@ const serviceCards = [
   },
   {
     title: 'Fan Games',
-    image: fanGame1,
-    secondaryImage: usbImage,
+    image: fanGame2,
+    secondaryImage: fanGame2,
     description: [
       'Expanded libraries with fan projects and custom extras.',
       'ROM hacks, remixes, and curated side collections.',
@@ -68,29 +66,11 @@ function App() {
       <div className="grid-overlay" />
 
       <header className="hero">
-        <nav className="topbar">
-          <div className="brand">
-            <span className="brand-mark">◈</span>
-            <span>Legacy Library Labs</span>
-          </div>
-          <div className="nav-links">
-            <a href="#builds">Builds</a>
-            <a href="#about">About</a>
-            <a href={orderFormUrl} target="_blank" rel="noreferrer">Order Form</a>
-          </div>
-        </nav>
+        <div className="simple-title-wrap">
+          <p className="simple-title">Legacy Library Labs</p>
+        </div>
 
         <section className="hero-stage refined-hero-stage">
-          <div className="hero-copy">
-            <p className="eyebrow">CUSTOM CONSOLES • FOREVER MEDIA</p>
-            <h1>Build a Library Worth Keeping.</h1>
-            <p className="hero-text">Legacy Library Labs helps turn physical media and retro collections into clean, playable libraries that feel personal, permanent, and actually fun to use.</p>
-            <div className="hero-actions">
-              <a className="button-link" href={orderFormUrl} target="_blank" rel="noreferrer">Order Custom Build</a>
-              <a className="button-link ghost" href="#builds">Browse Builds</a>
-            </div>
-          </div>
-
           <div className="hero-media-frame premium-surface">
             <div className="hero-media-split">
               <div className="hero-media-panel left-panel">
