@@ -23,28 +23,28 @@ import fanGame5 from './assets/legacy/fan-game-5.webp'
 
 const heroServices = [
   {
-    title: 'DVD Collection On the Go!',
-    eyebrow: 'Take your movie shelf with you',
+    title: 'Turn Your DVD Shelf into a Pocket Library',
+    eyebrow: 'Carry your collection without streaming fees',
     sources: [{ image: dvdImage, alt: 'DVD icon', label: 'DVD Collection' }],
     sourceLayout: 'single',
-    devices: [{ image: androidPhoneImage, alt: 'Android phone icon', label: 'Cellphone Access' }],
-    body: 'Turn your DVD collection into a portable library you can carry anywhere.',
-    bullets: ['Watch offline', 'Keep the collection forever'],
-    cta: { label: 'Start Your DVD Library', href: '#contact' },
+    devices: [{ image: androidPhoneImage, alt: 'Android phone icon', label: 'Phone Library' }],
+    body: 'We convert your discs into a clean, portable library you can browse and watch offline.',
+    bullets: ['Offline playback', 'Yours to keep'],
+    cta: { label: 'Plan My DVD Library', href: '#contact' },
   },
   {
-    title: 'Preserve Aging Media',
-    eyebrow: 'Rescue fragile tapes before they fade',
+    title: 'Rescue VHS and Aging Media Before It Fades',
+    eyebrow: 'Save fragile memories while they are still recoverable',
     sources: [{ image: vhsImage, alt: 'VHS icon', label: 'VHS Media' }],
     sourceLayout: 'single',
-    devices: [{ image: computerImage, alt: 'Computer icon', label: 'Computer Archive' }],
-    body: 'Convert fragile tapes into a safer digital library that is easier to keep and revisit.',
-    bullets: ['Protect aging media', 'Keep memories usable'],
-    cta: { label: 'Preserve Your Media', href: '#contact' },
+    devices: [{ image: computerImage, alt: 'Computer icon', label: 'Digital Archive' }],
+    body: 'We preserve older tapes and home media in a format that is easier to store, back up, and revisit.',
+    bullets: ['Protect old footage', 'Easier long-term storage'],
+    cta: { label: 'Preserve My Media', href: '#contact' },
   },
   {
-    title: 'Piano Console',
-    eyebrow: 'A custom system for classic favorites',
+    title: 'Build a Custom Piano Console',
+    eyebrow: 'A polished multi-system handheld setup',
     sources: [
       { image: ps2Console, alt: 'PlayStation 2 icon', label: 'PS2' },
       { image: gbaImage, alt: 'Game Boy Advance icon', label: 'Game Boy Advance' },
@@ -53,13 +53,13 @@ const heroServices = [
     sourceLayout: 'collage',
     collageLabel: 'Multi-system library',
     devices: [{ image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'RG35XX Plus' }],
-    body: 'Blend multiple classic libraries into one polished handheld console.',
-    bullets: ['Multi-system setup', 'Curated for instant play'],
-    cta: { label: 'Build a Piano Console', href: '#contact' },
+    body: 'Bring multiple favorite systems together into one handheld build that feels curated, not cluttered.',
+    bullets: ['Multi-system setup', 'Ready for instant play'],
+    cta: { label: 'Build My Piano Console', href: '#contact' },
   },
   {
-    title: 'Add Hundreds of Fan Games to your Collection!',
-    eyebrow: 'Go far beyond stock libraries',
+    title: 'Add Fan Games, Hacks, and Bonus Content',
+    eyebrow: 'Go beyond the standard library',
     sources: [
       { image: fanGame1, alt: 'Fan game art one', label: 'Fan Game 1' },
       { image: fanGame2, alt: 'Fan game art two', label: 'Fan Game 2' },
@@ -68,74 +68,42 @@ const heroServices = [
       { image: fanGame5, alt: 'Fan game art five', label: 'Fan Game 5' },
     ],
     sourceLayout: 'fanstack',
-    collageLabel: 'Fan game stack',
+    collageLabel: 'Expanded library',
     devices: [{ image: usbImage, alt: 'USB icon', label: 'USB Delivery' }],
-    body: 'Expand the library with fan games, hacks, and extra content.',
-    bullets: ['Fan games and hacks', 'Huge variety in one delivery'],
-    cta: { label: 'Expand My Collection', href: '#contact' },
+    body: 'Expand your setup with fan projects, curated extras, and deep-cut content that makes the library feel special.',
+    bullets: ['Hundreds of extras', 'Curated and delivery-ready'],
+    cta: { label: 'Expand My Library', href: '#contact' },
   },
   {
-    title: 'Cancel Subscriptions | Save $$$',
-    eyebrow: 'Own your media instead of renting it forever',
+    title: 'Own Your Movies Instead of Renting Them Forever',
+    eyebrow: 'Replace subscription churn with a permanent collection',
     sources: [{ image: blurayImage, alt: 'Blu-ray icon', label: 'Blu-ray Library' }],
     sourceLayout: 'single',
-    devices: [{ image: computerImage, alt: 'Computer icon', label: 'Computer Playback' }],
-    body: 'Build a permanent offline library you control instead of chasing streaming catalogs.',
+    devices: [{ image: computerImage, alt: 'Computer icon', label: 'Home Playback' }],
+    body: 'Build a permanent media library you control instead of chasing titles across streaming services.',
     bullets: ['Cut recurring costs', 'Keep access offline'],
     cta: { label: 'Replace My Subscriptions', href: '#contact' },
-  },
-  {
-    title: 'All In One | Piano Console',
-    eyebrow: 'The big everything build',
-    sources: [
-      { image: ps2Console, alt: 'PlayStation 2 icon', label: 'PS2' },
-      { image: ps1Image, alt: 'PlayStation 1 icon', label: 'PS1' },
-      { image: threeDsImage, alt: '3DS icon', label: '3DS' },
-      { image: dsImage, alt: 'DS icon', label: 'DS' },
-      { image: gbaImage, alt: 'Game Boy Advance icon', label: 'GBA' },
-      { image: genesisImage, alt: 'Sega Genesis icon', label: 'Genesis' },
-    ],
-    sourceLayout: 'allinone-cluster',
-    collageLabel: 'All-in-one library',
-    devices: [
-      { image: computerImage, alt: 'Desktop computer icon', label: 'Desktop Hub' },
-      { image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'RG35XX Plus' },
-    ],
-    deviceLayout: 'grouped',
-    body: 'Bring together your biggest cross-platform library into one flagship setup.',
-    bullets: ['Desktop and handheld pairing', 'Best showcase offer'],
-    cta: { label: 'Build the All In One Setup', href: '#contact' },
-  },
-  {
-    title: 'Save File and Game Sync BUILT IN!',
-    eyebrow: 'Keep progress moving with you',
-    sources: [{ image: computerImage, alt: 'Desktop computer icon', label: 'Desktop Saves' }],
-    sourceLayout: 'single',
-    devices: [{ image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'Handheld Sync' }],
-    body: 'Move between your desktop setup and handheld device without losing your place.',
-    bullets: ['Save syncing', 'Cross-device continuity'],
-    cta: { label: 'Get Sync Built In', href: '#contact' },
   },
 ]
 
 const revealSections = [
   {
     id: 'promise',
-    eyebrow: 'WHY THIS SELLS',
-    title: 'Right now the website talks like a concept, not a product.',
-    body: 'We need tighter headlines, stronger visual anchors, and sections that reveal a concrete value proposition as you scroll instead of dumping oversized text blocks on the visitor.',
+    eyebrow: 'WHAT LEGACY LIBRARY LABS DOES',
+    title: 'We turn aging collections into clean, usable digital libraries.',
+    body: 'From discs and tapes to custom game builds, the goal is simple: preserve what matters, organize it well, and make it easy to enjoy on the right hardware.',
   },
   {
     id: 'process',
-    eyebrow: 'PROCESS',
-    title: 'Each section should arrive like the next step in a premium offer.',
-    body: 'Scroll should feel controlled. One section introduces the promise, the next proves the transformation, the next shows supported formats, and the next closes with hardware choices and contact.',
+    eyebrow: 'HOW IT WORKS',
+    title: 'You bring the collection, we handle the conversion, setup, and delivery path.',
+    body: 'Each project is scoped around the media you already own, the formats you care about most, and the device you actually want to use every day.',
   },
   {
     id: 'responsiveness',
-    eyebrow: 'RESPONSIVE BY DEFAULT',
-    title: 'Desktop should feel cinematic, tablet should stay balanced, and mobile should stay readable.',
-    body: 'Huge type can work on a billboard hero, but not when it collapses into a giant vertical wall on smaller screens. We are designing for hierarchy, rhythm, and conversion, not drama for its own sake.',
+    eyebrow: 'WHY PEOPLE BUY THIS',
+    title: 'It is not just about storage, it is about keeping your library accessible, offline, and yours.',
+    body: 'That means less subscription churn, less fear of failing media, and a better day-to-day experience than digging through shelves or broken files.',
   },
 ]
 
@@ -152,16 +120,16 @@ const formatCards = [
 ]
 
 const hardwareCards = [
-  { title: 'Flagship Terminal PC', price: '$90 to $900', badge: 'Most flexible', body: 'For clients who want the polished all-in-one solution and the broadest compatibility ceiling.', image: ps2Base },
-  { title: 'RG35XX Plus', price: '$80', badge: 'Compact favorite', body: 'A clean entry point for lighter libraries, retro-friendly use, and giftable appeal.', image: rg35xxPlus },
-  { title: 'Bootable SSD', price: '$150', badge: 'Bring your own setup', body: 'Strong for users who already have hardware and mainly need the archive and launch experience prepared well.', image: blurayImage },
+  { title: 'Flagship Terminal PC', price: 'Custom build pricing', badge: 'Most flexible', body: 'Best for larger libraries, broader compatibility, and clients who want a polished all-in-one home setup.', image: ps2Base },
+  { title: 'RG35XX Plus', price: 'Starting around $80', badge: 'Compact favorite', body: 'A strong handheld option for lighter retro libraries, easy gifting, and quick pickup-and-play use.', image: rg35xxPlus },
+  { title: 'Bootable SSD', price: 'Starting around $150', badge: 'Bring your own hardware', body: 'Ideal when you already have a PC and mainly want the archive, frontend, and content prepared well.', image: usbImage },
 ]
 
 const proofPoints = [
-  'Card-based browsing that feels like a storefront',
-  'Real imagery instead of abstract placeholders',
-  'Scroll-reveal pacing that feels premium on desktop and mobile',
-  'Product-forward sections that support conversion',
+  'Physical media converted into organized digital libraries',
+  'Custom playback setups for desktop, handheld, and home use',
+  'Real source formats shown with real delivery paths',
+  'Built for ownership, preservation, and everyday usability',
 ]
 
 function App() {
@@ -488,10 +456,10 @@ function App() {
         <section className="section process-band" data-reveal>
           <div className="section-head split">
             <div>
-              <p className="eyebrow">SCROLL STORY</p>
-              <h2>As visitors move down the page, each new block should feel like the next reason to buy.</h2>
+              <p className="eyebrow">WHAT YOU GET</p>
+              <h2>A cleaner library, a better playback path, and a setup that feels built for you.</h2>
             </div>
-            <p>The old section should gracefully move up and out while the next one fades and slides into place. That gives us rhythm without making the site feel gimmicky.</p>
+            <p>Whether the goal is preservation, portability, or a premium retro build, the finished result should feel easy to use and worth showing off.</p>
           </div>
         </section>
 
@@ -523,9 +491,9 @@ function App() {
 
         <section className="section legacy-callout" id="contact" data-reveal>
           <div className="callout-card">
-            <p className="eyebrow">READY FOR A REAL STOREFRONT PASS</p>
-            <h2>This can become a genuinely slick product site, not just a decent mockup.</h2>
-            <p>We now have the right direction: a service-first hero, real imagery, reveal-based sections, and cleaner responsive structure. Next pass, I’d tune swipe behavior and upgrade the strongest cards with banner-grade artwork.</p>
+            <p className="eyebrow">READY TO BUILD YOUR LIBRARY?</p>
+            <h2>Tell us what you have, what you want preserved, and where you want to play it.</h2>
+            <p>We can help scope the right archive, console, or delivery setup for your collection, whether you are preserving family media or building a dream retro library.</p>
             <div className="hero-actions centered">
               <a className="button-link" href="mailto:hello@legacylibrarylabs.com">Start Planning</a>
               <a className="button-link ghost" href="https://github.com/Nazerath-Floaters/legacy-library-labs">View Project Repo</a>
