@@ -4,6 +4,8 @@ import rg35xxPlus from './assets/legacy/rg35xxplus.png'
 import vhsImage from './assets/legacy/vhs.png'
 import genesisImage from './assets/legacy/genesis.png'
 import computerImage from './assets/legacy/computer.png'
+import dvdImage from './assets/legacy/dvd.png'
+import ps2Console from './assets/legacy/ps2-console.png'
 import fanGame2 from './assets/legacy/fan-game-2.webp'
 
 const orderFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScoQfgOt2XlIcp3LDK-njbH1TpxoZin3h4Z6-2fkQoRd0g9DA/viewform?usp=header'
