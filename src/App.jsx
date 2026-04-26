@@ -13,48 +13,71 @@ import gbaImage from './assets/legacy/gba.png'
 import genesisImage from './assets/legacy/genesis.png'
 import ps1Image from './assets/legacy/ps1.png'
 
-const heroSlides = [
+const heroServices = [
   {
-    eyebrow: 'ARCHIVE-FIRST PRODUCT DESIGN',
-    title: 'Your shelves deserve a website that sells the outcome instantly.',
-    text: 'Legacy Library Labs should feel like a premium service for turning physical media into a browseable, beautiful, playback-ready library.',
-    primaryCta: { label: 'Start Your Archive', href: '#contact' },
-    secondaryCta: { label: 'See the Flow', href: '#process' },
-    image: ps2Base,
-    imageAlt: 'PlayStation 2 collection artwork used as a hero visual',
-    stats: [
-      { value: 'Ownership', label: 'at the center' },
-      { value: 'Premium', label: 'presentation language' },
-      { value: 'Scroll', label: 'built to reveal' },
-    ],
+    title: 'DVD Archive Console',
+    eyebrow: 'Family movie shelves',
+    media: 'DVD libraries',
+    outcome: 'Living-room ready browsing',
+    body: 'Turn stacks of movies into a clean couch-friendly archive that is easier to browse, easier to replay, and much harder to lose to clutter.',
+    bullets: ['Artwork-led browsing', 'Searchable family collection', 'Simple hardware handoff'],
+    sourceImage: dvdImage,
+    sourceAlt: 'DVD media art',
+    deviceImage: rg35xxPlus,
+    deviceAlt: 'Portable console used as playback device',
+    cta: { label: 'Plan Your DVD Archive', href: '#contact' },
   },
   {
-    eyebrow: 'HARDWARE + MEDIA MATCHING',
-    title: 'Recommend the right playback path, not a one-size-fits-all box.',
-    text: 'Heavy PS2 libraries, compact movie collections, and handheld nostalgia all need different presentation, different framing, and different product recommendations.',
-    primaryCta: { label: 'Explore Hardware', href: '#hardware' },
-    secondaryCta: { label: 'Browse Formats', href: '#formats' },
-    image: ps2Console,
-    imageAlt: 'PlayStation 2 console product-style render',
-    stats: [
-      { value: '6', label: 'hardware offers' },
-      { value: '9+', label: 'media formats' },
-      { value: '1', label: 'clear buying story' },
-    ],
+    title: 'PS2 Collection Build',
+    eyebrow: 'Heavy nostalgia libraries',
+    media: 'PlayStation 2 discs',
+    outcome: 'Curated console experience',
+    body: 'For collectors with bigger libraries and deeper nostalgia pull, this offer turns a hardware-era mess into a premium system that feels worth showing off.',
+    bullets: ['PS2-focused hardware matching', 'Library-first presentation', 'High-value showcase category'],
+    sourceImage: ps2Base,
+    sourceAlt: 'PlayStation 2 source media visual',
+    deviceImage: ps2Console,
+    deviceAlt: 'PlayStation 2 console visual',
+    cta: { label: 'Build a PS2 Vault', href: '#contact' },
   },
   {
-    eyebrow: 'FOR FAMILIES, COLLECTORS, AND NOSTALGIA NERDS',
-    title: 'Make old favorites easy to see, want, and understand.',
-    text: 'The page should sell preservation emotionally while still behaving like a polished modern storefront with visible proof, product tiles, and calm hierarchy.',
-    primaryCta: { label: 'View Archive Formats', href: '#formats' },
-    secondaryCta: { label: 'Contact Us', href: '#contact' },
-    image: rg35xxPlus,
-    imageAlt: 'Compact RG35XX Plus handheld hardware visual',
-    stats: [
-      { value: 'Mobile', label: 'clean responsive flow' },
-      { value: 'Visual', label: 'proof over abstraction' },
-      { value: 'Modern', label: 'commerce feel' },
-    ],
+    title: 'Blu-ray Premium Archive',
+    eyebrow: 'Collector presentation',
+    media: 'Blu-ray discs',
+    outcome: 'Sharper premium playback',
+    body: 'This is the cleaner, richer collector offer. Better presentation, stronger shelf value, and a more premium story for people who care about image quality.',
+    bullets: ['Premium visual identity', 'High-bitrate collection framing', 'Collector-friendly browsing'],
+    sourceImage: blurayImage,
+    sourceAlt: 'Blu-ray media art',
+    deviceImage: rg35xxPlus,
+    deviceAlt: 'Archive playback device visual',
+    cta: { label: 'Start a Blu-ray Archive', href: '#contact' },
+  },
+  {
+    title: 'VHS Memory Rescue',
+    eyebrow: 'Family history and old tapes',
+    media: 'VHS collections',
+    outcome: 'Preserved and usable memories',
+    body: 'The emotional sell lives here. Old recordings, forgotten tapes, and fragile family history become easier to revisit and much less likely to disappear.',
+    bullets: ['Preservation-led storytelling', 'Emotional high-trust offer', 'Ideal mid-page conversion hook'],
+    sourceImage: vhsImage,
+    sourceAlt: 'VHS media art',
+    deviceImage: rg35xxPlus,
+    deviceAlt: 'Portable archive viewer visual',
+    cta: { label: 'Rescue VHS Memories', href: '#contact' },
+  },
+  {
+    title: 'Handheld Retro Vault',
+    eyebrow: 'Portable nostalgia',
+    media: 'DS, 3DS, and GBA collections',
+    outcome: 'Compact replay-anywhere setup',
+    body: 'A strong product for people who want old handheld favorites organized into something compact, modern-feeling, and instantly replayable.',
+    bullets: ['Portable-first curation', 'Strong gifting appeal', 'Multi-platform retro support'],
+    sourceImage: threeDsImage,
+    sourceAlt: 'Nintendo 3DS media art',
+    deviceImage: rg35xxPlus,
+    deviceAlt: 'Handheld playback device visual',
+    cta: { label: 'Build a Handheld Vault', href: '#contact' },
   },
 ]
 
@@ -161,19 +184,19 @@ const hardwareCards = [
 ]
 
 const proofPoints = [
-  'Sharper hierarchy and lower headline sprawl',
-  'Actual imagery instead of abstract placeholders',
+  'Card-based browsing that feels like a storefront',
+  'Real imagery instead of abstract placeholders',
   'Scroll-reveal pacing that feels premium on desktop and mobile',
   'Product-forward sections that support conversion',
 ]
 
 function App() {
-  const [activeSlide, setActiveSlide] = useState(0)
+  const [activeService, setActiveService] = useState(1)
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setActiveSlide((current) => (current + 1) % heroSlides.length)
-    }, 6500)
+      setActiveService((current) => (current + 1) % heroServices.length)
+    }, 7000)
 
     return () => window.clearInterval(timer)
   }, [])
@@ -196,7 +219,13 @@ function App() {
     return () => observer.disconnect()
   }, [])
 
-  const currentSlide = heroSlides[activeSlide]
+  const prevService = () => {
+    setActiveService((current) => (current === 0 ? heroServices.length - 1 : current - 1))
+  }
+
+  const nextService = () => {
+    setActiveService((current) => (current + 1) % heroServices.length)
+  }
 
   return (
     <div className="page-shell">
@@ -218,50 +247,85 @@ function App() {
           </div>
         </nav>
 
-        <section className="hero-stage" data-reveal>
-          <div className="hero-copy">
-            <p className="eyebrow">{currentSlide.eyebrow}</p>
-            <h1>{currentSlide.title}</h1>
-            <p className="hero-text">{currentSlide.text}</p>
-
-            <div className="hero-actions">
-              <a className="button-link" href={currentSlide.primaryCta.href}>{currentSlide.primaryCta.label}</a>
-              <a className="button-link ghost" href={currentSlide.secondaryCta.href}>{currentSlide.secondaryCta.label}</a>
-            </div>
-
-            <div className="hero-stats">
-              {currentSlide.stats.map((stat) => (
-                <div key={stat.label}>
-                  <strong>{stat.value}</strong>
-                  <span>{stat.label}</span>
-                </div>
-              ))}
-            </div>
+        <section className="hero-stage service-stage" data-reveal>
+          <div className="hero-stage-intro">
+            <p className="eyebrow">CUSTOM CONSOLES • FOREVER MEDIA</p>
+            <h1>Browse the service, center the offer, and let the best archive path step forward.</h1>
+            <p className="hero-text">
+              Each card represents a real product offer. The side cards tease the next services, and the centered card expands to show exactly what media comes in and what experience comes out.
+            </p>
           </div>
 
-          <div className="hero-visual-card">
-            <div className="hero-visual-frame">
-              <img src={currentSlide.image} alt={currentSlide.imageAlt} className="hero-product-image" />
+          <div className="service-carousel-shell">
+            <button type="button" className="carousel-arrow left" onClick={prevService} aria-label="Previous service">←</button>
+
+            <div className="service-carousel" role="tablist" aria-label="Legacy archive services">
+              {heroServices.map((service, index) => {
+                const offset = index - activeService
+                const isActive = offset === 0
+                const isNear = Math.abs(offset) <= 2
+
+                return (
+                  <article
+                    key={service.title}
+                    className={`service-card ${isActive ? 'active' : ''} ${isNear ? 'near' : 'far'}`}
+                    data-offset={offset}
+                    onClick={() => setActiveService(index)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault()
+                        setActiveService(index)
+                      }
+                    }}
+                  >
+                    <div className="service-card-inner">
+                      <span className="service-eyebrow">{service.eyebrow}</span>
+                      <h2>{service.title}</h2>
+
+                      <div className="service-visual-flow">
+                        <div className="service-source-block">
+                          <img src={service.sourceImage} alt={service.sourceAlt} className="service-source-image" />
+                          <span>{service.media}</span>
+                        </div>
+                        <div className="service-flow-arrow">→</div>
+                        <div className="service-device-block">
+                          <img src={service.deviceImage} alt={service.deviceAlt} className="service-device-image" />
+                          <span>{service.outcome}</span>
+                        </div>
+                      </div>
+
+                      <div className="service-expanded-copy">
+                        <p>{service.body}</p>
+                        <ul>
+                          {service.bullets.map((bullet) => (
+                            <li key={bullet}>{bullet}</li>
+                          ))}
+                        </ul>
+                        <a className="button-link service-cta" href={service.cta.href}>{service.cta.label}</a>
+                      </div>
+                    </div>
+                  </article>
+                )
+              })}
             </div>
-            <div className="hero-visual-caption">
-              <span>Featured direction</span>
-              <strong>Premium archive merchandising</strong>
-              <p>Using real category imagery makes the site feel believable immediately.</p>
-            </div>
+
+            <button type="button" className="carousel-arrow right" onClick={nextService} aria-label="Next service">→</button>
+          </div>
+
+          <div className="hero-slider-controls" aria-label="Service navigation">
+            {heroServices.map((service, index) => (
+              <button
+                key={service.title}
+                type="button"
+                className={`hero-dot ${index === activeService ? 'active' : ''}`}
+                onClick={() => setActiveService(index)}
+                aria-label={`Go to ${service.title}`}
+              />
+            ))}
           </div>
         </section>
-
-        <div className="hero-slider-controls" aria-label="Hero slide navigation">
-          {heroSlides.map((slide, index) => (
-            <button
-              key={slide.title}
-              type="button"
-              className={`hero-dot ${index === activeSlide ? 'active' : ''}`}
-              onClick={() => setActiveSlide(index)}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
       </header>
 
       <main>
@@ -353,7 +417,7 @@ function App() {
             <p className="eyebrow">READY FOR A REAL STOREFRONT PASS</p>
             <h2>This can become a genuinely slick product site, not just a decent mockup.</h2>
             <p>
-              We now have the right direction: smaller hero headlines, real imagery, reveal-based sections, and cleaner responsive structure. Next pass, I’d want banner-grade photography for the hero and one or two lifestyle images for the middle of the page.
+              We now have the right direction: a service-first hero, real imagery, reveal-based sections, and cleaner responsive structure. Next pass, I’d tune swipe behavior and upgrade the strongest cards with banner-grade artwork.
             </p>
             <div className="hero-actions centered">
               <a className="button-link" href="mailto:hello@legacylibrarylabs.com">Start Planning</a>
