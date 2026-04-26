@@ -246,7 +246,7 @@ button:hover,
 
 .service-carousel {
   position: relative;
-  height: 38rem;
+  height: 39rem;
   overflow: hidden;
 }
 
@@ -254,8 +254,8 @@ button:hover,
   position: absolute;
   top: 1rem;
   left: 50%;
-  width: min(34rem, 82vw);
-  height: 35rem;
+  width: min(35rem, 82vw);
+  height: 36rem;
   transform-origin: center center;
   transition: transform 420ms ease, opacity 420ms ease, filter 420ms ease;
   cursor: pointer;
@@ -299,7 +299,7 @@ button:hover,
 .service-card-inner {
   height: 100%;
   border-radius: 1.6rem;
-  padding: 1.4rem;
+  padding: 1.35rem;
   background:
     radial-gradient(circle at top right, rgba(159, 241, 255, 0.15), transparent 28%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
@@ -314,7 +314,7 @@ button:hover,
 .hardware-badge {
   display: inline-block;
   margin-bottom: 0.65rem;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -322,8 +322,15 @@ button:hover,
 }
 
 .service-card h2 {
-  font-size: clamp(1.8rem, 3vw, 2.65rem);
-  max-width: 10ch;
+  font-size: clamp(1.45rem, 2.4vw, 2.35rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  max-width: 12ch;
+  text-wrap: balance;
+}
+
+.service-card.active h2 {
+  max-width: 11ch;
 }
 
 .service-visual-flow {
@@ -331,7 +338,7 @@ button:hover,
   grid-template-columns: 1.3fr auto 1fr;
   gap: 1rem;
   align-items: center;
-  margin-top: 1.4rem;
+  margin-top: 1rem;
 }
 
 .multi-source-flow {
@@ -357,10 +364,7 @@ button:hover,
   grid-template-columns: 1fr;
 }
 
-.service-source-grid.source-count-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
+.service-source-grid.source-count-2,
 .service-source-grid.source-count-3,
 .service-source-grid.source-count-4,
 .service-source-grid.source-count-5,
@@ -370,9 +374,10 @@ button:hover,
 }
 
 .service-source-block,
-.service-device-block {
-  min-height: 12.5rem;
-  padding: 1rem;
+.service-device-block,
+.source-collage-box {
+  min-height: 8.9rem;
+  padding: 0.85rem;
   border-radius: 1.2rem;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -382,27 +387,71 @@ button:hover,
   text-align: center;
 }
 
-.service-source-block.compact,
-.service-device-block.compact {
-  min-height: 8.75rem;
+.source-collage-box {
+  position: relative;
+  min-height: 12rem;
+  grid-column: 1 / -1;
+  overflow: hidden;
+}
+
+.source-collage-item {
+  position: absolute;
+  width: 40%;
+  max-width: 8rem;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  padding: 0.35rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+.collage-item-1 {
+  top: 0.8rem;
+  left: 0.9rem;
+  transform: rotate(-8deg);
+}
+
+.collage-item-2 {
+  top: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%) rotate(7deg);
+}
+
+.collage-item-3 {
+  right: 0.9rem;
+  bottom: 1.3rem;
+  transform: rotate(-4deg);
+}
+
+.source-collage-label {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0.7rem;
+  font-size: 0.86rem;
+  color: rgba(233, 240, 252, 0.84);
 }
 
 .service-source-image,
 .service-device-image {
   width: 100%;
-  max-height: 9rem;
+  max-height: 5.3rem;
   object-fit: contain;
 }
 
-.service-source-block.compact .service-source-image,
-.service-device-block.compact .service-device-image {
-  max-height: 5.5rem;
+.source-collage-item .service-source-image {
+  max-height: 100%;
 }
 
 .service-source-block span,
 .service-device-block span {
-  font-size: 0.92rem;
+  font-size: 0.84rem;
+  line-height: 1.25;
   color: rgba(233, 240, 252, 0.82);
+  text-wrap: balance;
 }
 
 .service-flow-arrow {
@@ -415,20 +464,31 @@ button:hover,
 }
 
 .service-expanded-copy {
-  margin-top: 1.4rem;
+  margin-top: 1rem;
+}
+
+.service-expanded-copy p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
 }
 
 .service-expanded-copy ul {
-  margin: 1rem 0 0;
-  padding-left: 1.1rem;
+  margin: 0.8rem 0 0;
+  padding-left: 1rem;
+}
+
+.service-expanded-copy li {
+  font-size: 0.94rem;
+  line-height: 1.45;
 }
 
 .service-expanded-copy li + li {
-  margin-top: 0.35rem;
+  margin-top: 0.3rem;
 }
 
 .service-cta {
-  margin-top: 1.2rem;
+  margin-top: 1rem;
 }
 
 .hero-actions {
@@ -615,12 +675,12 @@ button:hover,
   }
 
   .service-carousel {
-    height: 34rem;
+    height: 37rem;
   }
 
   .service-card {
-    width: min(31rem, 82vw);
-    height: 31rem;
+    width: min(32rem, 82vw);
+    height: 34rem;
   }
 
   .service-card[data-offset='-1'] {
@@ -688,7 +748,7 @@ button:hover,
     left: auto;
     width: 100%;
     height: auto;
-    min-height: 30rem;
+    min-height: 32rem;
     transform: none;
     opacity: 1;
     scroll-snap-align: center;
@@ -701,6 +761,7 @@ button:hover,
 
   .service-card h2 {
     max-width: 100%;
+    font-size: clamp(1.55rem, 5vw, 2.1rem);
   }
 
   .service-visual-flow {
@@ -716,6 +777,10 @@ button:hover,
   .service-source-grid.source-count-6,
   .service-device-grid.device-count-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .source-collage-box {
+    min-height: 11rem;
   }
 
   .service-flow-arrow {
@@ -766,5 +831,9 @@ button:hover,
   .service-source-grid.source-count-6,
   .service-device-grid.device-count-2 {
     grid-template-columns: 1fr;
+  }
+
+  .source-collage-box {
+    min-height: 10rem;
   }
 }

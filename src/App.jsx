@@ -15,19 +15,14 @@ import ps1Image from './assets/legacy/ps1.png'
 import computerImage from './assets/legacy/computer.png'
 import androidPhoneImage from './assets/legacy/android-phone.png'
 import usbImage from './assets/legacy/usb.png'
-import laptopImage from './assets/legacy/laptop.png'
 
 const heroServices = [
   {
     title: 'DVD Collection On the Go!',
     eyebrow: 'Take your movie shelf with you',
-    sources: [
-      { image: dvdImage, alt: 'DVD icon', label: 'DVD Collection' },
-    ],
-    outcome: 'Phone-ready playback',
-    devices: [
-      { image: androidPhoneImage, alt: 'Android phone icon', label: 'Cellphone Access' },
-    ],
+    sources: [{ image: dvdImage, alt: 'DVD icon', label: 'DVD Collection' }],
+    sourceLayout: 'single',
+    devices: [{ image: androidPhoneImage, alt: 'Android phone icon', label: 'Cellphone Access' }],
     body: 'Turn your DVD collection into a portable library you can carry anywhere instead of leaving it trapped on shelves and aging discs.',
     bullets: ['Watch offline', 'Keep the collection forever', 'Simple everyday access'],
     cta: { label: 'Start Your DVD Library', href: '#contact' },
@@ -35,13 +30,9 @@ const heroServices = [
   {
     title: 'Preserve Aging Media',
     eyebrow: 'Rescue fragile tapes before they fade',
-    sources: [
-      { image: vhsImage, alt: 'VHS icon', label: 'VHS Media' },
-    ],
-    outcome: 'Safe digital preservation',
-    devices: [
-      { image: computerImage, alt: 'Computer icon', label: 'Computer Archive' },
-    ],
+    sources: [{ image: vhsImage, alt: 'VHS icon', label: 'VHS Media' }],
+    sourceLayout: 'single',
+    devices: [{ image: computerImage, alt: 'Computer icon', label: 'Computer Archive' }],
     body: 'Preserve old tapes and fragile media by converting them into a safer digital library that is easier to store, copy, and revisit.',
     bullets: ['Protect aging media', 'Keep family memories usable', 'Make old content easy to access'],
     cta: { label: 'Preserve Your Media', href: '#contact' },
@@ -50,13 +41,12 @@ const heroServices = [
     title: 'Piano Console',
     eyebrow: 'A custom system for classic favorites',
     sources: [
-      { image: dsImage, alt: 'DS icon', label: 'DS Games' },
-      { image: genesisImage, alt: 'Sega Genesis icon', label: 'Sega Genesis Games' },
+      { image: ps2Console, alt: 'PlayStation 2 icon', label: 'PS2' },
+      { image: gbaImage, alt: 'Game Boy Advance icon', label: 'Game Boy Advance' },
+      { image: threeDsImage, alt: '3DS icon', label: '3DS' },
     ],
-    outcome: 'One ready-to-play handheld',
-    devices: [
-      { image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'RG35XX Plus' },
-    ],
+    sourceLayout: 'collage',
+    devices: [{ image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'RG35XX Plus' }],
     body: 'Blend multiple classic libraries into one polished handheld console so your best old favorites are ready to launch from a single device.',
     bullets: ['Multi-system setup', 'Travel-friendly hardware', 'Curated for instant play'],
     cta: { label: 'Build a Piano Console', href: '#contact' },
@@ -70,10 +60,8 @@ const heroServices = [
       { image: gbaImage, alt: 'Game Boy Advance icon', label: 'Game Boy Advance' },
       { image: genesisImage, alt: 'Sega Genesis icon', label: 'Sega Genesis' },
     ],
-    outcome: 'Expanded archive delivery',
-    devices: [
-      { image: usbImage, alt: 'USB icon', label: 'USB Delivery' },
-    ],
+    sourceLayout: 'grid',
+    devices: [{ image: usbImage, alt: 'USB icon', label: 'USB Delivery' }],
     body: 'Expand the library with fan games, hacks, and extra content so the archive feels deeper, more personal, and more exciting than a standard stock setup.',
     bullets: ['Fan games and hacks', 'Huge variety in one delivery', 'Great for custom collections'],
     cta: { label: 'Expand My Collection', href: '#contact' },
@@ -81,13 +69,9 @@ const heroServices = [
   {
     title: 'Cancel Subscriptions | Save $$$',
     eyebrow: 'Own your media instead of renting it forever',
-    sources: [
-      { image: blurayImage, alt: 'Blu-ray icon', label: 'Blu-ray Library' },
-    ],
-    outcome: 'Offline home media access',
-    devices: [
-      { image: computerImage, alt: 'Computer icon', label: 'Computer Playback' },
-    ],
+    sources: [{ image: blurayImage, alt: 'Blu-ray icon', label: 'Blu-ray Library' }],
+    sourceLayout: 'single',
+    devices: [{ image: computerImage, alt: 'Computer icon', label: 'Computer Playback' }],
     body: 'Stop chasing streaming catalogs and monthly fees by converting owned media into a permanent offline library you control.',
     bullets: ['Cut recurring costs', 'Keep access offline', 'Build a permanent home catalog'],
     cta: { label: 'Replace My Subscriptions', href: '#contact' },
@@ -103,7 +87,7 @@ const heroServices = [
       { image: gbaImage, alt: 'Game Boy Advance icon', label: 'GBA' },
       { image: genesisImage, alt: 'Sega Genesis icon', label: 'Genesis' },
     ],
-    outcome: 'Desktop plus handheld ecosystem',
+    sourceLayout: 'grid',
     devices: [
       { image: computerImage, alt: 'Desktop computer icon', label: 'Desktop Hub' },
       { image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'RG35XX Plus' },
@@ -115,13 +99,9 @@ const heroServices = [
   {
     title: 'Save File and Game Sync BUILT IN!',
     eyebrow: 'Keep progress moving with you',
-    sources: [
-      { image: computerImage, alt: 'Desktop computer icon', label: 'Desktop Saves' },
-    ],
-    outcome: 'Synced portable play',
-    devices: [
-      { image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'Handheld Sync' },
-    ],
+    sources: [{ image: computerImage, alt: 'Desktop computer icon', label: 'Desktop Saves' }],
+    sourceLayout: 'single',
+    devices: [{ image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'Handheld Sync' }],
     body: 'Move between your desktop setup and handheld device without losing your place, your saves, or your momentum.',
     bullets: ['Save syncing', 'Cross-device continuity', 'Built for real daily use'],
     cta: { label: 'Get Sync Built In', href: '#contact' },
@@ -150,84 +130,21 @@ const revealSections = [
 ]
 
 const formatCards = [
-  {
-    name: 'PlayStation 2',
-    tag: 'Heavy library',
-    copy: 'High-value showcase category with strong nostalgia and clear hardware upsell potential.',
-    image: ps2Console,
-  },
-  {
-    name: 'DVD',
-    tag: 'Family media',
-    copy: 'Movie shelves become browseable, searchable, and playback-ready for the living room again.',
-    image: dvdImage,
-  },
-  {
-    name: 'Blu-ray',
-    tag: 'Premium playback',
-    copy: 'Sharper masters, stronger artwork, and a more premium sales story for collectors.',
-    image: blurayImage,
-  },
-  {
-    name: 'VHS',
-    tag: 'Memory rescue',
-    copy: 'The emotional sell lives here. Old tapes and moments become easier to preserve and revisit.',
-    image: vhsImage,
-  },
-  {
-    name: 'Nintendo DS',
-    tag: 'Portable archive',
-    copy: 'Dual-screen favorites with lightweight playback paths and broad family appeal.',
-    image: dsImage,
-  },
-  {
-    name: 'Nintendo 3DS',
-    tag: 'Modern handheld',
-    copy: 'Beloved handheld libraries presented like a real collectible ecosystem.',
-    image: threeDsImage,
-  },
-  {
-    name: 'Game Boy Advance',
-    tag: 'Pocket nostalgia',
-    copy: 'A small format with massive emotional recognition and easy visual merchandising.',
-    image: gbaImage,
-  },
-  {
-    name: 'PlayStation 1',
-    tag: 'Classic console',
-    copy: 'A foundational legacy platform that signals credibility the moment it appears.',
-    image: ps1Image,
-  },
-  {
-    name: 'Sega Genesis',
-    tag: '16-bit legacy',
-    copy: 'A strong supporting format for retro collectors and classic living room history.',
-    image: genesisImage,
-  },
+  { name: 'PlayStation 2', tag: 'Heavy library', copy: 'High-value showcase category with strong nostalgia and clear hardware upsell potential.', image: ps2Console },
+  { name: 'DVD', tag: 'Family media', copy: 'Movie shelves become browseable, searchable, and playback-ready for the living room again.', image: dvdImage },
+  { name: 'Blu-ray', tag: 'Premium playback', copy: 'Sharper masters, stronger artwork, and a more premium sales story for collectors.', image: blurayImage },
+  { name: 'VHS', tag: 'Memory rescue', copy: 'The emotional sell lives here. Old tapes and moments become easier to preserve and revisit.', image: vhsImage },
+  { name: 'Nintendo DS', tag: 'Portable archive', copy: 'Dual-screen favorites with lightweight playback paths and broad family appeal.', image: dsImage },
+  { name: 'Nintendo 3DS', tag: 'Modern handheld', copy: 'Beloved handheld libraries presented like a real collectible ecosystem.', image: threeDsImage },
+  { name: 'Game Boy Advance', tag: 'Pocket nostalgia', copy: 'A small format with massive emotional recognition and easy visual merchandising.', image: gbaImage },
+  { name: 'PlayStation 1', tag: 'Classic console', copy: 'A foundational legacy platform that signals credibility the moment it appears.', image: ps1Image },
+  { name: 'Sega Genesis', tag: '16-bit legacy', copy: 'A strong supporting format for retro collectors and classic living room history.', image: genesisImage },
 ]
 
 const hardwareCards = [
-  {
-    title: 'Flagship Terminal PC',
-    price: '$90 to $900',
-    badge: 'Most flexible',
-    body: 'For clients who want the polished all-in-one solution and the broadest compatibility ceiling.',
-    image: ps2Base,
-  },
-  {
-    title: 'RG35XX Plus',
-    price: '$80',
-    badge: 'Compact favorite',
-    body: 'A clean entry point for lighter libraries, retro-friendly use, and giftable appeal.',
-    image: rg35xxPlus,
-  },
-  {
-    title: 'Bootable SSD',
-    price: '$150',
-    badge: 'Bring your own setup',
-    body: 'Strong for users who already have hardware and mainly need the archive and launch experience prepared well.',
-    image: blurayImage,
-  },
+  { title: 'Flagship Terminal PC', price: '$90 to $900', badge: 'Most flexible', body: 'For clients who want the polished all-in-one solution and the broadest compatibility ceiling.', image: ps2Base },
+  { title: 'RG35XX Plus', price: '$80', badge: 'Compact favorite', body: 'A clean entry point for lighter libraries, retro-friendly use, and giftable appeal.', image: rg35xxPlus },
+  { title: 'Bootable SSD', price: '$150', badge: 'Bring your own setup', body: 'Strong for users who already have hardware and mainly need the archive and launch experience prepared well.', image: blurayImage },
 ]
 
 const proofPoints = [
@@ -298,9 +215,7 @@ function App() {
           <div className="hero-stage-intro">
             <p className="eyebrow">CUSTOM CONSOLES • FOREVER MEDIA</p>
             <h1>Build Your Library</h1>
-            <p className="hero-text">
-              Convert Movies, Shows, and Games into a permanent, offline, FREE Home Console.
-            </p>
+            <p className="hero-text">Convert Movies, Shows, and Games into a permanent, offline, FREE Home Console.</p>
           </div>
 
           <div className="service-carousel-shell">
@@ -331,13 +246,24 @@ function App() {
                       <h2>{service.title}</h2>
 
                       <div className="service-visual-flow multi-source-flow">
-                        <div className={`service-source-grid source-count-${Math.min(service.sources.length, 6)}`}>
-                          {service.sources.map((source) => (
-                            <div key={`${service.title}-${source.label}`} className="service-source-block compact">
-                              <img src={source.image} alt={source.alt} className="service-source-image" />
-                              <span>{source.label}</span>
+                        <div className={`service-source-grid ${service.sourceLayout === 'collage' ? 'source-collage' : `source-count-${Math.min(service.sources.length, 6)}`}`}>
+                          {service.sourceLayout === 'collage' ? (
+                            <div className="source-collage-box">
+                              {service.sources.map((source, sourceIndex) => (
+                                <div key={`${service.title}-${source.label}`} className={`source-collage-item collage-item-${sourceIndex + 1}`}>
+                                  <img src={source.image} alt={source.alt} className="service-source-image" />
+                                </div>
+                              ))}
+                              <span className="source-collage-label">Multi-system library</span>
                             </div>
-                          ))}
+                          ) : (
+                            service.sources.map((source) => (
+                              <div key={`${service.title}-${source.label}`} className="service-source-block compact">
+                                <img src={source.image} alt={source.alt} className="service-source-image" />
+                                <span>{source.label}</span>
+                              </div>
+                            ))
+                          )}
                         </div>
 
                         <div className="service-flow-arrow flow-center">→</div>
@@ -407,9 +333,7 @@ function App() {
               <p className="eyebrow">SUPPORTED FORMATS</p>
               <h2>Use real images to make each archive category feel like a tangible offer.</h2>
             </div>
-            <p>
-              A visitor should be able to skim this section and immediately understand the breadth of what Legacy Library Labs can preserve.
-            </p>
+            <p>A visitor should be able to skim this section and immediately understand the breadth of what Legacy Library Labs can preserve.</p>
           </div>
 
           <div className="format-grid">
@@ -434,9 +358,7 @@ function App() {
               <p className="eyebrow">SCROLL STORY</p>
               <h2>As visitors move down the page, each new block should feel like the next reason to buy.</h2>
             </div>
-            <p>
-              The old section should gracefully move up and out while the next one fades and slides into place. That gives us rhythm without making the site feel gimmicky.
-            </p>
+            <p>The old section should gracefully move up and out while the next one fades and slides into place. That gives us rhythm without making the site feel gimmicky.</p>
           </div>
         </section>
 
@@ -446,9 +368,7 @@ function App() {
               <p className="eyebrow">HARDWARE OFFERS</p>
               <h2>Show the archive, then sell the playback path that fits the collection.</h2>
             </div>
-            <p>
-              This section should feel like product merchandising, not an afterthought. Better cards, cleaner pricing, clearer differences.
-            </p>
+            <p>This section should feel like product merchandising, not an afterthought. Better cards, cleaner pricing, clearer differences.</p>
           </div>
 
           <div className="hardware-grid">
@@ -472,9 +392,7 @@ function App() {
           <div className="callout-card">
             <p className="eyebrow">READY FOR A REAL STOREFRONT PASS</p>
             <h2>This can become a genuinely slick product site, not just a decent mockup.</h2>
-            <p>
-              We now have the right direction: a service-first hero, real imagery, reveal-based sections, and cleaner responsive structure. Next pass, I’d tune swipe behavior and upgrade the strongest cards with banner-grade artwork.
-            </p>
+            <p>We now have the right direction: a service-first hero, real imagery, reveal-based sections, and cleaner responsive structure. Next pass, I’d tune swipe behavior and upgrade the strongest cards with banner-grade artwork.</p>
             <div className="hero-actions centered">
               <a className="button-link" href="mailto:hello@legacylibrarylabs.com">Start Planning</a>
               <a className="button-link ghost" href="https://github.com/Nazerath-Floaters/legacy-library-labs">View Project Repo</a>
