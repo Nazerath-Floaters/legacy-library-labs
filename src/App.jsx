@@ -12,72 +12,119 @@ import threeDsImage from './assets/legacy/3ds.png'
 import gbaImage from './assets/legacy/gba.png'
 import genesisImage from './assets/legacy/genesis.png'
 import ps1Image from './assets/legacy/ps1.png'
+import computerImage from './assets/legacy/computer.png'
+import androidPhoneImage from './assets/legacy/android-phone.png'
+import usbImage from './assets/legacy/usb.png'
+import laptopImage from './assets/legacy/laptop.png'
 
 const heroServices = [
   {
-    title: 'DVD Archive Console',
-    eyebrow: 'Family movie shelves',
-    media: 'DVD libraries',
-    outcome: 'Living-room ready browsing',
-    body: 'Turn stacks of movies into a clean couch-friendly archive that is easier to browse, easier to replay, and much harder to lose to clutter.',
-    bullets: ['Artwork-led browsing', 'Searchable family collection', 'Simple hardware handoff'],
-    sourceImage: dvdImage,
-    sourceAlt: 'DVD media art',
-    deviceImage: rg35xxPlus,
-    deviceAlt: 'Portable console used as playback device',
-    cta: { label: 'Plan Your DVD Archive', href: '#contact' },
+    title: 'DVD Collection On the Go!',
+    eyebrow: 'Take your movie shelf with you',
+    sources: [
+      { image: dvdImage, alt: 'DVD icon', label: 'DVD Collection' },
+    ],
+    outcome: 'Phone-ready playback',
+    devices: [
+      { image: androidPhoneImage, alt: 'Android phone icon', label: 'Cellphone Access' },
+    ],
+    body: 'Turn your DVD collection into a portable library you can carry anywhere instead of leaving it trapped on shelves and aging discs.',
+    bullets: ['Watch offline', 'Keep the collection forever', 'Simple everyday access'],
+    cta: { label: 'Start Your DVD Library', href: '#contact' },
   },
   {
-    title: 'PS2 Collection Build',
-    eyebrow: 'Heavy nostalgia libraries',
-    media: 'PlayStation 2 discs',
-    outcome: 'Curated console experience',
-    body: 'For collectors with bigger libraries and deeper nostalgia pull, this offer turns a hardware-era mess into a premium system that feels worth showing off.',
-    bullets: ['PS2-focused hardware matching', 'Library-first presentation', 'High-value showcase category'],
-    sourceImage: ps2Base,
-    sourceAlt: 'PlayStation 2 source media visual',
-    deviceImage: ps2Console,
-    deviceAlt: 'PlayStation 2 console visual',
-    cta: { label: 'Build a PS2 Vault', href: '#contact' },
+    title: 'Preserve Aging Media',
+    eyebrow: 'Rescue fragile tapes before they fade',
+    sources: [
+      { image: vhsImage, alt: 'VHS icon', label: 'VHS Media' },
+    ],
+    outcome: 'Safe digital preservation',
+    devices: [
+      { image: computerImage, alt: 'Computer icon', label: 'Computer Archive' },
+    ],
+    body: 'Preserve old tapes and fragile media by converting them into a safer digital library that is easier to store, copy, and revisit.',
+    bullets: ['Protect aging media', 'Keep family memories usable', 'Make old content easy to access'],
+    cta: { label: 'Preserve Your Media', href: '#contact' },
   },
   {
-    title: 'Blu-ray Premium Archive',
-    eyebrow: 'Collector presentation',
-    media: 'Blu-ray discs',
-    outcome: 'Sharper premium playback',
-    body: 'This is the cleaner, richer collector offer. Better presentation, stronger shelf value, and a more premium story for people who care about image quality.',
-    bullets: ['Premium visual identity', 'High-bitrate collection framing', 'Collector-friendly browsing'],
-    sourceImage: blurayImage,
-    sourceAlt: 'Blu-ray media art',
-    deviceImage: rg35xxPlus,
-    deviceAlt: 'Archive playback device visual',
-    cta: { label: 'Start a Blu-ray Archive', href: '#contact' },
+    title: 'Piano Console',
+    eyebrow: 'A custom system for classic favorites',
+    sources: [
+      { image: dsImage, alt: 'DS icon', label: 'DS Games' },
+      { image: genesisImage, alt: 'Sega Genesis icon', label: 'Sega Genesis Games' },
+    ],
+    outcome: 'One ready-to-play handheld',
+    devices: [
+      { image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'RG35XX Plus' },
+    ],
+    body: 'Blend multiple classic libraries into one polished handheld console so your best old favorites are ready to launch from a single device.',
+    bullets: ['Multi-system setup', 'Travel-friendly hardware', 'Curated for instant play'],
+    cta: { label: 'Build a Piano Console', href: '#contact' },
   },
   {
-    title: 'VHS Memory Rescue',
-    eyebrow: 'Family history and old tapes',
-    media: 'VHS collections',
-    outcome: 'Preserved and usable memories',
-    body: 'The emotional sell lives here. Old recordings, forgotten tapes, and fragile family history become easier to revisit and much less likely to disappear.',
-    bullets: ['Preservation-led storytelling', 'Emotional high-trust offer', 'Ideal mid-page conversion hook'],
-    sourceImage: vhsImage,
-    sourceAlt: 'VHS media art',
-    deviceImage: rg35xxPlus,
-    deviceAlt: 'Portable archive viewer visual',
-    cta: { label: 'Rescue VHS Memories', href: '#contact' },
+    title: 'Add Hundreds of Fan Games to your Collection!',
+    eyebrow: 'Go far beyond stock libraries',
+    sources: [
+      { image: threeDsImage, alt: '3DS icon', label: '3DS' },
+      { image: dsImage, alt: 'DS icon', label: 'DS' },
+      { image: gbaImage, alt: 'Game Boy Advance icon', label: 'Game Boy Advance' },
+      { image: genesisImage, alt: 'Sega Genesis icon', label: 'Sega Genesis' },
+    ],
+    outcome: 'Expanded archive delivery',
+    devices: [
+      { image: usbImage, alt: 'USB icon', label: 'USB Delivery' },
+    ],
+    body: 'Expand the library with fan games, hacks, and extra content so the archive feels deeper, more personal, and more exciting than a standard stock setup.',
+    bullets: ['Fan games and hacks', 'Huge variety in one delivery', 'Great for custom collections'],
+    cta: { label: 'Expand My Collection', href: '#contact' },
   },
   {
-    title: 'Handheld Retro Vault',
-    eyebrow: 'Portable nostalgia',
-    media: 'DS, 3DS, and GBA collections',
-    outcome: 'Compact replay-anywhere setup',
-    body: 'A strong product for people who want old handheld favorites organized into something compact, modern-feeling, and instantly replayable.',
-    bullets: ['Portable-first curation', 'Strong gifting appeal', 'Multi-platform retro support'],
-    sourceImage: threeDsImage,
-    sourceAlt: 'Nintendo 3DS media art',
-    deviceImage: rg35xxPlus,
-    deviceAlt: 'Handheld playback device visual',
-    cta: { label: 'Build a Handheld Vault', href: '#contact' },
+    title: 'Cancel Subscriptions | Save $$$',
+    eyebrow: 'Own your media instead of renting it forever',
+    sources: [
+      { image: blurayImage, alt: 'Blu-ray icon', label: 'Blu-ray Library' },
+    ],
+    outcome: 'Offline home media access',
+    devices: [
+      { image: computerImage, alt: 'Computer icon', label: 'Computer Playback' },
+    ],
+    body: 'Stop chasing streaming catalogs and monthly fees by converting owned media into a permanent offline library you control.',
+    bullets: ['Cut recurring costs', 'Keep access offline', 'Build a permanent home catalog'],
+    cta: { label: 'Replace My Subscriptions', href: '#contact' },
+  },
+  {
+    title: 'All In One Piano Console',
+    eyebrow: 'The big everything build',
+    sources: [
+      { image: ps2Console, alt: 'PlayStation 2 icon', label: 'PS2' },
+      { image: ps1Image, alt: 'PlayStation 1 icon', label: 'PS1' },
+      { image: threeDsImage, alt: '3DS icon', label: '3DS' },
+      { image: dsImage, alt: 'DS icon', label: 'DS' },
+      { image: gbaImage, alt: 'Game Boy Advance icon', label: 'GBA' },
+      { image: genesisImage, alt: 'Sega Genesis icon', label: 'Genesis' },
+    ],
+    outcome: 'Desktop plus handheld ecosystem',
+    devices: [
+      { image: computerImage, alt: 'Desktop computer icon', label: 'Desktop Hub' },
+      { image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'RG35XX Plus' },
+    ],
+    body: 'Bring together your biggest cross-platform library into one flagship setup with both a home base and a portable companion.',
+    bullets: ['Massive mixed library support', 'Desktop and handheld pairing', 'Best showcase offer on the page'],
+    cta: { label: 'Build the All In One Setup', href: '#contact' },
+  },
+  {
+    title: 'Save File and Game Sync BUILT IN!',
+    eyebrow: 'Keep progress moving with you',
+    sources: [
+      { image: computerImage, alt: 'Desktop computer icon', label: 'Desktop Saves' },
+    ],
+    outcome: 'Synced portable play',
+    devices: [
+      { image: rg35xxPlus, alt: 'RG35XX Plus icon', label: 'Handheld Sync' },
+    ],
+    body: 'Move between your desktop setup and handheld device without losing your place, your saves, or your momentum.',
+    bullets: ['Save syncing', 'Cross-device continuity', 'Built for real daily use'],
+    cta: { label: 'Get Sync Built In', href: '#contact' },
   },
 ]
 
@@ -250,9 +297,9 @@ function App() {
         <section className="hero-stage service-stage" data-reveal>
           <div className="hero-stage-intro">
             <p className="eyebrow">CUSTOM CONSOLES • FOREVER MEDIA</p>
-            <h1>Browse the service, center the offer, and let the best archive path step forward.</h1>
+            <h1>Build Your Library</h1>
             <p className="hero-text">
-              Each card represents a real product offer. The side cards tease the next services, and the centered card expands to show exactly what media comes in and what experience comes out.
+              Convert Movies, Shows, and Games into a permanent, offline, FREE Home Console.
             </p>
           </div>
 
@@ -262,13 +309,12 @@ function App() {
             <div className="service-carousel" role="tablist" aria-label="Legacy archive services">
               {heroServices.map((service, index) => {
                 const offset = index - activeService
-                const isActive = offset === 0
                 const isNear = Math.abs(offset) <= 2
 
                 return (
                   <article
                     key={service.title}
-                    className={`service-card ${isActive ? 'active' : ''} ${isNear ? 'near' : 'far'}`}
+                    className={`service-card ${offset === 0 ? 'active' : ''} ${isNear ? 'near' : 'far'}`}
                     data-offset={offset}
                     onClick={() => setActiveService(index)}
                     role="button"
@@ -284,15 +330,25 @@ function App() {
                       <span className="service-eyebrow">{service.eyebrow}</span>
                       <h2>{service.title}</h2>
 
-                      <div className="service-visual-flow">
-                        <div className="service-source-block">
-                          <img src={service.sourceImage} alt={service.sourceAlt} className="service-source-image" />
-                          <span>{service.media}</span>
+                      <div className="service-visual-flow multi-source-flow">
+                        <div className={`service-source-grid source-count-${Math.min(service.sources.length, 6)}`}>
+                          {service.sources.map((source) => (
+                            <div key={`${service.title}-${source.label}`} className="service-source-block compact">
+                              <img src={source.image} alt={source.alt} className="service-source-image" />
+                              <span>{source.label}</span>
+                            </div>
+                          ))}
                         </div>
-                        <div className="service-flow-arrow">→</div>
-                        <div className="service-device-block">
-                          <img src={service.deviceImage} alt={service.deviceAlt} className="service-device-image" />
-                          <span>{service.outcome}</span>
+
+                        <div className="service-flow-arrow flow-center">→</div>
+
+                        <div className={`service-device-grid device-count-${Math.min(service.devices.length, 2)}`}>
+                          {service.devices.map((device) => (
+                            <div key={`${service.title}-${device.label}`} className="service-device-block compact">
+                              <img src={device.image} alt={device.alt} className="service-device-image" />
+                              <span>{device.label}</span>
+                            </div>
+                          ))}
                         </div>
                       </div>
 

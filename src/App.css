@@ -328,10 +328,45 @@ button:hover,
 
 .service-visual-flow {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1.3fr auto 1fr;
   gap: 1rem;
   align-items: center;
   margin-top: 1.4rem;
+}
+
+.multi-source-flow {
+  align-items: stretch;
+}
+
+.service-source-grid,
+.service-device-grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.service-source-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.service-device-grid {
+  grid-template-columns: 1fr;
+}
+
+.service-source-grid.source-count-1,
+.service-device-grid.device-count-1 {
+  grid-template-columns: 1fr;
+}
+
+.service-source-grid.source-count-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.service-source-grid.source-count-3,
+.service-source-grid.source-count-4,
+.service-source-grid.source-count-5,
+.service-source-grid.source-count-6,
+.service-device-grid.device-count-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .service-source-block,
@@ -347,11 +382,21 @@ button:hover,
   text-align: center;
 }
 
+.service-source-block.compact,
+.service-device-block.compact {
+  min-height: 8.75rem;
+}
+
 .service-source-image,
 .service-device-image {
   width: 100%;
   max-height: 9rem;
   object-fit: contain;
+}
+
+.service-source-block.compact .service-source-image,
+.service-device-block.compact .service-device-image {
+  max-height: 5.5rem;
 }
 
 .service-source-block span,
@@ -363,6 +408,10 @@ button:hover,
 .service-flow-arrow {
   font-size: 2rem;
   color: #9ee9ff;
+}
+
+.flow-center {
+  align-self: center;
 }
 
 .service-expanded-copy {
@@ -658,6 +707,17 @@ button:hover,
     grid-template-columns: 1fr;
   }
 
+  .service-source-grid,
+  .service-device-grid,
+  .service-source-grid.source-count-2,
+  .service-source-grid.source-count-3,
+  .service-source-grid.source-count-4,
+  .service-source-grid.source-count-5,
+  .service-source-grid.source-count-6,
+  .service-device-grid.device-count-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .service-flow-arrow {
     transform: rotate(90deg);
     text-align: center;
@@ -695,5 +755,16 @@ button:hover,
 
   .service-carousel {
     grid-auto-columns: 94%;
+  }
+
+  .service-source-grid,
+  .service-device-grid,
+  .service-source-grid.source-count-2,
+  .service-source-grid.source-count-3,
+  .service-source-grid.source-count-4,
+  .service-source-grid.source-count-5,
+  .service-source-grid.source-count-6,
+  .service-device-grid.device-count-2 {
+    grid-template-columns: 1fr;
   }
 }
