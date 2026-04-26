@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 
 import ps2Base from './assets/legacy/ps2-base.webp'
@@ -166,14 +166,18 @@ const proofPoints = [
 function App() {
   const [activeService, setActiveService] = useState(1)
   const [activeFanCard, setActiveFanCard] = useState(0)
+  const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
+  const carouselRef = useRef(null)
 
   useEffect(() => {
+    if (!autoScrollEnabled) return undefined
+
     const timer = window.setInterval(() => {
       setActiveService((current) => (current + 1) % heroServices.length)
     }, 7000)
 
     return () => window.clearInterval(timer)
-  }, [])
+  }, [autoScrollEnabled])
 
   useEffect(() => {
     const fanTimer = window.setInterval(() => {
@@ -201,11 +205,32 @@ function App() {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    const carousel = carouselRef.current
+    if (!carousel) return undefined
+
+    const stopAutoScroll = () => setAutoScrollEnabled(false)
+
+    carousel.addEventListener('wheel', stopAutoScroll, { passive: true })
+    carousel.addEventListener('touchstart', stopAutoScroll, { passive: true })
+    carousel.addEventListener('pointerdown', stopAutoScroll)
+    carousel.addEventListener('scroll', stopAutoScroll, { passive: true })
+
+    return () => {
+      carousel.removeEventListener('wheel', stopAutoScroll)
+      carousel.removeEventListener('touchstart', stopAutoScroll)
+      carousel.removeEventListener('pointerdown', stopAutoScroll)
+      carousel.removeEventListener('scroll', stopAutoScroll)
+    }
+  }, [])
+
   const prevService = () => {
+    setAutoScrollEnabled(false)
     setActiveService((current) => (current === 0 ? heroServices.length - 1 : current - 1))
   }
 
   const nextService = () => {
+    setAutoScrollEnabled(false)
     setActiveService((current) => (current + 1) % heroServices.length)
   }
 
@@ -239,7 +264,7 @@ function App() {
           <div className="service-carousel-shell">
             <button type="button" className="carousel-arrow left" onClick={prevService} aria-label="Previous service">←</button>
 
-            <div className="service-carousel" role="tablist" aria-label="Legacy archive services">
+            <div ref={carouselRef} className="service-carousel" role="tablist" aria-label="Legacy archive services">
               {heroServices.map((service, index) => {
                 const offset = index - activeService
                 const isNear = Math.abs(offset) <= 2
@@ -250,12 +275,16 @@ function App() {
                     key={service.title}
                     className={`service-card ${offset === 0 ? 'active' : ''} ${isNear ? 'near' : 'far'}`}
                     data-offset={offset}
-                    onClick={() => setActiveService(index)}
+                    onClick={() => {
+                      setAutoScrollEnabled(false)
+                      setActiveService(index)
+                    }}
                     role="button"
                     tabIndex={0}
                     onKeyDown={(event) => {
                       if (event.key === 'Enter' || event.key === ' ') {
                         event.preventDefault()
+                        setAutoScrollEnabled(false)
                         setActiveService(index)
                       }
                     }}
@@ -336,7 +365,10 @@ function App() {
                 key={service.title}
                 type="button"
                 className={`hero-dot ${index === activeService ? 'active' : ''}`}
-                onClick={() => setActiveService(index)}
+                onClick={() => {
+                  setAutoScrollEnabled(false)
+                  setActiveService(index)
+                }}
                 aria-label={`Go to ${service.title}`}
               />
             ))}
