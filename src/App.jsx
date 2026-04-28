@@ -21,10 +21,9 @@ const serviceCards = [
       'Retro libraries from Genesis through PS3.',
       'VHS, DVD, and Blu-ray playback support.',
       'Pocket-ready control for portable play.',
-      'Save sync across your favorite devices.',
     ],
     price: '$185 - $699',
-    subline: 'Built to scale from simple setups to full showcase builds.',
+    subline: 'Built to scale from simple setups to showcase builds.',
   },
   {
     title: 'Archive Service',
