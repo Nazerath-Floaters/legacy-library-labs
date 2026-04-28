@@ -4,8 +4,6 @@ import rg35xxPlus from './assets/legacy/rg35xxplus.png'
 import vhsImage from './assets/legacy/vhs.png'
 import genesisImage from './assets/legacy/genesis.png'
 import computerImage from './assets/legacy/computer.png'
-import dvdImage from './assets/legacy/dvd.png'
-import ps2Console from './assets/legacy/ps2-console.png'
 import fanGame2 from './assets/legacy/fan-game-2.webp'
 
 const orderFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScoQfgOt2XlIcp3LDK-njbH1TpxoZin3h4Z6-2fkQoRd0g9DA/viewform?usp=header'
@@ -13,10 +11,12 @@ const orderFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScoQfgOt2XlIcp3LD
 const serviceCards = [
   {
     title: 'Piano Console',
+    accent: 'blue',
+    badge: '🎮',
     image: computerImage,
     secondaryImage: rg35xxPlus,
     description: [
-      'Flagship all in one entertainment bundle.',
+      'Flagship all-in-one entertainment bundle.',
       'Retro libraries from Genesis through PS3.',
       'VHS, DVD, and Blu-ray playback support.',
       'Pocket-ready control for portable play.',
@@ -27,6 +27,8 @@ const serviceCards = [
   },
   {
     title: 'Archive Service',
+    accent: 'gold',
+    badge: '📼',
     image: vhsImage,
     secondaryImage: genesisImage,
     description: [
@@ -35,11 +37,14 @@ const serviceCards = [
       'Prepare clean files for desktop, mobile, or home playback.',
       'Great for families, collectors, and media backup projects.',
     ],
-    price: '$65 + $2.50 per digitization',
+    price: '$65 + $2.50',
+    priceSuffix: 'per digitization',
     subline: 'A simple path for preserving the media you already own.',
   },
   {
     title: 'Fan Games',
+    accent: 'purple',
+    badge: '⭐',
     image: fanGame2,
     secondaryImage: fanGame2,
     description: [
@@ -53,81 +58,101 @@ const serviceCards = [
   },
 ]
 
-const aboutPoints = [
-  'Preserve old media before it disappears to time, damage, and neglect.',
-  'Give people alternatives to disposable streaming culture and algorithm-driven entertainment.',
-  'Return ownership of entertainment back to the customer.',
-  'Treat nostalgia like something worth preserving, not milking.',
+const trustPoints = [
+  {
+    title: 'Trusted by Collectors',
+    text: 'Quality you can rely on.',
+    icon: '🛡️',
+  },
+  {
+    title: 'Privacy First',
+    text: 'Your data stays yours.',
+    icon: '🔒',
+  },
+  {
+    title: 'Fast Turnaround',
+    text: 'Quick, reliable delivery.',
+    icon: '🚀',
+  },
+  {
+    title: 'Support That Cares',
+    text: 'Real people, real help.',
+    icon: '💬',
+  },
 ]
 
 function App() {
   return (
-    <div className="page-shell refined-shell">
+    <div className="page-shell">
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
-      <div className="grid-overlay" />
+      <div className="ambient ambient-three" />
 
-      <header className="hero">
-        <div className="simple-title-wrap">
-          <p className="simple-title">Legacy Library Labs</p>
-        </div>
-
-        <section className="hero-stage refined-hero-stage">
-          <div className="hero-media-frame premium-surface">
-            <div className="hero-media-split">
-              <div className="hero-media-panel left-panel">
-                <img src={ps2Console} alt="Classic PlayStation 2 showcase" className="hero-feature-image hero-feature-console" />
-                <div className="hero-panel-caption">Classic console builds with room for deep libraries and polished frontends.</div>
-              </div>
-              <div className="hero-media-divider" />
-              <div className="hero-media-panel right-panel">
-                <img src={dvdImage} alt="Film and archive media showcase" className="hero-feature-image hero-feature-disc" />
-                <div className="hero-panel-caption">Archive movies, discs, and home media into digital libraries you control.</div>
-              </div>
-            </div>
-            <div className="hero-fade" />
-          </div>
+      <main className="landing-shell">
+        <section className="hero" id="preserve">
+          <p className="hero-kicker">Build. Preserve. Play.</p>
+          <h1>
+            Everything You Need for
+            <span> Retro Gaming &amp; Beyond</span>
+          </h1>
+          <p className="hero-subtitle">
+            Premium consoles, digital archives, and custom game libraries.
+            <br />
+            Built for players, collectors, and creators.
+          </p>
+          <a className="hero-cta" href={orderFormUrl} target="_blank" rel="noreferrer">
+            <span className="cta-icon">🚀</span>
+            Start Your Setup
+          </a>
         </section>
-      </header>
 
-      <main>
-        <p className="browse-note">Browse builds or order custom now through the <a href={orderFormUrl} target="_blank" rel="noreferrer">customer form</a>.</p>
-
-        <section className="service-grid" id="builds">
+        <section className="service-grid" aria-label="Services">
           {serviceCards.map((card) => (
-            <div key={card.title} className="service-stack">
-              <article className="service-card premium-surface warm-card">
+            <article key={card.title} className={`service-card accent-${card.accent}`}>
+              <div className="service-head">
+                <div className="service-badge" aria-hidden="true">{card.badge}</div>
                 <h2>{card.title}</h2>
-                <div className="service-image-wrap">
-                  <img src={card.image} alt={card.title} className="service-main-image" />
-                  <img src={card.secondaryImage} alt="Related media" className="service-secondary-image" />
-                </div>
-                <div className="service-copy">
-                  {card.description.map((line, index) => (
-                    <p key={line}>{index + 1}. {line}</p>
-                  ))}
-                </div>
-              </article>
+              </div>
 
-              <article className="price-card premium-surface warm-card">
-                <p><strong>Price:</strong> {card.price}</p>
-                <p>{card.subline}</p>
-                <p><strong>Order Form:</strong> <a href={orderFormUrl} target="_blank" rel="noreferrer">LINK</a></p>
-              </article>
-            </div>
+              <div className="service-image-wrap">
+                <img src={card.image} alt={card.title} className="service-main-image" />
+                <img src={card.secondaryImage} alt="Related media" className="service-secondary-image" />
+              </div>
+
+              <div className="service-copy">
+                {card.description.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
+
+              <div className="service-footer">
+                <div className="price-block">
+                  <p className="price-line">
+                    <strong>{card.price}</strong>
+                    {card.priceSuffix ? <span>{card.priceSuffix}</span> : null}
+                  </p>
+                  <p>{card.subline}</p>
+                </div>
+
+                <a className="learn-button" href={orderFormUrl} target="_blank" rel="noreferrer">
+                  Learn More
+                  <span aria-hidden="true">›</span>
+                </a>
+              </div>
+            </article>
           ))}
         </section>
 
-        <section className="about-card premium-surface warm-card" id="about">
-          <p className="about-title">About:</p>
-          <p className="about-subtitle">LLA (Legacy Archive Library)</p>
-          <p>We have four primary objectives:</p>
-          <ol>
-            {aboutPoints.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ol>
-          <p className="support-line">Support and follow us for more info.</p>
+        <section className="trust-row" aria-label="Trust points">
+          {trustPoints.map((point) => (
+            <div key={point.title} className="trust-card">
+              <div className="trust-icon" aria-hidden="true">{point.icon}</div>
+              <div>
+                <p className="trust-title">{point.title}</p>
+                <p className="trust-text">{point.text}</p>
+              </div>
+            </div>
+          ))}
         </section>
       </main>
     </div>
