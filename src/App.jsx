@@ -13,6 +13,7 @@ const serviceCards = [
     title: 'Piano Console',
     accent: 'blue',
     badge: '🎮',
+    badgeClass: 'badge-gamepad',
     image: computerImage,
     secondaryImage: rg35xxPlus,
     description: [
@@ -29,6 +30,7 @@ const serviceCards = [
     title: 'Archive Service',
     accent: 'gold',
     badge: '📼',
+    badgeClass: 'badge-archive',
     image: vhsImage,
     secondaryImage: genesisImage,
     description: [
@@ -45,6 +47,7 @@ const serviceCards = [
     title: 'Fan Games',
     accent: 'purple',
     badge: '⭐',
+    badgeClass: 'badge-star',
     image: fanGame2,
     secondaryImage: fanGame2,
     description: [
@@ -110,11 +113,11 @@ function App() {
           {serviceCards.map((card) => (
             <article key={card.title} className={`service-card accent-${card.accent}`}>
               <div className="service-head">
-                <div className="service-badge" aria-hidden="true">{card.badge}</div>
+                <div className={`service-badge ${card.badgeClass || ''}`} aria-hidden="true">{card.badge}</div>
                 <h2>{card.title}</h2>
               </div>
 
-              <div className="service-image-wrap">
+              <div className={`service-image-wrap image-glow-${card.accent}`}>
                 <img src={card.image} alt={card.title} className="service-main-image" />
                 <img src={card.secondaryImage} alt="Related media" className="service-secondary-image" />
               </div>
@@ -134,8 +137,8 @@ function App() {
                   <p>{card.subline}</p>
                 </div>
 
-                <a className="learn-button" href={orderFormUrl} target="_blank" rel="noreferrer">
-                  Learn More
+                <a className={`learn-button button-${card.accent}`} href={orderFormUrl} target="_blank" rel="noreferrer">
+                  <span>Learn More</span>
                   <span aria-hidden="true">›</span>
                 </a>
               </div>

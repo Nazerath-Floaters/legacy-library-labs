@@ -227,20 +227,46 @@ img {
 
 .service-image-wrap {
   position: relative;
-  min-height: 12.8rem;
+  min-height: 13.4rem;
   margin: 0.8rem 0 0.55rem;
   display: grid;
   place-items: center;
+  isolation: isolate;
+}
+
+.service-image-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 8% 10% 16%;
+  border-radius: 50%;
+  filter: blur(28px);
+  opacity: 0.85;
+  z-index: 0;
+}
+
+.image-glow-blue::before {
+  background: radial-gradient(circle, rgba(81, 157, 255, 0.34) 0%, rgba(81, 157, 255, 0.18) 42%, transparent 74%);
+}
+
+.image-glow-gold::before {
+  background: radial-gradient(circle, rgba(255, 170, 63, 0.38) 0%, rgba(255, 170, 63, 0.2) 42%, transparent 74%);
+}
+
+.image-glow-purple::before {
+  background: radial-gradient(circle, rgba(180, 96, 255, 0.34) 0%, rgba(180, 96, 255, 0.18) 42%, transparent 74%);
 }
 
 .service-main-image {
-  max-height: 12.5rem;
+  position: relative;
+  z-index: 1;
+  max-height: 12.8rem;
   object-fit: contain;
   filter: drop-shadow(0 20px 28px rgba(19, 24, 40, 0.22));
 }
 
 .service-secondary-image {
   position: absolute;
+  z-index: 2;
   right: 0.35rem;
   bottom: 0.55rem;
   width: 34%;
@@ -250,20 +276,35 @@ img {
   filter: drop-shadow(0 16px 24px rgba(19, 24, 40, 0.22));
 }
 
+.service-card:nth-child(1) .service-image-wrap {
+  min-height: 13.9rem;
+}
+
 .service-card:nth-child(1) .service-main-image {
-  max-height: 11.3rem;
+  max-height: 11.5rem;
+  transform: translateX(-1rem);
 }
 
 .service-card:nth-child(1) .service-secondary-image {
-  right: 1.2rem;
-  bottom: 0.5rem;
-  width: 39%;
-  max-height: 8.1rem;
+  right: 2.4rem;
+  bottom: 0.1rem;
+  width: 47%;
+  max-height: 9.7rem;
+  transform: rotate(-2deg);
+}
+
+.service-card:nth-child(2) .service-main-image {
+  max-height: 11.4rem;
 }
 
 .service-card:nth-child(2) .service-secondary-image {
+  right: 0.9rem;
   width: 26%;
   max-height: 4.6rem;
+}
+
+.service-card:nth-child(3) .service-main-image {
+  max-height: 12.2rem;
 }
 
 .service-card:nth-child(3) .service-secondary-image {
@@ -293,20 +334,17 @@ img {
 }
 
 .accent-blue .service-copy p::before,
-.accent-blue .price-line strong,
-.accent-blue .learn-button {
+.accent-blue .price-line strong {
   color: #2e74eb;
 }
 
 .accent-gold .service-copy p::before,
-.accent-gold .price-line strong,
-.accent-gold .learn-button {
+.accent-gold .price-line strong {
   color: #e68415;
 }
 
 .accent-purple .service-copy p::before,
-.accent-purple .price-line strong,
-.accent-purple .learn-button {
+.accent-purple .price-line strong {
   color: #8f42f5;
 }
 
@@ -321,14 +359,17 @@ img {
 }
 
 .price-block {
-  max-width: 14rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .price-line {
   display: flex;
   align-items: baseline;
+  flex-wrap: nowrap;
   gap: 0.35rem;
   margin: 0;
+  white-space: nowrap;
   font-size: 0.98rem;
 }
 
@@ -354,18 +395,35 @@ img {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-width: 8.7rem;
+  min-width: 9.5rem;
   padding: 0.92rem 1.2rem;
   border-radius: 0.95rem;
   color: #fff;
   font-weight: 800;
-  background: currentColor;
-  box-shadow: inset 0 0 0 999px rgba(255, 255, 255, 0.02), 0 14px 22px rgba(18, 25, 52, 0.18);
+  white-space: nowrap;
+  box-shadow: 0 14px 22px rgba(18, 25, 52, 0.18);
 }
 
-.learn-button span {
+.learn-button span:first-child {
+  color: #fff;
+}
+
+.learn-button span:last-child {
   font-size: 1.15rem;
   line-height: 1;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.button-blue {
+  background: linear-gradient(180deg, #3590ff, #2368e8);
+}
+
+.button-gold {
+  background: linear-gradient(180deg, #ffa63d, #f08a10);
+}
+
+.button-purple {
+  background: linear-gradient(180deg, #b150ff, #8b37ec);
 }
 
 .trust-row {
@@ -437,6 +495,7 @@ img {
 
   .hero h1 {
     max-width: 100%;
+    font-size: clamp(2.8rem, 13vw, 4.2rem);
   }
 
   .hero-subtitle {
@@ -447,13 +506,43 @@ img {
     width: 100%;
   }
 
+  .service-grid {
+    gap: 0.85rem;
+  }
+
   .service-card {
     padding: 1rem;
+    border-radius: 1.35rem;
+  }
+
+  .service-image-wrap {
+    min-height: 12.2rem;
+  }
+
+  .service-card:nth-child(1) .service-main-image {
+    max-height: 10.4rem;
+    transform: translateX(-0.6rem);
+  }
+
+  .service-card:nth-child(1) .service-secondary-image {
+    right: 1.4rem;
+    width: 42%;
+    max-height: 8rem;
+  }
+
+  .service-copy {
+    gap: 0.5rem;
+    font-size: 0.95rem;
   }
 
   .service-footer {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.85rem;
+  }
+
+  .price-line {
+    white-space: normal;
   }
 
   .learn-button {
