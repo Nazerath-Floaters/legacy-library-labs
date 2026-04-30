@@ -83,7 +83,7 @@ const trustPoints = [
   },
 ]
 
-const customFormAction = 'https://formspree.io/f/your-form-id'
+const customFormAction = 'https://docs.google.com/forms/d/e/1FAIpQLScoQfgOt2XlIcp3LDK-njbH1TpxoZin3h4Z6-2fkQoRd0g9DA/formResponse'
 
 function App() {
   return (
@@ -152,66 +152,68 @@ function App() {
             <p className="form-kicker">Custom Order Form</p>
             <h2>Request your build directly from the site.</h2>
             <p>
-              This replaces the plain Google Form flow with a storefront-matched intake form.
-              Submissions can be routed to <strong>burketmicah@gmail.com</strong> once the final email endpoint is connected.
+              This form keeps the storefront look while submitting into your existing Google intake setup behind the scenes.
             </p>
           </div>
 
-          <form className="custom-order-form" action={customFormAction} method="POST">
+          <form className="custom-order-form" action={customFormAction} method="POST" target="hidden-google-form-target">
             <div className="form-grid">
               <label>
-                <span>Name</span>
-                <input type="text" name="name" placeholder="Your name" required />
-              </label>
-              <label>
                 <span>Email</span>
-                <input type="email" name="email" placeholder="you@example.com" required />
+                <input type="email" name="emailAddress" placeholder="you@example.com" required />
               </label>
               <label>
-                <span>Preferred Contact</span>
-                <select name="contact_preference" defaultValue="Email">
-                  <option>Email</option>
-                  <option>Discord</option>
-                  <option>Text Message</option>
+                <span>Phone Number</span>
+                <input type="text" name="entry.1338169496" placeholder="Optional contact number" />
+              </label>
+              <label>
+                <span>Base Hardware</span>
+                <select name="entry.1957698574" defaultValue="Budget Mini PC ($150)">
+                  <option>USB ($30)</option>
+                  <option>SSD ($100)</option>
+                  <option>Budget  Mini PC ($150)</option>
+                  <option>Budget Handheld Gameboy Style ($75)</option>
+                  <option>SUPER Handheld (PS2 Capable) ($290)</option>
+                  <option>Gaming Rig PC ($545)</option>
+                  <option>Bring Your Own Device ($0.00) + Shipping</option>
+                  <option>Gaming Laptop ($745)</option>
+                  <option>Other</option>
                 </select>
               </label>
               <label>
-                <span>What are you ordering?</span>
-                <select name="service_interest" defaultValue="Piano Console">
-                  <option>Piano Console</option>
-                  <option>Archive Service</option>
-                  <option>Fan Games</option>
-                  <option>Custom Build</option>
+                <span>Digitize My Media</span>
+                <select name="entry.78145169" defaultValue="Send My Own Digitized Media (N/A)">
+                  <option>DVD ($1.50)</option>
+                  <option>Blueray ($2.00)</option>
+                  <option>Gameboy Advanced ($2.50)</option>
+                  <option>DS ($2.50)</option>
+                  <option>3DS ($2.50)</option>
+                  <option>PS1 ($1.50)</option>
+                  <option>PS2 ($2.50)</option>
+                  <option>Sega Genesis ($4.50)</option>
+                  <option>GameCube ($2.50)</option>
+                  <option>Send My Own Digitized Media (N/A)</option>
+                  <option>Other</option>
                 </select>
               </label>
-              <label>
-                <span>Budget Range</span>
-                <input type="text" name="budget" placeholder="$200 - $700" />
-              </label>
-              <label>
-                <span>Timeline</span>
-                <input type="text" name="timeline" placeholder="As soon as possible / Flexible" />
-              </label>
               <label className="full-width">
-                <span>Project Details</span>
-                <textarea name="details" rows="6" placeholder="Tell us what kind of build, media archive, or add-ons you want." required />
-              </label>
-              <label className="full-width">
-                <span>Anything else?</span>
-                <textarea name="notes" rows="4" placeholder="Special requests, hardware preferences, game eras, media types, etc." />
+                <span>Personalize</span>
+                <textarea name="entry.1232892038" rows="7" placeholder="Describe exactly what you want built, what media needs digitizing, device preferences, links, budget notes, timelines, and anything else important." required />
               </label>
             </div>
 
-            <input type="hidden" name="_subject" value="Legacy Library Labs website order form" />
-            <input type="hidden" name="_replyto" value="burketmicah@gmail.com" />
+            <input type="hidden" name="fvv" value="1" />
+            <input type="hidden" name="fbzx" value="-4738323365637788260" />
+            <input type="hidden" name="pageHistory" value="0" />
 
             <div className="form-actions">
               <button type="submit" className="submit-order-button">Send Request</button>
               <p className="form-note">
-                I still need to swap in the live email form endpoint so submissions actually route to your inbox.
+                Submissions are sent into the existing Google intake flow without showing the public Google Form page.
               </p>
             </div>
           </form>
+          <iframe title="hidden-google-form-target" name="hidden-google-form-target" className="hidden-form-frame" />
         </section>
 
         <section className="trust-row" aria-label="Trust points">

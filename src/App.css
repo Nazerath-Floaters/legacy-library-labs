@@ -578,6 +578,10 @@ img {
   margin-top: 0.15rem;
 }
 
+.hidden-form-frame {
+  display: none;
+}
+
 @media (max-width: 1024px) {
   .service-grid,
   .trust-row,
