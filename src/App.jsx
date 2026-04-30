@@ -83,6 +83,8 @@ const trustPoints = [
   },
 ]
 
+const customFormAction = 'https://formspree.io/f/your-form-id'
+
 function App() {
   return (
     <div className="page-shell">
@@ -102,7 +104,7 @@ function App() {
             <br />
             Built for players, collectors, and creators.
           </p>
-          <a className="hero-cta" href={orderFormUrl} target="_blank" rel="noreferrer">
+          <a className="hero-cta" href="#custom-order-form">
             <span className="cta-icon">🚀</span>
             Start Your Setup
           </a>
@@ -136,13 +138,80 @@ function App() {
                   <p>{card.subline}</p>
                 </div>
 
-                <a className={`learn-button button-${card.accent}`} href={orderFormUrl} target="_blank" rel="noreferrer">
+                <a className={`learn-button button-${card.accent}`} href="#custom-order-form">
                   <span>Learn More</span>
                   <span aria-hidden="true">›</span>
                 </a>
               </div>
             </article>
           ))}
+        </section>
+
+        <section className="order-form-card" id="custom-order-form">
+          <div className="form-intro">
+            <p className="form-kicker">Custom Order Form</p>
+            <h2>Request your build directly from the site.</h2>
+            <p>
+              This replaces the plain Google Form flow with a storefront-matched intake form.
+              Submissions can be routed to <strong>burketmicah@gmail.com</strong> once the final email endpoint is connected.
+            </p>
+          </div>
+
+          <form className="custom-order-form" action={customFormAction} method="POST">
+            <div className="form-grid">
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Your name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+              <label>
+                <span>Preferred Contact</span>
+                <select name="contact_preference" defaultValue="Email">
+                  <option>Email</option>
+                  <option>Discord</option>
+                  <option>Text Message</option>
+                </select>
+              </label>
+              <label>
+                <span>What are you ordering?</span>
+                <select name="service_interest" defaultValue="Piano Console">
+                  <option>Piano Console</option>
+                  <option>Archive Service</option>
+                  <option>Fan Games</option>
+                  <option>Custom Build</option>
+                </select>
+              </label>
+              <label>
+                <span>Budget Range</span>
+                <input type="text" name="budget" placeholder="$200 - $700" />
+              </label>
+              <label>
+                <span>Timeline</span>
+                <input type="text" name="timeline" placeholder="As soon as possible / Flexible" />
+              </label>
+              <label className="full-width">
+                <span>Project Details</span>
+                <textarea name="details" rows="6" placeholder="Tell us what kind of build, media archive, or add-ons you want." required />
+              </label>
+              <label className="full-width">
+                <span>Anything else?</span>
+                <textarea name="notes" rows="4" placeholder="Special requests, hardware preferences, game eras, media types, etc." />
+              </label>
+            </div>
+
+            <input type="hidden" name="_subject" value="Legacy Library Labs website order form" />
+            <input type="hidden" name="_replyto" value="burketmicah@gmail.com" />
+
+            <div className="form-actions">
+              <button type="submit" className="submit-order-button">Send Request</button>
+              <p className="form-note">
+                I still need to swap in the live email form endpoint so submissions actually route to your inbox.
+              </p>
+            </div>
+          </form>
         </section>
 
         <section className="trust-row" aria-label="Trust points">
