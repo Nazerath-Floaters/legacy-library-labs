@@ -533,6 +533,16 @@ img {
   line-height: 1.5;
 }
 
+.form-success-notice {
+  margin: 1rem 0 0;
+  padding: 0.9rem 1rem;
+  border-radius: 0.95rem;
+  background: rgba(62, 127, 255, 0.08);
+  border: 1px solid rgba(62, 127, 255, 0.18);
+  color: #2752a9;
+  font-weight: 600;
+}
+
 .trust-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

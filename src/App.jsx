@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 
 import rg35xxPlus from './assets/legacy/rg35xxplus.png'
@@ -86,6 +87,12 @@ const trustPoints = [
 const customFormAction = 'https://docs.google.com/forms/d/e/1FAIpQLScoQfgOt2XlIcp3LDK-njbH1TpxoZin3h4Z6-2fkQoRd0g9DA/formResponse'
 
 function App() {
+  const [submitNotice, setSubmitNotice] = useState('')
+
+  const handleFormSubmit = () => {
+    setSubmitNotice('Request sent. If Google accepts it, it should appear in the linked sheet shortly.')
+  }
+
   return (
     <div className="page-shell">
       <div className="ambient ambient-one" />
@@ -156,7 +163,7 @@ function App() {
             </p>
           </div>
 
-          <form className="custom-order-form" action={customFormAction} method="POST" target="hidden-google-form-target">
+          <form className="custom-order-form" action={customFormAction} method="POST" target="hidden-google-form-target" onSubmit={handleFormSubmit}>
             <div className="form-grid">
               <label>
                 <span>Email</span>
@@ -168,7 +175,8 @@ function App() {
               </label>
               <label>
                 <span>Base Hardware</span>
-                <select name="entry.1957698574" defaultValue="Budget Mini PC ($150)">
+                <input type="hidden" name="entry.1957698574_sentinel" value="" />
+                <select name="entry.1957698574" defaultValue="Budget  Mini PC ($150)">
                   <option>USB ($30)</option>
                   <option>SSD ($100)</option>
                   <option>Budget  Mini PC ($150)</option>
@@ -182,6 +190,7 @@ function App() {
               </label>
               <label>
                 <span>Digitize My Media</span>
+                <input type="hidden" name="entry.78145169_sentinel" value="" />
                 <select name="entry.78145169" defaultValue="Send My Own Digitized Media (N/A)">
                   <option>DVD ($1.50)</option>
                   <option>Blueray ($2.00)</option>
@@ -214,6 +223,7 @@ function App() {
                 Submissions are sent into the existing Google intake flow without showing the public Google Form page.
               </p>
             </div>
+            {submitNotice ? <p className="form-success-notice">{submitNotice}</p> : null}
           </form>
           <iframe title="hidden-google-form-target" name="hidden-google-form-target" className="hidden-form-frame" />
         </section>
