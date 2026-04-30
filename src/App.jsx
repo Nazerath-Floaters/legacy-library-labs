@@ -55,7 +55,7 @@ const serviceCards = [
       'Great for custom retro bundles and themed builds.',
       'Designed to make a library feel unique instead of generic.',
     ],
-    price: 'At Cost Upsale',
+    price: 'Free With Your Build',
     subline: 'A fun add-on layer for people who want more than the basics.',
   },
 ]
@@ -94,8 +94,8 @@ function App() {
         <section className="hero" id="preserve">
           <p className="hero-kicker">Build. Preserve. Play.</p>
           <h1>
-            Everything You Need for
-            <span> Retro Gaming &amp; Beyond</span>
+            Your Dream Console
+            <span> Starts Here</span>
           </h1>
           <p className="hero-subtitle">
             Premium consoles, digital archives, and custom game libraries.

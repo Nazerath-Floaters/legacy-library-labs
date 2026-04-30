@@ -109,7 +109,7 @@ img {
 
 .hero h1 {
   margin: 1rem auto 0;
-  max-width: 12ch;
+  max-width: 9.5ch;
   font-size: clamp(3rem, 7vw, 5.35rem);
   line-height: 0.96;
   letter-spacing: -0.06em;
@@ -351,26 +351,26 @@ img {
 
 .service-footer {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.8rem;
   margin-top: 0.9rem;
   padding-top: 0.9rem;
   border-top: 1px solid rgba(33, 42, 75, 0.12);
 }
 
 .price-block {
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
 .price-line {
   display: flex;
   align-items: baseline;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 0.35rem;
   margin: 0;
-  white-space: nowrap;
+  white-space: normal;
   font-size: 0.98rem;
 }
 
@@ -382,6 +382,7 @@ img {
 .price-line span {
   color: #6d748f;
   font-size: 0.88rem;
+  white-space: nowrap;
 }
 
 .price-block p:last-child {
@@ -396,8 +397,10 @@ img {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-width: 9.5rem;
-  padding: 0.92rem 1.2rem;
+  flex: 0 0 auto;
+  min-width: 8.5rem;
+  max-width: 100%;
+  padding: 0.92rem 1.05rem;
   border-radius: 0.95rem;
   color: #fff;
   font-weight: 800;
@@ -582,7 +585,7 @@ img {
   }
 
   .price-line {
-    white-space: nowrap;
+    white-space: normal;
   }
 
   .price-line strong {
