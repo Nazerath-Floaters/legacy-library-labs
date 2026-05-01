@@ -8,6 +8,7 @@ import computerImage from './assets/legacy/computer.png'
 import fanGame2 from './assets/legacy/fan-game-2.webp'
 
 const orderFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScoQfgOt2XlIcp3LDK-njbH1TpxoZin3h4Z6-2fkQoRd0g9DA/viewform?usp=header'
+const appsScriptEndpoint = 'https://script.google.com/macros/s/AKfycbxCX-oQ2FeiPlsWCG1ozIy4YX3KSynpIsC59yVAOeGM-TI_Lyz0h3Lk2MffN32K7dw/exec'
 
 const serviceCards = [
   {
@@ -88,9 +89,54 @@ const customFormAction = 'https://docs.google.com/forms/d/e/1FAIpQLScoQfgOt2XlIc
 
 function App() {
   const [submitNotice, setSubmitNotice] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleFormSubmit = () => {
-    setSubmitNotice('Request sent. If Google accepts it, it should appear in the linked sheet shortly.')
+  const handleFormSubmit = async (event) => {
+    event.preventDefault()
+
+    if (appsScriptEndpoint.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE')) {
+      setSubmitNotice('Form backend is not connected yet. Add your Google Apps Script web app URL and try again.')
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitNotice('Sending your request...')
+
+    const formData = new FormData(event.currentTarget)
+    const payload = {
+      email: formData.get('email')?.toString().trim() || '',
+      phone: formData.get('phone')?.toString().trim() || '',
+      hardware: formData.get('hardware')?.toString().trim() || '',
+      digitize: formData.get('digitize')?.toString().trim() || '',
+      details: formData.get('details')?.toString().trim() || '',
+      submittedAt: new Date().toISOString(),
+      source: window.location.href,
+      userAgent: navigator.userAgent,
+    }
+
+    try {
+      const response = await fetch(appsScriptEndpoint, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify(payload),
+      })
+
+      const result = await response.json().catch(() => ({}))
+
+      if (!response.ok || result.ok === false) {
+        throw new Error(result.error || 'Submission failed')
+      }
+
+      setSubmitNotice('Request sent successfully. We will review it and follow up soon.')
+      event.currentTarget.reset()
+    } catch (error) {
+      setSubmitNotice('Submission failed. Please try again in a moment, or use the direct order form link below.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -159,24 +205,23 @@ function App() {
             <p className="form-kicker">Custom Order Form</p>
             <h2>Request your build directly from the site.</h2>
             <p>
-              This form keeps the storefront look while submitting into your existing Google intake setup behind the scenes.
+              This form keeps the storefront look while sending submissions into a private spreadsheet backend.
             </p>
           </div>
 
-          <form className="custom-order-form" action={customFormAction} method="POST" target="hidden-google-form-target" onSubmit={handleFormSubmit}>
+          <form className="custom-order-form" onSubmit={handleFormSubmit}>
             <div className="form-grid">
               <label>
                 <span>Email</span>
-                <input type="email" name="emailAddress" placeholder="you@example.com" required />
+                <input type="email" name="email" placeholder="you@example.com" required />
               </label>
               <label>
                 <span>Phone Number</span>
-                <input type="text" name="entry.1338169496" placeholder="Optional contact number" />
+                <input type="text" name="phone" placeholder="Optional contact number" />
               </label>
               <label>
                 <span>Base Hardware</span>
-                <input type="hidden" name="entry.1957698574_sentinel" value="" />
-                <select name="entry.1957698574" defaultValue="Budget  Mini PC ($150)">
+                <select name="hardware" defaultValue="Budget  Mini PC ($150)">
                   <option>USB ($30)</option>
                   <option>SSD ($100)</option>
                   <option>Budget  Mini PC ($150)</option>
@@ -190,8 +235,7 @@ function App() {
               </label>
               <label>
                 <span>Digitize My Media</span>
-                <input type="hidden" name="entry.78145169_sentinel" value="" />
-                <select name="entry.78145169" defaultValue="Send My Own Digitized Media (N/A)">
+                <select name="digitize" defaultValue="Send My Own Digitized Media (N/A)">
                   <option>DVD ($1.50)</option>
                   <option>Blueray ($2.00)</option>
                   <option>Gameboy Advanced ($2.50)</option>
@@ -207,25 +251,22 @@ function App() {
               </label>
               <label className="full-width">
                 <span>Personalize</span>
-                <textarea name="entry.1232892038" rows="7" placeholder="Describe exactly what you want built, what media needs digitizing, device preferences, links, budget notes, timelines, and anything else important." required />
+                <textarea name="details" rows="7" placeholder="Describe exactly what you want built, what media needs digitizing, device preferences, links, budget notes, timelines, and anything else important." required />
               </label>
             </div>
 
-            <input type="hidden" name="fvv" value="1" />
-            <input type="hidden" name="partialResponse" value="[null,null,&quot;8587773801775500531&quot;]" />
-            <input type="hidden" name="fbzx" value="8587773801775500531" />
-            <input type="hidden" name="pageHistory" value="0" />
-            <input type="hidden" name="submissionTimestamp" value="-1" />
-
             <div className="form-actions">
-              <button type="submit" className="submit-order-button">Send Request</button>
+              <button type="submit" className="submit-order-button" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send Request'}
+              </button>
               <p className="form-note">
-                Submissions are sent into the existing Google intake flow without showing the public Google Form page.
+                Submissions go to a private sheet. If the form gives you trouble, use the direct intake form instead.
+                {' '}
+                <a href={orderFormUrl} target="_blank" rel="noreferrer">Open direct form</a>
               </p>
             </div>
             {submitNotice ? <p className="form-success-notice">{submitNotice}</p> : null}
           </form>
-          <iframe title="hidden-google-form-target" name="hidden-google-form-target" className="hidden-form-frame" />
         </section>
 
         <section className="trust-row" aria-label="Trust points">
