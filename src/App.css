@@ -505,6 +505,14 @@ img {
   grid-column: 1 / -1;
 }
 
+.honeypot-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-actions {
   display: flex;
   align-items: center;

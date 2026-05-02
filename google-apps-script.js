@@ -1,11 +1,15 @@
-function doOptions() {
-  return createJsonResponse({ ok: true })
+function doGet() {
+  return createJsonResponse({ ok: true, message: 'Legacy Library intake endpoint is live.' })
 }
 
 function doPost(e) {
   try {
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet()
     const data = JSON.parse(e.postData.contents || '{}')
+
+    if (data.company) {
+      return createJsonResponse({ ok: true, ignored: true })
+    }
 
     sheet.appendRow([
       new Date(),

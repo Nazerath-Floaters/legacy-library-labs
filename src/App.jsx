@@ -9,6 +9,7 @@ import fanGame2 from './assets/legacy/fan-game-2.webp'
 
 const orderFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScoQfgOt2XlIcp3LDK-njbH1TpxoZin3h4Z6-2fkQoRd0g9DA/viewform?usp=header'
 const appsScriptEndpoint = 'https://script.google.com/macros/s/AKfycbxCX-oQ2FeiPlsWCG1ozIy4YX3KSynpIsC59yVAOeGM-TI_Lyz0h3Lk2MffN32K7dw/exec'
+const honeypotFieldName = 'company'
 
 const serviceCards = [
   {
@@ -112,25 +113,20 @@ function App() {
       submittedAt: new Date().toISOString(),
       source: window.location.href,
       userAgent: navigator.userAgent,
+      [honeypotFieldName]: formData.get(honeypotFieldName)?.toString().trim() || '',
     }
 
     try {
-      const response = await fetch(appsScriptEndpoint, {
+      await fetch(appsScriptEndpoint, {
         method: 'POST',
-        mode: 'cors',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'text/plain;charset=utf-8',
         },
         body: JSON.stringify(payload),
       })
 
-      const result = await response.json().catch(() => ({}))
-
-      if (!response.ok || result.ok === false) {
-        throw new Error(result.error || 'Submission failed')
-      }
-
-      setSubmitNotice('Request sent successfully. We will review it and follow up soon.')
+      setSubmitNotice('Request sent. If it does not appear shortly, use the direct intake form link below.')
       event.currentTarget.reset()
     } catch (error) {
       setSubmitNotice('Submission failed. Please try again in a moment, or use the direct order form link below.')
@@ -218,6 +214,10 @@ function App() {
               <label>
                 <span>Phone Number</span>
                 <input type="text" name="phone" placeholder="Optional contact number" />
+              </label>
+              <label className="honeypot-field" aria-hidden="true">
+                <span>Company</span>
+                <input type="text" name="company" tabIndex="-1" autoComplete="off" />
               </label>
               <label>
                 <span>Base Hardware</span>
