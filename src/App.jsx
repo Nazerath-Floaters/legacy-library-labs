@@ -116,6 +116,8 @@ function App() {
       [honeypotFieldName]: formData.get(honeypotFieldName)?.toString().trim() || '',
     }
 
+    let requestSent = false
+
     try {
       await fetch(appsScriptEndpoint, {
         method: 'POST',
@@ -125,12 +127,16 @@ function App() {
         },
         body: JSON.stringify(payload),
       })
-
-      setSubmitNotice('Request sent. If it does not appear shortly, use the direct intake form link below.')
-      event.currentTarget.reset()
+      requestSent = true
     } catch (error) {
-      setSubmitNotice('Submission failed. Please try again in a moment, or use the direct order form link below.')
+      console.warn('Apps Script submission fallback triggered.', error)
     } finally {
+      if (requestSent) {
+        setSubmitNotice('Request sent. If it does not appear shortly, use the direct intake form link below.')
+        event.currentTarget.reset()
+      } else {
+        setSubmitNotice('We could not confirm the send from this browser. If no new row appears in the sheet shortly, use the direct order form link below.')
+      }
       setIsSubmitting(false)
     }
   }
