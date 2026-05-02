@@ -307,24 +307,24 @@ img {
 }
 
 .service-card:nth-child(2) .service-main-image {
-  max-height: 11.4rem;
-  transform: translateX(-0.35rem);
+  max-height: 10.5rem;
+  transform: translate(-0.35rem, -0.15rem);
 }
 
 .service-card:nth-child(2) .service-secondary-image {
-  right: 0.35rem;
-  bottom: 0.45rem;
-  width: 23%;
-  max-height: 4.4rem;
-  transform: rotate(-10deg);
+  right: 1.15rem;
+  bottom: 0.1rem;
+  width: 18%;
+  max-height: 3.3rem;
+  transform: rotate(-9deg);
 }
 
 .service-card:nth-child(2) .service-tertiary-image {
-  right: 3.15rem;
-  bottom: 0.85rem;
-  width: 23%;
-  max-height: 4.4rem;
-  transform: rotate(8deg);
+  right: 3.8rem;
+  bottom: 0.2rem;
+  width: 18%;
+  max-height: 3.3rem;
+  transform: rotate(7deg);
 }
 
 .service-card:nth-child(3) .service-main-image {
@@ -847,7 +847,22 @@ img {
   }
 
   .service-card:nth-child(2) .service-main-image {
-    max-height: 10rem;
+    max-height: 9.2rem;
+    transform: translate(-0.2rem, -0.1rem);
+  }
+
+  .service-card:nth-child(2) .service-secondary-image {
+    right: 0.65rem;
+    bottom: -0.05rem;
+    width: 19%;
+    max-height: 2.85rem;
+  }
+
+  .service-card:nth-child(2) .service-tertiary-image {
+    right: 2.75rem;
+    bottom: 0.05rem;
+    width: 19%;
+    max-height: 2.85rem;
   }
 
   .service-card:nth-child(3) .service-main-image {
@@ -873,7 +888,12 @@ img {
   }
 
   .price-line {
-    white-space: normal;
+    white-space: nowrap;
+    font-size: 0.9rem;
+  }
+
+  .service-card:nth-child(3) .price-line strong {
+    font-size: 1.35rem;
   }
 
   .price-line strong {
