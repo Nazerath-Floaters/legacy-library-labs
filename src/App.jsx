@@ -220,17 +220,41 @@ function App() {
               <h3>Your order request is officially in the queue.</h3>
               <p>
                 Thanks for sending your build details. An agent will be reaching out shortly to coordinate the order,
-                confirm the setup, and go over any next steps.
+                confirm the setup, and walk you through the next steps.
               </p>
+              <div className="success-pill-row" aria-label="Order follow-up details">
+                <div className="success-pill">
+                  <span className="success-pill-label">Response Window</span>
+                  <strong>Usually within 1 to 2 business days</strong>
+                </div>
+                <div className="success-pill">
+                  <span className="success-pill-label">Status</span>
+                  <strong>Request received and pending review</strong>
+                </div>
+              </div>
               <div className="success-next-steps">
                 <div>
                   <strong>What happens next?</strong>
                   <ul>
                     <li>We review your requested hardware, media, and personalization notes.</li>
-                    <li>We follow up to confirm pricing, timing, and any missing details.</li>
-                    <li>We help coordinate the build and delivery process from there.</li>
+                    <li>We follow up to confirm pricing, timing, delivery details, and any missing info.</li>
+                    <li>We coordinate the build process and keep you updated as the order moves forward.</li>
                   </ul>
                 </div>
+              </div>
+              <div className="success-faq-grid" aria-label="Order FAQ">
+                <article className="success-faq-card">
+                  <strong>What should I do now?</strong>
+                  <p>Keep an eye on the email or contact details you submitted so we can reach you quickly.</p>
+                </article>
+                <article className="success-faq-card">
+                  <strong>Is payment due yet?</strong>
+                  <p>Not yet. Final pricing and order details are confirmed with you during follow-up.</p>
+                </article>
+                <article className="success-faq-card">
+                  <strong>Need to add details?</strong>
+                  <p>Submit another request or use the direct intake form if you want to send more context.</p>
+                </article>
               </div>
               <div className="form-actions success-actions">
                 <a className="submit-order-button success-link-button" href={orderFormUrl} target="_blank" rel="noreferrer">

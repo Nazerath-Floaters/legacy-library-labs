@@ -572,6 +572,36 @@ img {
   line-height: 1.6;
 }
 
+.success-pill-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.success-pill {
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(245, 248, 255, 0.92));
+  border: 1px solid rgba(115, 130, 198, 0.16);
+}
+
+.success-pill-label {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #5870ad;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.success-pill strong {
+  color: #1e2944;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
 .success-next-steps {
   margin-top: 1rem;
   padding: 1rem;
@@ -591,6 +621,31 @@ img {
   padding-left: 1.2rem;
   color: #4c5978;
   line-height: 1.6;
+}
+
+.success-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.success-faq-card {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(115, 130, 198, 0.16);
+}
+
+.success-faq-card strong {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: #1f2a44;
+}
+
+.success-faq-card p {
+  color: #51607f;
+  font-size: 0.95rem;
 }
 
 .success-actions {
@@ -713,6 +768,11 @@ img {
   .form-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .success-pill-row,
+  .success-faq-grid {
+    grid-template-columns: 1fr;
   }
 
   .submit-order-button {
