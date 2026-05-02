@@ -277,6 +277,18 @@ img {
   filter: drop-shadow(0 16px 24px rgba(19, 24, 40, 0.22));
 }
 
+.service-tertiary-image {
+  position: absolute;
+  z-index: 3;
+  right: 2.8rem;
+  bottom: 0.85rem;
+  width: 24%;
+  max-height: 4.8rem;
+  object-fit: contain;
+  transform: rotate(8deg);
+  filter: drop-shadow(0 14px 22px rgba(19, 24, 40, 0.2));
+}
+
 .service-card:nth-child(1) .service-image-wrap {
   min-height: 12.9rem;
 }
@@ -296,12 +308,23 @@ img {
 
 .service-card:nth-child(2) .service-main-image {
   max-height: 11.4rem;
+  transform: translateX(-0.35rem);
 }
 
 .service-card:nth-child(2) .service-secondary-image {
-  right: 0.9rem;
-  width: 26%;
-  max-height: 4.6rem;
+  right: 0.35rem;
+  bottom: 0.45rem;
+  width: 23%;
+  max-height: 4.4rem;
+  transform: rotate(-10deg);
+}
+
+.service-card:nth-child(2) .service-tertiary-image {
+  right: 3.15rem;
+  bottom: 0.85rem;
+  width: 23%;
+  max-height: 4.4rem;
+  transform: rotate(8deg);
 }
 
 .service-card:nth-child(3) .service-main-image {
@@ -367,10 +390,10 @@ img {
 .price-line {
   display: flex;
   align-items: baseline;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.35rem;
   margin: 0;
-  white-space: normal;
+  white-space: nowrap;
   font-size: 0.98rem;
 }
 

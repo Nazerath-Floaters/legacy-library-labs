@@ -3,6 +3,8 @@ import './App.css'
 
 import rg35xxPlus from './assets/legacy/rg35xxplus.png'
 import vhsImage from './assets/legacy/vhs.png'
+import dvdImage from './assets/legacy/dvd.png'
+import blurayImage from './assets/legacy/bluray.png'
 import genesisImage from './assets/legacy/genesis.png'
 import computerImage from './assets/legacy/computer.png'
 import fanGame2 from './assets/legacy/fan-game-2.webp'
@@ -29,12 +31,13 @@ const serviceCards = [
     subline: 'Built to scale from simple setups to showcase builds.',
   },
   {
-    title: 'Archive Service',
+    title: 'Archive Services',
     accent: 'gold',
     badge: '📼',
     badgeClass: 'badge-archive',
     image: vhsImage,
-    secondaryImage: genesisImage,
+    secondaryImage: dvdImage,
+    tertiaryImage: blurayImage,
     description: [
       'Convert tapes, discs, and home media into digital libraries.',
       'Preserve personal archives before age and damage set in.',
@@ -58,7 +61,7 @@ const serviceCards = [
       'Great for custom retro bundles and themed builds.',
       'Designed to make a library feel unique instead of generic.',
     ],
-    price: 'Free With Your Build',
+    price: 'Free With Build!',
     subline: 'A fun add-on layer for people who want more than the basics.',
   },
 ]
@@ -179,6 +182,7 @@ function App() {
               <div className={`service-image-wrap image-glow-${card.accent}`}>
                 <img src={card.image} alt={card.title} className="service-main-image" />
                 <img src={card.secondaryImage} alt="Related media" className="service-secondary-image" />
+                {card.tertiaryImage ? <img src={card.tertiaryImage} alt="Additional media" className="service-tertiary-image" /> : null}
               </div>
 
               <div className="service-copy">
