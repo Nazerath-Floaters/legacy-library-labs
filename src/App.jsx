@@ -91,6 +91,7 @@ const customFormAction = 'https://docs.google.com/forms/d/e/1FAIpQLScoQfgOt2XlIc
 function App() {
   const [submitNotice, setSubmitNotice] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submissionState, setSubmissionState] = useState('idle')
 
   const handleFormSubmit = async (event) => {
     event.preventDefault()
@@ -132,9 +133,11 @@ function App() {
       console.warn('Apps Script submission fallback triggered.', error)
     } finally {
       if (requestSent) {
-        setSubmitNotice('Request sent. If it does not appear shortly, use the direct intake form link below.')
+        setSubmissionState('success')
+        setSubmitNotice('Request sent successfully.')
         event.currentTarget.reset()
       } else {
+        setSubmissionState('uncertain')
         setSubmitNotice('We could not confirm the send from this browser. If no new row appears in the sheet shortly, use the direct order form link below.')
       }
       setIsSubmitting(false)
@@ -211,68 +214,100 @@ function App() {
             </p>
           </div>
 
-          <form className="custom-order-form" onSubmit={handleFormSubmit}>
-            <div className="form-grid">
-              <label>
-                <span>Email</span>
-                <input type="email" name="email" placeholder="you@example.com" required />
-              </label>
-              <label>
-                <span>Phone Number</span>
-                <input type="text" name="phone" placeholder="Optional contact number" />
-              </label>
-              <label className="honeypot-field" aria-hidden="true">
-                <span>Company</span>
-                <input type="text" name="company" tabIndex="-1" autoComplete="off" />
-              </label>
-              <label>
-                <span>Base Hardware</span>
-                <select name="hardware" defaultValue="Budget  Mini PC ($150)">
-                  <option>USB ($30)</option>
-                  <option>SSD ($100)</option>
-                  <option>Budget  Mini PC ($150)</option>
-                  <option>Budget Handheld Gameboy Style ($75)</option>
-                  <option>SUPER Handheld (PS2 Capable) ($290)</option>
-                  <option>Gaming Rig PC ($545)</option>
-                  <option>Bring Your Own Device ($0.00) + Shipping</option>
-                  <option>Gaming Laptop ($745)</option>
-                  <option>Other</option>
-                </select>
-              </label>
-              <label>
-                <span>Digitize My Media</span>
-                <select name="digitize" defaultValue="Send My Own Digitized Media (N/A)">
-                  <option>DVD ($1.50)</option>
-                  <option>Blueray ($2.00)</option>
-                  <option>Gameboy Advanced ($2.50)</option>
-                  <option>DS ($2.50)</option>
-                  <option>3DS ($2.50)</option>
-                  <option>PS1 ($1.50)</option>
-                  <option>PS2 ($2.50)</option>
-                  <option>Sega Genesis ($4.50)</option>
-                  <option>GameCube ($2.50)</option>
-                  <option>Send My Own Digitized Media (N/A)</option>
-                  <option>Other</option>
-                </select>
-              </label>
-              <label className="full-width">
-                <span>Personalize</span>
-                <textarea name="details" rows="7" placeholder="Describe exactly what you want built, what media needs digitizing, device preferences, links, budget notes, timelines, and anything else important." required />
-              </label>
-            </div>
-
-            <div className="form-actions">
-              <button type="submit" className="submit-order-button" disabled={isSubmitting}>
-                {isSubmitting ? 'Sending...' : 'Send Request'}
-              </button>
-              <p className="form-note">
-                Submissions go to a private sheet. If the form gives you trouble, use the direct intake form instead.
-                {' '}
-                <a href={orderFormUrl} target="_blank" rel="noreferrer">Open direct form</a>
+          {submissionState === 'success' ? (
+            <div className="submission-success-card">
+              <p className="form-kicker">Submission Received</p>
+              <h3>Your order request is officially in the queue.</h3>
+              <p>
+                Thanks for sending your build details. An agent will be reaching out shortly to coordinate the order,
+                confirm the setup, and go over any next steps.
               </p>
+              <div className="success-next-steps">
+                <div>
+                  <strong>What happens next?</strong>
+                  <ul>
+                    <li>We review your requested hardware, media, and personalization notes.</li>
+                    <li>We follow up to confirm pricing, timing, and any missing details.</li>
+                    <li>We help coordinate the build and delivery process from there.</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="form-actions success-actions">
+                <a className="submit-order-button success-link-button" href={orderFormUrl} target="_blank" rel="noreferrer">
+                  Open Direct Intake Form
+                </a>
+                <button type="button" className="secondary-form-button" onClick={() => {
+                  setSubmissionState('idle')
+                  setSubmitNotice('')
+                }}>
+                  Submit Another Request
+                </button>
+              </div>
             </div>
-            {submitNotice ? <p className="form-success-notice">{submitNotice}</p> : null}
-          </form>
+          ) : (
+            <form className="custom-order-form" onSubmit={handleFormSubmit}>
+              <div className="form-grid">
+                <label>
+                  <span>Email</span>
+                  <input type="email" name="email" placeholder="you@example.com" required />
+                </label>
+                <label>
+                  <span>Phone Number</span>
+                  <input type="text" name="phone" placeholder="Optional contact number" />
+                </label>
+                <label className="honeypot-field" aria-hidden="true">
+                  <span>Company</span>
+                  <input type="text" name="company" tabIndex="-1" autoComplete="off" />
+                </label>
+                <label>
+                  <span>Base Hardware</span>
+                  <select name="hardware" defaultValue="Budget  Mini PC ($150)">
+                    <option>USB ($30)</option>
+                    <option>SSD ($100)</option>
+                    <option>Budget  Mini PC ($150)</option>
+                    <option>Budget Handheld Gameboy Style ($75)</option>
+                    <option>SUPER Handheld (PS2 Capable) ($290)</option>
+                    <option>Gaming Rig PC ($545)</option>
+                    <option>Bring Your Own Device ($0.00) + Shipping</option>
+                    <option>Gaming Laptop ($745)</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+                <label>
+                  <span>Digitize My Media</span>
+                  <select name="digitize" defaultValue="Send My Own Digitized Media (N/A)">
+                    <option>DVD ($1.50)</option>
+                    <option>Blueray ($2.00)</option>
+                    <option>Gameboy Advanced ($2.50)</option>
+                    <option>DS ($2.50)</option>
+                    <option>3DS ($2.50)</option>
+                    <option>PS1 ($1.50)</option>
+                    <option>PS2 ($2.50)</option>
+                    <option>Sega Genesis ($4.50)</option>
+                    <option>GameCube ($2.50)</option>
+                    <option>Send My Own Digitized Media (N/A)</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+                <label className="full-width">
+                  <span>Personalize</span>
+                  <textarea name="details" rows="7" placeholder="Describe exactly what you want built, what media needs digitizing, device preferences, links, budget notes, timelines, and anything else important." required />
+                </label>
+              </div>
+
+              <div className="form-actions">
+                <button type="submit" className="submit-order-button" disabled={isSubmitting}>
+                  {isSubmitting ? 'Sending...' : 'Send Request'}
+                </button>
+                <p className="form-note">
+                  Submissions go to a private sheet. If the form gives you trouble, use the direct intake form instead.
+                  {' '}
+                  <a href={orderFormUrl} target="_blank" rel="noreferrer">Open direct form</a>
+                </p>
+              </div>
+              {submitNotice ? <p className="form-success-notice">{submitNotice}</p> : null}
+            </form>
+          )}
         </section>
 
         <section className="trust-row" aria-label="Trust points">
