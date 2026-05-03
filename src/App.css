@@ -167,13 +167,15 @@ img {
   position: relative;
   display: grid;
   grid-template-rows: auto auto 1fr auto;
-  min-height: 29rem;
+  min-height: 31rem;
+  height: 100%;
   padding: 1.1rem 1.1rem 1rem;
   border-radius: 1.6rem;
   background: linear-gradient(180deg, rgba(252, 253, 255, 0.98), rgba(239, 242, 252, 0.98));
   color: #161b2f;
   box-shadow: 0 20px 40px rgba(2, 5, 20, 0.35);
   border: 2px solid rgba(109, 142, 255, 0.32);
+  overflow: hidden;
 }
 
 .accent-blue {
@@ -228,11 +230,12 @@ img {
 
 .service-image-wrap {
   position: relative;
-  min-height: 12.6rem;
-  margin: 0.55rem 0 0.45rem;
+  min-height: 12.9rem;
+  margin: 0.55rem 0 0.65rem;
   display: grid;
   place-items: center;
   isolation: isolate;
+  overflow: visible;
 }
 
 .service-image-wrap::before {
@@ -308,23 +311,23 @@ img {
 
 .service-card:nth-child(2) .service-main-image {
   max-height: 10.5rem;
-  transform: translate(-0.35rem, -0.15rem);
+  transform: translate(-0.15rem, -0.45rem);
 }
 
 .service-card:nth-child(2) .service-secondary-image {
-  right: 1.15rem;
-  bottom: 0.1rem;
-  width: 18%;
-  max-height: 3.3rem;
-  transform: rotate(-9deg);
+  right: 1.6rem;
+  bottom: 0.55rem;
+  width: 22%;
+  max-height: 4rem;
+  transform: rotate(-10deg);
 }
 
 .service-card:nth-child(2) .service-tertiary-image {
-  right: 3.8rem;
-  bottom: 0.2rem;
-  width: 18%;
-  max-height: 3.3rem;
-  transform: rotate(7deg);
+  right: 3rem;
+  bottom: 1rem;
+  width: 22%;
+  max-height: 4rem;
+  transform: rotate(8deg);
 }
 
 .service-card:nth-child(3) .service-main-image {
@@ -338,8 +341,10 @@ img {
 .service-copy {
   display: grid;
   gap: 0.5rem;
+  align-content: start;
+  min-height: 0;
   font-size: 0.98rem;
-  line-height: 1.42;
+  line-height: 1.5;
   color: #353d58;
 }
 
@@ -377,7 +382,7 @@ img {
   align-items: flex-end;
   justify-content: space-between;
   gap: 0.8rem;
-  margin-top: 0.9rem;
+  margin-top: 1rem;
   padding-top: 0.9rem;
   border-top: 1px solid rgba(33, 42, 75, 0.12);
 }
@@ -421,7 +426,7 @@ img {
   justify-content: center;
   gap: 0.5rem;
   flex: 0 0 auto;
-  min-width: 8.5rem;
+  min-width: 8.9rem;
   max-width: 100%;
   padding: 0.92rem 1.05rem;
   border-radius: 0.95rem;
@@ -848,21 +853,21 @@ img {
 
   .service-card:nth-child(2) .service-main-image {
     max-height: 9.2rem;
-    transform: translate(-0.2rem, -0.1rem);
+    transform: translate(-0.1rem, -0.35rem);
   }
 
   .service-card:nth-child(2) .service-secondary-image {
-    right: 0.65rem;
-    bottom: -0.05rem;
-    width: 19%;
-    max-height: 2.85rem;
+    right: 0.85rem;
+    bottom: 0.35rem;
+    width: 23%;
+    max-height: 3.15rem;
   }
 
   .service-card:nth-child(2) .service-tertiary-image {
-    right: 2.75rem;
-    bottom: 0.05rem;
-    width: 19%;
-    max-height: 2.85rem;
+    right: 2.15rem;
+    bottom: 0.75rem;
+    width: 23%;
+    max-height: 3.15rem;
   }
 
   .service-card:nth-child(3) .service-main-image {
